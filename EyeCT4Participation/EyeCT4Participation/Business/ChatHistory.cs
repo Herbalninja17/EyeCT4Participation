@@ -9,12 +9,8 @@ namespace EyeCT4Participation.Business
 {
     class ChatHistory
     {
-        public List<Chatbox> chatboxen { get; set; }
-
-        public ChatHistory(List<Chatbox> chatboxen)
-        {
-            this.chatboxen = chatboxen;
-        }
+        //list in database class zetten ipv hier
+        List<Chatbox> chatboxen = new List<Chatbox>();
 
         public void AddChat(Chatbox a)
         {
@@ -23,11 +19,12 @@ namespace EyeCT4Participation.Business
 
         public void GetChatFromList(int needy, int volunteer)
         {
-            foreach (Chatbox c in chatboxen)
+            foreach (Chatbox c in chatboxen)    // <-- als list in database class staat link chatboxen
             {
                 if (c.needyID == needy && c.volunteerID == volunteer)
                 {
-                    //methode open chat.
+                    //roep methode aan waar je een chatbox aan mee geeft.
+                    
                 }
             }
         }

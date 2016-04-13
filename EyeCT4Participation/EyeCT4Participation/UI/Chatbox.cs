@@ -22,9 +22,10 @@ namespace EyeCT4Participation.UI
             this.messages = messages;
         }
 
-        public void GetChat(int gVolunteerID, int gNeedyID)
+        public void GetChat(int gNeedyID, int gVolunteerID)
         {
-            
+            ChatHistory e = new ChatHistory();
+            e.GetChatFromList(gNeedyID, gVolunteerID);
         }
     }
 }
