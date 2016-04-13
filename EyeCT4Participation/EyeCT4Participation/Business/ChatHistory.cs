@@ -3,18 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EyeCT4Participation.UI;
 
 namespace EyeCT4Participation.Business
 {
     class ChatHistory
     {
-        public int volunteerID;
-        public int needyID;
+        public List<Chatbox> chatboxen { get; set; }
 
-        public ChatHistory(int volunteerID, int needyID)
+        public ChatHistory(List<Chatbox> chatboxen)
         {
-            this.volunteerID = volunteerID;
-            this.needyID = needyID;
+            this.chatboxen = chatboxen;
+        }
+
+        public void AddChat(Chatbox a)
+        {
+            chatboxen.Add(a);
+        }
+
+        public void GetChatFromList(int needy, int volunteer)
+        {
+            foreach (Chatbox c in chatboxen)
+            {
+                if (c.needyID == needy && c.volunteerID == volunteer)
+                {
+                    //methode open chat.
+                }
+            }
         }
     }
 }
