@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chatLB = new System.Windows.Forms.ListBox();
             this.sendBTN = new System.Windows.Forms.Button();
             this.chattosendTB = new System.Windows.Forms.TextBox();
             this.planappointmentBTN = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.reportchatBTN = new System.Windows.Forms.Button();
-            this.chatLB = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chat";
+            // 
+            // chatLB
+            // 
+            this.chatLB.FormattingEnabled = true;
+            this.chatLB.Location = new System.Drawing.Point(6, 15);
+            this.chatLB.Name = "chatLB";
+            this.chatLB.Size = new System.Drawing.Size(739, 368);
+            this.chatLB.TabIndex = 11;
             // 
             // sendBTN
             // 
@@ -97,6 +105,7 @@
             this.closechatBTN.TabIndex = 15;
             this.closechatBTN.Text = "Close chat";
             this.closechatBTN.UseVisualStyleBackColor = true;
+            this.closechatBTN.Click += new System.EventHandler(this.closechatBTN_Click);
             // 
             // dateTimePicker1
             // 
@@ -124,14 +133,6 @@
             this.reportchatBTN.TabIndex = 18;
             this.reportchatBTN.Text = "Report chat";
             this.reportchatBTN.UseVisualStyleBackColor = true;
-            // 
-            // chatLB
-            // 
-            this.chatLB.FormattingEnabled = true;
-            this.chatLB.Location = new System.Drawing.Point(6, 15);
-            this.chatLB.Name = "chatLB";
-            this.chatLB.Size = new System.Drawing.Size(739, 368);
-            this.chatLB.TabIndex = 11;
             // 
             // Chat
             // 
