@@ -17,3 +17,4 @@ C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participa
 C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.csproj.GenerateResource.Cache
 C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.exe
 C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.pdb
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\bin\Debug\Oracle.DataAccess.dll
