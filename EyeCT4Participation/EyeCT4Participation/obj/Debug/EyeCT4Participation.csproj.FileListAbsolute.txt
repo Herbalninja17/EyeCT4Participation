@@ -2,3 +2,18 @@ C:\Users\Gebruiker\Documents\EyeCT4Participation\EyeCT4Participation\EyeCT4Parti
 C:\Users\Gebruiker\Desktop\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
 C:\Users\Gebruiker\Documents\GitHub\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
 C:\Users\Olaf\Documents\J1 P3\PT\GitHubs\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.pdb
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\bin\Debug\Phidget21.NET.dll
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\bin\Debug\Phidget21.NET.xml
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.csprojResolveAssemblyReference.cache
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Beheerder.resources
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Chat.resources
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Hulpbehoevende.resources
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Login.resources
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Properties.Resources.resources
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Vrijwilliger.resources
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.csproj.GenerateResource.Cache
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.exe
+C:\Users\Gebruiker\Documents\GitHub\Proftaak\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.pdb
