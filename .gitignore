@@ -2,4 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/EyeCT4Participation/EyeCT4Participation/obj/Debug
+/EyeCT4Participation/EyeCT4Participation/obj
+/EyeCT4Participation/EyeCT4Participation/bin
+/EyeCT4Participation/.vs
