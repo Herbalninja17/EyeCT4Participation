@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EyeCT4Participation.Business;
 
 namespace EyeCT4Participation.Business.User
 {
     class Needy : UI.User 
     {
-        int needyID;
+        public int needyID { get; set; }
+        public List<Appointment> appointmentList { get; set;}
 
+        public Needy(int needyID, List<Appointment> appointmentList)
+        {
+            this.needyID = needyID;
+            this.appointmentList = appointmentList;
+        }
 
     }
 }

@@ -1,16 +1,4 @@
 C:\Users\Gebruiker\Documents\EyeCT4Participation\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
 C:\Users\Gebruiker\Desktop\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
 C:\Users\Gebruiker\Documents\GitHub\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.pdb
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.csprojResolveAssemblyReference.cache
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Beheerder.resources
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Chat.resources
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Hulpbehoevende.resources
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Login.resources
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Properties.Resources.resources
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.Vrijwilliger.resources
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.csproj.GenerateResource.Cache
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.exe
-C:\Users\redxice\Documents\ProftaakS2 project\EyeCT4Participation\EyeCT4Participation\obj\Debug\EyeCT4Participation.pdb
+C:\Users\Olaf\Documents\J1 P3\PT\GitHubs\EyeCT4Participation\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe.config

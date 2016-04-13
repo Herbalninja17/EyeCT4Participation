@@ -8,5 +8,13 @@ namespace EyeCT4Participation.Business
 {
     class ChatHistory
     {
+        public int volunteerID;
+        public int needyID;
+
+        public ChatHistory(int volunteerID, int needyID)
+        {
+            this.volunteerID = volunteerID;
+            this.needyID = needyID;
+        }
     }
 }
