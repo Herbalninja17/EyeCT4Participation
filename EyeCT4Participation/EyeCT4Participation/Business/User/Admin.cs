@@ -8,6 +8,14 @@ namespace EyeCT4Participation.Business.User
 {
     class Admin : UI.User 
     {
-        int adminID;
+        public int adminID { get; set; }
+
+        public Admin (int ID)
+        {
+            this.adminID = ID;
+        }
     }
+    
+    
 }
+

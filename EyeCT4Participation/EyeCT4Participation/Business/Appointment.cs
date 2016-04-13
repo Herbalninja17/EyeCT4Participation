@@ -8,5 +8,18 @@ namespace EyeCT4Participation.Business
 {
     class Appointment
     {
+        public DateTime date { get; set; }
+        public DateTime time { get; set; }
+        public int volunteerID { get; set; }
+        public int needyID { get; set; }
+
+        public Appointment(DateTime date, DateTime time, int volunteerID, int needyID)
+        {
+            this.date = date;
+            this.time = time;
+            this.volunteerID = volunteerID;
+            this.needyID = needyID;
+        }
     }
+
 }
