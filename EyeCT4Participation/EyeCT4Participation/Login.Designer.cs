@@ -85,9 +85,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(294, 4);
+            this.textBox1.Location = new System.Drawing.Point(2, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(407, 20);
             this.textBox1.TabIndex = 5;
             // 
             // label2
@@ -230,7 +230,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 409);
+            this.ClientSize = new System.Drawing.Size(414, 384);
             this.Controls.Add(this.carCKB);
             this.Controls.Add(this.fingerprintCKB);
             this.Controls.Add(this.licenceCKB);
