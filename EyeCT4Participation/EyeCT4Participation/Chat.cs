@@ -16,5 +16,10 @@ namespace EyeCT4Participation
         {
             InitializeComponent();
         }
+
+        private void closechatBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
