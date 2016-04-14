@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-//database
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 
@@ -16,16 +15,16 @@ namespace EyeCT4Participation.DataBase
         private static readonly string m_databaseFilename = "Database.sql";
         private static OracleConnection m_conn;
         private static OracleCommand m_command;
-        static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi325648;PASSWORD=Hoi;?";
+        static string connectionString = "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi325648;PASSWORD=Hoi;";
 
         /// Open de verbinding met de database
         public static bool OpenConnection()
         {
             bool returnvalue = false;
-            m_conn = new OracleConnection("Data Source=" + m_databaseFilename + ";Version=3");
+            m_conn = new OracleConnection();
             try
             {
-                m_conn.ConnectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi325648;PASSWORD=Hoi;?";
+                m_conn.ConnectionString = connectionString;
                 m_conn.Open();
                 // Controleer of de verbinding niet al open is
                 if (m_conn.State != System.Data.ConnectionState.Open)
@@ -42,7 +41,7 @@ namespace EyeCT4Participation.DataBase
             return returnvalue;
         }
 
-  /*      public static string Query
+        public static string Query
         {
             set
             {
@@ -59,7 +58,7 @@ namespace EyeCT4Participation.DataBase
                     throw ex;
                 }
             }
-        } */
+        }
 
 
 
