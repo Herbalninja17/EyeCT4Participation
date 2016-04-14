@@ -12,14 +12,28 @@ namespace EyeCT4Participation
 {
     public partial class Hulpbehoevende : Form
     {
+
+
+        private PlaceRequest m_PlaceRequest;
+
         public Hulpbehoevende()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void submitBTN_Click(object sender, EventArgs e)
         {
+            if (m_PlaceRequest == null || m_PlaceRequest.IsDisposed)
+            {
+                m_PlaceRequest = new PlaceRequest();
+                m_PlaceRequest.Parent = this.Parent;
+                m_PlaceRequest.Show();
+            }
 
+            else
+            {
+                m_PlaceRequest.BringToFront();
+            }
         }
     }
 }

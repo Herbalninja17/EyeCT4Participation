@@ -35,9 +35,9 @@ namespace EyeCT4Participation.Business
             this.endDate = enddate;
             this.totalVolunteer = totalvolunteers;
             this.reactionList = reactionlist;
-            this.reported = reported;
-
-                
+            this.reported = reported; 
         }
+
+
     }
 }

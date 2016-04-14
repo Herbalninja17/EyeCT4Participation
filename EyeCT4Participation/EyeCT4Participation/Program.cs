@@ -16,7 +16,7 @@ namespace EyeCT4Participation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Hulpbehoevende());
         }
     }
 }
