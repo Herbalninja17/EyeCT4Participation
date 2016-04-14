@@ -35,7 +35,7 @@
     <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
     <Reference Include="Phidget21.NET, Version=2.1.8.222, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Visual Studio 2015\Projects\PTRFID\PTRFID\bin\Debug\Phidget21.NET.dll</HintPath>
+      <HintPath>bin\Debug\Phidget21.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,6 +75,12 @@
     <Compile Include="Hulpbehoevende.Designer.cs">
       <DependentUpon>Hulpbehoevende.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlaceRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaceRequest.Designer.cs">
+      <DependentUpon>PlaceRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Chatbox.cs" />
     <Compile Include="UI\RequestOverview.cs" />
     <Compile Include="Login.cs">
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaceRequest.resx">
+      <DependentUpon>PlaceRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

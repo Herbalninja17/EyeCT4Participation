@@ -31,6 +31,17 @@
             this.reviewBTN = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.vn1BTN = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -42,18 +53,7 @@
             this.submitBTN = new System.Windows.Forms.Button();
             this.profileBTN = new System.Windows.Forms.Button();
             this.appointmentBTN = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.vn1BTN = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.requestsBTN = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +104,107 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My requests/reviews";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(352, 246);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(119, 23);
+            this.button11.TabIndex = 31;
+            this.button11.Text = "VolunteerName";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(352, 217);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(119, 23);
+            this.button12.TabIndex = 30;
+            this.button12.Text = "VolunteerName";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(351, 380);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(119, 23);
+            this.button10.TabIndex = 29;
+            this.button10.Text = "VolunteerName";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(351, 351);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(119, 23);
+            this.button9.TabIndex = 28;
+            this.button9.Text = "VolunteerName";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(351, 322);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(119, 23);
+            this.button7.TabIndex = 27;
+            this.button7.Text = "VolunteerName";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(351, 77);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(119, 23);
+            this.button5.TabIndex = 26;
+            this.button5.Text = "VolunteerName";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(351, 106);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(119, 23);
+            this.button4.TabIndex = 25;
+            this.button4.Text = "VolunteerName";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(352, 188);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(119, 23);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "VolunteerName";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // vn1BTN
+            // 
+            this.vn1BTN.Location = new System.Drawing.Point(351, 48);
+            this.vn1BTN.Name = "vn1BTN";
+            this.vn1BTN.Size = new System.Drawing.Size(119, 23);
+            this.vn1BTN.TabIndex = 23;
+            this.vn1BTN.Text = "VolunteerName";
+            this.vn1BTN.UseVisualStyleBackColor = true;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox6.Location = new System.Drawing.Point(351, 293);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(119, 23);
+            this.textBox6.TabIndex = 22;
+            this.textBox6.Text = "Interested volunteers:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox5.Location = new System.Drawing.Point(352, 159);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(119, 23);
+            this.textBox5.TabIndex = 21;
+            this.textBox5.Text = "Interested volunteers:";
             // 
             // button8
             // 
@@ -183,6 +284,7 @@
             this.submitBTN.TabIndex = 5;
             this.submitBTN.Text = "Submit request";
             this.submitBTN.UseVisualStyleBackColor = true;
+            this.submitBTN.Click += new System.EventHandler(this.submitBTN_Click);
             // 
             // profileBTN
             // 
@@ -202,122 +304,21 @@
             this.appointmentBTN.Text = "My appointments";
             this.appointmentBTN.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // requestsBTN
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox5.Location = new System.Drawing.Point(352, 159);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(119, 23);
-            this.textBox5.TabIndex = 21;
-            this.textBox5.Text = "Interested volunteers:";
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox6.Location = new System.Drawing.Point(351, 293);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(119, 23);
-            this.textBox6.TabIndex = 22;
-            this.textBox6.Text = "Interested volunteers:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(22, 275);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 50);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "My requests";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // vn1BTN
-            // 
-            this.vn1BTN.Location = new System.Drawing.Point(351, 48);
-            this.vn1BTN.Name = "vn1BTN";
-            this.vn1BTN.Size = new System.Drawing.Size(119, 23);
-            this.vn1BTN.TabIndex = 23;
-            this.vn1BTN.Text = "VolunteerName";
-            this.vn1BTN.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(352, 188);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 23);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "VolunteerName";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(351, 106);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 23);
-            this.button4.TabIndex = 25;
-            this.button4.Text = "VolunteerName";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(351, 77);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(119, 23);
-            this.button5.TabIndex = 26;
-            this.button5.Text = "VolunteerName";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(351, 322);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(119, 23);
-            this.button7.TabIndex = 27;
-            this.button7.Text = "VolunteerName";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(351, 351);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(119, 23);
-            this.button9.TabIndex = 28;
-            this.button9.Text = "VolunteerName";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(351, 380);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(119, 23);
-            this.button10.TabIndex = 29;
-            this.button10.Text = "VolunteerName";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(352, 246);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(119, 23);
-            this.button11.TabIndex = 31;
-            this.button11.Text = "VolunteerName";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(352, 217);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(119, 23);
-            this.button12.TabIndex = 30;
-            this.button12.Text = "VolunteerName";
-            this.button12.UseVisualStyleBackColor = true;
+            this.requestsBTN.Location = new System.Drawing.Point(22, 275);
+            this.requestsBTN.Name = "requestsBTN";
+            this.requestsBTN.Size = new System.Drawing.Size(170, 50);
+            this.requestsBTN.TabIndex = 7;
+            this.requestsBTN.Text = "My requests";
+            this.requestsBTN.UseVisualStyleBackColor = true;
             // 
             // Hulpbehoevende
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 479);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.requestsBTN);
             this.Controls.Add(this.appointmentBTN);
             this.Controls.Add(this.profileBTN);
             this.Controls.Add(this.groupBox1);
@@ -325,7 +326,6 @@
             this.Controls.Add(this.reviewBTN);
             this.Name = "Hulpbehoevende";
             this.Text = "Welkom hulpbehoevende";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -350,7 +350,7 @@
         private System.Windows.Forms.Button appointmentBTN;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button requestsBTN;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button10;
