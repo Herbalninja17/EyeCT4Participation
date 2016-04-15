@@ -41,7 +41,7 @@ namespace EyeCT4Participation.DataBase
             return returnvalue;
         }
 
-        public static string Query
+       /* public static string Query
         {
             set
             {
@@ -58,7 +58,7 @@ namespace EyeCT4Participation.DataBase
                     throw ex;
                 }
             }
-        }
+        } */
 
 
 
@@ -110,5 +110,7 @@ namespace EyeCT4Participation.DataBase
                 //CreateDummyData();
             }
         }
+
+
     }
 }
