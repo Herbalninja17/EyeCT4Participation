@@ -39,6 +39,8 @@ namespace EyeCT4Participation
         private void profileBTN_Click(object sender, EventArgs e)
         {
             // open het profiel van deze user
+            //DataBase.Database.GetUser();
+            contentTB1.Text = DataBase.Database.GetUser();
            
         }
 

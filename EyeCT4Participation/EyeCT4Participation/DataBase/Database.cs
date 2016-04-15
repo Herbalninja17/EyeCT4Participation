@@ -90,8 +90,9 @@ namespace EyeCT4Participation.DataBase
         }
        
 
-        public static void GetUser()
-        {  
+        public static string GetUser()
+        {
+            string _test = "no";
             try
             {
                 Query = "SELECT Gebruikersnaam FROM gebruiker";
@@ -101,7 +102,7 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
-                        string _Test = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        _test = Convert.ToString(_Reader["Gebruikersnaam"]);
                     }
                 }
             }
@@ -110,6 +111,7 @@ namespace EyeCT4Participation.DataBase
                 Database.CloseConnection();
                 Console.WriteLine(ex.Message);
             }
+            return _test;
         }
     }
 }
