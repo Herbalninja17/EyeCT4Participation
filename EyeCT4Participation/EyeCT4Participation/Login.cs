@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Phidgets;
 using Phidgets.Events;
+using EyeCT4Participation.DataBase;
 
 namespace EyeCT4Participation
 {
@@ -20,11 +21,15 @@ namespace EyeCT4Participation
             InitializeComponent();
         }        
 
+       
+
         private void loginBTN_Click(object sender, EventArgs e)
         {
             // ----- test conectivity ------ //
             //if (rfid.LED == false) { rfid.LED = true; }
             //else if (rfid.LED == true) { rfid.LED = false; }
+            
+            
         }
 
         private void Login_Load(object sender, EventArgs e)

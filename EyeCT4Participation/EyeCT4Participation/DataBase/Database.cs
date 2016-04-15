@@ -109,6 +109,13 @@ namespace EyeCT4Participation.DataBase
             {
                 //CreateDummyData();
             }
+
+           
+        }
+
+        public static void getUser(string userName, string wachtwoord)
+        {
+
         }
     }
 }

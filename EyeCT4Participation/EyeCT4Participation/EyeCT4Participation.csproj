@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="Phidget21.NET, Version=2.1.8.222, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\EyeCT4Participation\EyeCT4Participation\EyeCT4Participation\bin\Debug\Phidget21.NET.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Phidget21.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,7 +62,7 @@
       <DependentUpon>Beheerder.cs</DependentUpon>
     </Compile>
     <Compile Include="Business\Appointment.cs" />
-    <Compile Include="Business\ChatHistory.cs" />
+    <Compile Include="Business\User\ChatHistory.cs" />
     <Compile Include="Business\Request.cs" />
     <Compile Include="Business\Review.cs" />
     <Compile Include="Business\User\Admin.cs" />
