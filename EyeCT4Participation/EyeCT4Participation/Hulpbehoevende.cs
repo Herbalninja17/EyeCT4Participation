@@ -35,5 +35,11 @@ namespace EyeCT4Participation
                 m_PlaceRequest.BringToFront();
             }
         }
+
+        private void profileBTN_Click(object sender, EventArgs e)
+        {
+            DataBase.Database.GetUser();
+            
+        }
     }
 }
