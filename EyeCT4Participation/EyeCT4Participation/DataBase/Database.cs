@@ -16,6 +16,7 @@ namespace EyeCT4Participation.DataBase
         private static OracleConnection m_conn;
         private static OracleCommand m_command;
         static string connectionString = "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi325648;PASSWORD=Hoi;";
+        
 
         /// Open de verbinding met de database
         public static bool OpenConnection()
@@ -45,11 +46,12 @@ namespace EyeCT4Participation.DataBase
         {
             set
             {
-                PrepareConnection();
+                OpenConnection();
 
                 try
                 {
-                    m_conn.Open();
+                    m_command = new OracleCommand(value, m_conn);
+                    //m_conn.Open();
 
                 }
                 catch (Exception ex)
@@ -99,7 +101,7 @@ namespace EyeCT4Participation.DataBase
             // Zet een verbinding op met de database
             if (m_conn == null)
             {
-                m_conn = new OracleConnection("Data Source=" + m_databaseFilename + ";Version=3");
+                m_conn = new OracleConnection("Data Source=" + m_databaseFilename);
             }
 
             // Als we een nieuwe database gemaakt hebben, voegen we alvast wat records toe.
@@ -108,6 +110,33 @@ namespace EyeCT4Participation.DataBase
             if (createNew)
             {
                 //CreateDummyData();
+            }
+        }
+        public static void GetUser()
+        {  
+            try
+            {
+                Query = "SELECT Gebruikersnaam FROM gebruiker;";
+               // m_command.Parameters.Add("@UserID", System.Data.DbType.Int32).Value = p_UserID;
+                string naam;
+                List<naam> Namen = new List<string>;
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        string _Test = Convert.ToString(_Reader["Gebruikersnaam"]);
+                    }
+                }
+                    
+	         
+	
+                 
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+      
             }
         }
     }
