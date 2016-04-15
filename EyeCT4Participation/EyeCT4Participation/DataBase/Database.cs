@@ -15,7 +15,7 @@ namespace EyeCT4Participation.DataBase
         private static readonly string m_databaseFilename = "Database.sql";
         private static OracleConnection m_conn;
         private static OracleCommand m_command;
-        static string connectionString = "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi325648;PASSWORD=Hoi;";
+        static string connectionString = "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi338530;PASSWORD=Hoi;";
         
 
         /// Open de verbinding met de database
