@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="Phidget21.NET, Version=2.1.8.222, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\EyeCT4Participation\EyeCT4Participation\EyeCT4Participation\bin\Debug\Phidget21.NET.dll</HintPath>
+      <HintPath>..\..\..\..\..\Dropbox\Proftaak S2\Phidget21.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
