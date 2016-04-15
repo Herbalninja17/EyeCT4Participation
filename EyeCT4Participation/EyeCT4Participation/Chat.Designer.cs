@@ -71,6 +71,7 @@
             this.sendBTN.TabIndex = 10;
             this.sendBTN.Text = "SEND";
             this.sendBTN.UseVisualStyleBackColor = true;
+            this.sendBTN.Click += new System.EventHandler(this.sendBTN_Click);
             // 
             // chattosendTB
             // 
@@ -146,6 +147,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Chat";
             this.Text = "Chat";
+            this.Load += new System.EventHandler(this.Chat_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EyeCT4Participation.Business;
 
 namespace EyeCT4Participation.UI
 {
-    class Chatbox
+    public class Chatbox
     {
         public int volunteerID { get; set; }
 
@@ -20,12 +19,6 @@ namespace EyeCT4Participation.UI
             this.volunteerID = volunteerID;
             this.needyID = needyID;
             this.messages = messages;
-        }
-
-        public void GetChat(int gNeedyID, int gVolunteerID)
-        {
-            ChatHistory e = new ChatHistory();
-            e.GetChatFromList(gNeedyID, gVolunteerID);
         }
     }
 }

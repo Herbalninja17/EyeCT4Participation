@@ -88,42 +88,13 @@ namespace EyeCT4Participation.DataBase
             }
 
         }
+       
 
-        /// Controleert of de database al bestaat. Zo niet, wordt deze aangemaakt
-        /// en gevuld met wat dummy data. Daarnaast wordt altijd de connectie opgezet
-        /// met de database indien deze nog niet opgezet was.
-        /// </summary>
-        private static void PrepareConnection()
-        {
-
-            bool createNew = !File.Exists(m_databaseFilename);
-
-            // Zet een verbinding op met de database
-            if (m_conn == null)
-            {
-                m_conn = new OracleConnection("Data Source=" + m_databaseFilename);
-            }
-
-            // Als we een nieuwe database gemaakt hebben, voegen we alvast wat records toe.
-            // We doen dit nu pas omdat we een connection nodig hebben om te communiceren met
-            // de database: vandaar dat deze code niet boven bij de CreateFile functie staat.
-            if (createNew)
-            {
-                //CreateDummyData();
-            }
-
-           
-        }
-
-        public static void getUser(string userName, string wachtwoord)
-        {
-
-        }
         public static void GetUser()
         {  
             try
             {
-                Query = "SELECT Gebruikersnaam FROM gebruiker;";
+                Query = "SELECT Gebruikersnaam FROM gebruiker";
                // m_command.Parameters.Add("@UserID", System.Data.DbType.Int32).Value = p_UserID;
                 List<String> Namen = new List<String>();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
@@ -133,16 +104,11 @@ namespace EyeCT4Participation.DataBase
                         string _Test = Convert.ToString(_Reader["Gebruikersnaam"]);
                     }
                 }
-                    
-	         
-	
-                 
             }
             catch (OracleException ex)
             {
                 Database.CloseConnection();
                 Console.WriteLine(ex.Message);
-      
             }
         }
     }
