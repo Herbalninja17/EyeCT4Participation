@@ -294,6 +294,7 @@
             this.profileBTN.TabIndex = 5;
             this.profileBTN.Text = "My profile";
             this.profileBTN.UseVisualStyleBackColor = true;
+            this.profileBTN.Click += new System.EventHandler(this.profileBTN_Click);
             // 
             // appointmentBTN
             // 
