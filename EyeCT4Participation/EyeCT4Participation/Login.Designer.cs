@@ -43,31 +43,38 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cityTB = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.phonenumberTB = new System.Windows.Forms.TextBox();
-            this.carCKB = new System.Windows.Forms.CheckBox();
+            this.fullnameTB = new System.Windows.Forms.TextBox();
             this.licenceCKB = new System.Windows.Forms.CheckBox();
             this.fingerprintCKB = new System.Windows.Forms.CheckBox();
+            this.carCKB = new System.Windows.Forms.CheckBox();
+            this.maleCHK = new System.Windows.Forms.CheckBox();
+            this.femaleCHK = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.emailTB = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.phoneTB = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // usernameTB
             // 
-            this.usernameTB.Location = new System.Drawing.Point(118, 145);
+            this.usernameTB.Location = new System.Drawing.Point(118, 123);
             this.usernameTB.Name = "usernameTB";
             this.usernameTB.Size = new System.Drawing.Size(128, 20);
             this.usernameTB.TabIndex = 0;
             // 
             // passwordTB
             // 
-            this.passwordTB.Location = new System.Drawing.Point(118, 171);
+            this.passwordTB.Location = new System.Drawing.Point(118, 149);
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Size = new System.Drawing.Size(128, 20);
             this.passwordTB.TabIndex = 1;
             // 
             // loginBTN
             // 
-            this.loginBTN.Location = new System.Drawing.Point(42, 347);
+            this.loginBTN.Location = new System.Drawing.Point(42, 325);
             this.loginBTN.Name = "loginBTN";
-            this.loginBTN.Size = new System.Drawing.Size(99, 23);
+            this.loginBTN.Size = new System.Drawing.Size(204, 23);
             this.loginBTN.TabIndex = 2;
             this.loginBTN.Text = "Login";
             this.loginBTN.UseVisualStyleBackColor = true;
@@ -93,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 145);
+            this.label2.Location = new System.Drawing.Point(39, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 6;
@@ -102,7 +109,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 171);
+            this.label3.Location = new System.Drawing.Point(39, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 7;
@@ -115,7 +122,7 @@
             "Admin",
             "Volunteer",
             "Needy"});
-            this.accounttypeCB.Location = new System.Drawing.Point(118, 118);
+            this.accounttypeCB.Location = new System.Drawing.Point(118, 96);
             this.accounttypeCB.Name = "accounttypeCB";
             this.accounttypeCB.Size = new System.Drawing.Size(128, 21);
             this.accounttypeCB.TabIndex = 8;
@@ -123,7 +130,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 121);
+            this.label4.Location = new System.Drawing.Point(39, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 9;
@@ -131,9 +138,9 @@
             // 
             // registerBTN
             // 
-            this.registerBTN.Location = new System.Drawing.Point(147, 347);
+            this.registerBTN.Location = new System.Drawing.Point(42, 349);
             this.registerBTN.Name = "registerBTN";
-            this.registerBTN.Size = new System.Drawing.Size(99, 23);
+            this.registerBTN.Size = new System.Drawing.Size(204, 23);
             this.registerBTN.TabIndex = 10;
             this.registerBTN.Text = "Register";
             this.registerBTN.UseVisualStyleBackColor = true;
@@ -141,7 +148,7 @@
             // 
             // addressTB
             // 
-            this.addressTB.Location = new System.Drawing.Point(118, 197);
+            this.addressTB.Location = new System.Drawing.Point(118, 227);
             this.addressTB.Name = "addressTB";
             this.addressTB.Size = new System.Drawing.Size(128, 20);
             this.addressTB.TabIndex = 11;
@@ -150,7 +157,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 197);
+            this.label5.Location = new System.Drawing.Point(39, 227);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 12;
@@ -160,7 +167,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 223);
+            this.label6.Location = new System.Drawing.Point(39, 253);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 13);
             this.label6.TabIndex = 14;
@@ -169,7 +176,7 @@
             // 
             // cityTB
             // 
-            this.cityTB.Location = new System.Drawing.Point(118, 223);
+            this.cityTB.Location = new System.Drawing.Point(118, 253);
             this.cityTB.Name = "cityTB";
             this.cityTB.Size = new System.Drawing.Size(128, 20);
             this.cityTB.TabIndex = 13;
@@ -178,36 +185,25 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 249);
+            this.label7.Location = new System.Drawing.Point(39, 201);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Phone number:";
+            this.label7.Text = "Full Name:";
             this.label7.Visible = false;
             // 
-            // phonenumberTB
+            // fullnameTB
             // 
-            this.phonenumberTB.Location = new System.Drawing.Point(118, 249);
-            this.phonenumberTB.Name = "phonenumberTB";
-            this.phonenumberTB.Size = new System.Drawing.Size(128, 20);
-            this.phonenumberTB.TabIndex = 15;
-            this.phonenumberTB.Visible = false;
-            // 
-            // carCKB
-            // 
-            this.carCKB.AutoSize = true;
-            this.carCKB.Location = new System.Drawing.Point(118, 321);
-            this.carCKB.Name = "carCKB";
-            this.carCKB.Size = new System.Drawing.Size(42, 17);
-            this.carCKB.TabIndex = 17;
-            this.carCKB.Text = "Car";
-            this.carCKB.UseVisualStyleBackColor = true;
-            this.carCKB.Visible = false;
+            this.fullnameTB.Location = new System.Drawing.Point(118, 201);
+            this.fullnameTB.Name = "fullnameTB";
+            this.fullnameTB.Size = new System.Drawing.Size(128, 20);
+            this.fullnameTB.TabIndex = 15;
+            this.fullnameTB.Visible = false;
             // 
             // licenceCKB
             // 
             this.licenceCKB.AutoSize = true;
-            this.licenceCKB.Location = new System.Drawing.Point(118, 298);
+            this.licenceCKB.Location = new System.Drawing.Point(252, 118);
             this.licenceCKB.Name = "licenceCKB";
             this.licenceCKB.Size = new System.Drawing.Size(64, 17);
             this.licenceCKB.TabIndex = 18;
@@ -218,7 +214,7 @@
             // fingerprintCKB
             // 
             this.fingerprintCKB.AutoSize = true;
-            this.fingerprintCKB.Location = new System.Drawing.Point(118, 275);
+            this.fingerprintCKB.Location = new System.Drawing.Point(252, 95);
             this.fingerprintCKB.Name = "fingerprintCKB";
             this.fingerprintCKB.Size = new System.Drawing.Size(116, 17);
             this.fingerprintCKB.TabIndex = 19;
@@ -226,16 +222,104 @@
             this.fingerprintCKB.UseVisualStyleBackColor = true;
             this.fingerprintCKB.Visible = false;
             // 
+            // carCKB
+            // 
+            this.carCKB.AutoSize = true;
+            this.carCKB.Location = new System.Drawing.Point(252, 141);
+            this.carCKB.Name = "carCKB";
+            this.carCKB.Size = new System.Drawing.Size(42, 17);
+            this.carCKB.TabIndex = 17;
+            this.carCKB.Text = "Car";
+            this.carCKB.UseVisualStyleBackColor = true;
+            this.carCKB.Visible = false;
+            // 
+            // maleCHK
+            // 
+            this.maleCHK.AutoSize = true;
+            this.maleCHK.Location = new System.Drawing.Point(118, 302);
+            this.maleCHK.Name = "maleCHK";
+            this.maleCHK.Size = new System.Drawing.Size(49, 17);
+            this.maleCHK.TabIndex = 20;
+            this.maleCHK.Text = "Male";
+            this.maleCHK.UseVisualStyleBackColor = true;
+            this.maleCHK.Visible = false;
+            // 
+            // femaleCHK
+            // 
+            this.femaleCHK.AutoSize = true;
+            this.femaleCHK.Location = new System.Drawing.Point(174, 302);
+            this.femaleCHK.Name = "femaleCHK";
+            this.femaleCHK.Size = new System.Drawing.Size(60, 17);
+            this.femaleCHK.TabIndex = 21;
+            this.femaleCHK.Text = "Female";
+            this.femaleCHK.UseVisualStyleBackColor = true;
+            this.femaleCHK.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(39, 175);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Email:";
+            this.label9.Visible = false;
+            // 
+            // emailTB
+            // 
+            this.emailTB.Location = new System.Drawing.Point(118, 175);
+            this.emailTB.Name = "emailTB";
+            this.emailTB.Size = new System.Drawing.Size(128, 20);
+            this.emailTB.TabIndex = 22;
+            this.emailTB.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(39, 279);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 13);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Phonenumber:";
+            this.label8.Visible = false;
+            // 
+            // phoneTB
+            // 
+            this.phoneTB.Location = new System.Drawing.Point(118, 279);
+            this.phoneTB.Name = "phoneTB";
+            this.phoneTB.Size = new System.Drawing.Size(128, 20);
+            this.phoneTB.TabIndex = 24;
+            this.phoneTB.Visible = false;
+            this.phoneTB.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(39, 302);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Gender:";
+            this.label10.Visible = false;
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 384);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.phoneTB);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.emailTB);
+            this.Controls.Add(this.femaleCHK);
+            this.Controls.Add(this.maleCHK);
             this.Controls.Add(this.carCKB);
             this.Controls.Add(this.fingerprintCKB);
             this.Controls.Add(this.licenceCKB);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.phonenumberTB);
+            this.Controls.Add(this.fullnameTB);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cityTB);
             this.Controls.Add(this.label5);
@@ -275,9 +359,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox cityTB;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox phonenumberTB;
-        private System.Windows.Forms.CheckBox carCKB;
+        private System.Windows.Forms.TextBox fullnameTB;
         private System.Windows.Forms.CheckBox licenceCKB;
         private System.Windows.Forms.CheckBox fingerprintCKB;
+        private System.Windows.Forms.CheckBox carCKB;
+        private System.Windows.Forms.CheckBox maleCHK;
+        private System.Windows.Forms.CheckBox femaleCHK;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox emailTB;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox phoneTB;
+        private System.Windows.Forms.Label label10;
     }
 }

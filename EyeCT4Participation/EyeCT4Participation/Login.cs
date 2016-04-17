@@ -28,8 +28,13 @@ namespace EyeCT4Participation
             // ----- test conectivity ------ //
             //if (rfid.LED == false) { rfid.LED = true; }
             //else if (rfid.LED == true) { rfid.LED = false; }
-            DataBase.Database.TestMethode(Convert.ToString(usernameTB.Text));
-            
+            string username = usernameTB.Text.ToString();
+            string password = passwordTB.Text.ToString();
+            DataBase.Database.Login(username, password);
+            if(DataBase.Database.Login(username, password) == true)
+            {
+                label1.BackColor = Color.Red;
+            }
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -152,40 +157,80 @@ namespace EyeCT4Participation
             accounttypeCB.Enabled = false;
             if (accounttypeCB.Text == "Volunteer")
             {
-                addressTB.Visible = true; 
-                cityTB.Visible = true; 
-                phonenumberTB.Visible = true; 
-                label5.Visible = true;
-                label6.Visible = true;
-                label7.Visible = true;
-                loginBTN.Enabled = false;
-                registerBTN.Text = "Confirm";
+                register();                
                 carCKB.Visible = true;
-                licenceCKB.Visible = true;
-                fingerprintCKB.Visible = true;
+                licenceCKB.Visible = true;                
             }
             else if (accounttypeCB.Text == "Needy" || accounttypeCB.Text == "Admin" )
             {
-                addressTB.Visible = true;
-                cityTB.Visible = true; 
-                phonenumberTB.Visible = true;
-                label5.Visible = true;
-                label6.Visible = true;
-                label7.Visible = true;
-                loginBTN.Enabled = false;
-                registerBTN.Text = "Confirm";
-                fingerprintCKB.Visible = true;
+                register();         
             }
             if (x == true)
             {
-                Confirm();
+                Test();
             }
-            x = true;                 
+            x = true;
+            if (loginBTN.Enabled == false)
+            {
+                confirm();
+            }
         }
 
-        public void Confirm()
+        public void register()
+        {
+            emailTB.Visible = true; 
+            fullnameTB.Visible = true;
+            addressTB.Visible = true;
+            cityTB.Visible = true;
+            phoneTB.Visible = true;
+            maleCHK.Visible = true;
+            femaleCHK.Visible = true;
+            label5.Visible = true;
+            label6.Visible = true;
+            label7.Visible = true;
+            label8.Visible = true;
+            label9.Visible = true;
+            label10.Visible = true;            
+            registerBTN.Text = "Confirm";
+            fingerprintCKB.Visible = true;
+            loginBTN.Enabled = false;
+        } 
+
+        public void confirm()
+        {
+            string username = usernameTB.Text.ToString();
+            string password = passwordTB.Text.ToString();
+            string acctype = accounttypeCB.Text.ToString();
+            string email = emailTB.Text.ToString();
+            string fullname = fullnameTB.Text.ToString();
+            string address = addressTB.Text.ToString();
+            string city = cityTB.Text.ToString();
+            string p = phoneTB.Text.ToString();
+            int phone = 563455;
+            string gender = "X";
+            if (maleCHK.Checked == true) { gender = "M"; }
+            if (femaleCHK.Checked == true) { gender = "V"; }
+            DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender);
+        }
+
+        public void Test()
         {
             registerBTN.BackColor = Color.Red;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
