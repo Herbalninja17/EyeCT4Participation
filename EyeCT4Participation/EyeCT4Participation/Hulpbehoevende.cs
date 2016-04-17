@@ -38,8 +38,46 @@ namespace EyeCT4Participation
 
         private void profileBTN_Click(object sender, EventArgs e)
         {
-            DataBase.Database.GetUser();
-            
+            // open het profiel van deze user
+            //DataBase.Database.GetUser();
+            contentTB1.Text = DataBase.Database.GetUser();
+            DataBase.Database.TestMethode("djsy");
+
+        }
+
+        private void reviewBTN_Click(object sender, EventArgs e)
+        {
+            // Open de lijst met reviews die bij deze user hoort
+        }
+
+        private void appointmentBTN_Click(object sender, EventArgs e)
+        {
+            // Open de afspraken die deze user heeft
+        }
+
+        private void requestsBTN_Click(object sender, EventArgs e)
+        {
+            // Open de verzoeken die deze user heeft ingediend
+        }
+
+        private void removeBTN_Click(object sender, EventArgs e)
+        {
+            // verwijder de geselecteerde content
+        }
+
+        private void editBTN_Click(object sender, EventArgs e)
+        {
+            // bewerk de geselecteerde content
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // geef de geselecteerde vrijwilliger aan (report)
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // open chat met de geselecteerde vrijwilliger
         }
     }
 }

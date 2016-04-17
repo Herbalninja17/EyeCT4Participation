@@ -8,14 +8,13 @@ using System.Windows.Forms;
 
 namespace EyeCT4Participation.Business
 {
-    class ChatHistory
+    public class ChatHistory
     {
         Chat Chat = (Chat)Application.OpenForms["Chat"];
         //list in database class zetten ipv hier
         List<Chatbox> chatboxen = new List<Chatbox>();
         List<string> messages = new List<string>();
         bool Add = false;
-
 
         public void AddChat(Chatbox a)
         {

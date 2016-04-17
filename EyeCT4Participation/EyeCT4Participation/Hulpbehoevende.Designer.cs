@@ -65,6 +65,7 @@
             this.reviewBTN.TabIndex = 0;
             this.reviewBTN.Text = "My reviews";
             this.reviewBTN.UseVisualStyleBackColor = true;
+            this.reviewBTN.Click += new System.EventHandler(this.reviewBTN_Click);
             // 
             // logoutBTN
             // 
@@ -214,6 +215,7 @@
             this.button8.TabIndex = 20;
             this.button8.Text = "Report selected volunteer";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button6
             // 
@@ -223,6 +225,7 @@
             this.button6.TabIndex = 19;
             this.button6.Text = "Initiate chat with selected volunteer";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBox4
             // 
@@ -266,6 +269,7 @@
             this.editBTN.TabIndex = 7;
             this.editBTN.Text = "Edit request";
             this.editBTN.UseVisualStyleBackColor = true;
+            this.editBTN.Click += new System.EventHandler(this.editBTN_Click);
             // 
             // removeBTN
             // 
@@ -275,6 +279,7 @@
             this.removeBTN.TabIndex = 6;
             this.removeBTN.Text = "Remove request";
             this.removeBTN.UseVisualStyleBackColor = true;
+            this.removeBTN.Click += new System.EventHandler(this.removeBTN_Click);
             // 
             // submitBTN
             // 
@@ -304,6 +309,7 @@
             this.appointmentBTN.TabIndex = 6;
             this.appointmentBTN.Text = "My appointments";
             this.appointmentBTN.UseVisualStyleBackColor = true;
+            this.appointmentBTN.Click += new System.EventHandler(this.appointmentBTN_Click);
             // 
             // requestsBTN
             // 
@@ -313,6 +319,7 @@
             this.requestsBTN.TabIndex = 7;
             this.requestsBTN.Text = "My requests";
             this.requestsBTN.UseVisualStyleBackColor = true;
+            this.requestsBTN.Click += new System.EventHandler(this.requestsBTN_Click);
             // 
             // Hulpbehoevende
             // 

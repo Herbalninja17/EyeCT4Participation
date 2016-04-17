@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EyeCT4Participation.Business;
 using EyeCT4Participation.UI;
+using EyeCT4Participation.DataBase;
 
 namespace EyeCT4Participation
 {
@@ -34,16 +35,17 @@ namespace EyeCT4Participation
 
         private void Chat_Load(object sender, EventArgs e)
         {
-            ChatHistory chats = new ChatHistory();
-            chats.GetChatFromList(needyid, volunteerid);
-            chatLB.SelectedIndex = chatLB.Items.Count - 1;
+            //chats.GetChatFromList(needyid, volunteerid);
+            //chatLB.SelectedIndex = chatLB.Items.Count - 1;
         }
 
         private void sendBTN_Click(object sender, EventArgs e)
         {
-            ChatHistory chats = new ChatHistory();
-            string message = chattosendTB.Text;
-            chats.MessageToChat(needyid, volunteerid, message);
+            //string message = chattosendTB.Text;
+            //chats.MessageToChat(needyid, volunteerid, message);
+            DataBase.Database.GetUser();
         }
+
+
     }
 }
