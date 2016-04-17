@@ -28,13 +28,28 @@ namespace EyeCT4Participation
             // ----- test conectivity ------ //
             //if (rfid.LED == false) { rfid.LED = true; }
             //else if (rfid.LED == true) { rfid.LED = false; }
+            //string acctype = "x";
+            
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();
             DataBase.Database.Login(username, password);
             if(DataBase.Database.Login(username, password) == true)
             {
-                label1.BackColor = Color.Red;
+                if(DataBase.Database.ac == "Needy")
+                {
+                    this.Hide();
+                    new Hulpbehoevende().Show();
+                    label1.BackColor = Color.Red;
+                }
+                else if (DataBase.Database.ac == "Volunteer")
+                {
+                    this.Hide();
+                    new Vrijwilliger().Show();
+                    label1.BackColor = Color.Red;
+                }
+                
             }
+            else { MessageBox.Show("Incorrect login credentials"); }
         }
 
         private void Login_Load(object sender, EventArgs e)

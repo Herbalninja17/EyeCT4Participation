@@ -148,6 +148,7 @@ namespace EyeCT4Participation.DataBase
             }
         } //goodluck! </Rechard>  
 
+        public static string ac;
         //Rechard
         public static bool Login(string username, string password)
         {             
@@ -155,10 +156,10 @@ namespace EyeCT4Participation.DataBase
             bool ok = false;
             try
             {
-                OpenConnection();                   // om connection open te maken
-                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
-                m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT Gebruikersnaam, Wachtwoord FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username"; 
+                OpenConnection();                   
+                m_command = new OracleCommand();    
+                m_command.Connection = m_conn;      
+                m_command.CommandText = "SELECT Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username"; 
                 m_command.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
                 m_command.Parameters.Add("ussername", OracleDbType.Varchar2).Value = username;
                 m_command.ExecuteNonQuery();
@@ -166,6 +167,8 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
+                        string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        ac = acctype;
                         result = Convert.ToString(_Reader["Gebruikersnaam"]);
                         if(result == username) { ok = true; }
                     }
@@ -178,9 +181,7 @@ namespace EyeCT4Participation.DataBase
             }
             return ok;
         }
-
     }
-
 }
 
 
