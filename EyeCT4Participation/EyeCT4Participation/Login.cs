@@ -217,20 +217,5 @@ namespace EyeCT4Participation
         {
             registerBTN.BackColor = Color.Red;
         }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

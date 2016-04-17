@@ -290,7 +290,6 @@
             this.phoneTB.Size = new System.Drawing.Size(128, 20);
             this.phoneTB.TabIndex = 24;
             this.phoneTB.Visible = false;
-            this.phoneTB.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label10
             // 
@@ -301,7 +300,6 @@
             this.label10.TabIndex = 26;
             this.label10.Text = "Gender:";
             this.label10.Visible = false;
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // Login
             // 
