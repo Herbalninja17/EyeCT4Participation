@@ -28,7 +28,7 @@ namespace EyeCT4Participation
             // ----- test conectivity ------ //
             //if (rfid.LED == false) { rfid.LED = true; }
             //else if (rfid.LED == true) { rfid.LED = false; }
-            
+            DataBase.Database.TestMethode(Convert.ToString(usernameTB.Text));
             
         }
 
