@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EyeCT4Participation.DataBase;
+using Oracle.DataAccess.Client;
 
 namespace EyeCT4Participation
 {
@@ -21,5 +23,6 @@ namespace EyeCT4Participation
         {
             this.Dispose();
         }
+
     }
 }

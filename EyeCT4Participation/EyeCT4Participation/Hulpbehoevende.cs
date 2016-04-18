@@ -15,6 +15,7 @@ namespace EyeCT4Participation
         
 
         private PlaceRequest m_PlaceRequest;
+        private Chat m_chat;
 
         public Hulpbehoevende()
         {
@@ -25,8 +26,7 @@ namespace EyeCT4Participation
         {
             if (m_PlaceRequest == null || m_PlaceRequest.IsDisposed)
             {
-                m_PlaceRequest = new PlaceRequest();
-                m_PlaceRequest.Parent = this.Parent;
+                m_PlaceRequest = new PlaceRequest {Parent = this.Parent};
                 m_PlaceRequest.Show();
             }
 
@@ -78,6 +78,16 @@ namespace EyeCT4Participation
         private void button6_Click(object sender, EventArgs e)
         {
             // open chat met de geselecteerde vrijwilliger
+            if (m_chat == null || m_chat.IsDisposed)
+            {
+                m_chat = new Chat {Parent = this.Parent};
+                m_chat.Show();
+            }
+
+            else
+            {
+                m_chat.BringToFront();
+            }
         }
     }
 }
