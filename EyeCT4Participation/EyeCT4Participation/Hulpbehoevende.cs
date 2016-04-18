@@ -41,7 +41,6 @@ namespace EyeCT4Participation
             // open het profiel van deze user
             //DataBase.Database.GetUser();
             contentTB1.Text = DataBase.Database.GetUser();
-            DataBase.Database.TestMethode("djsy");
 
         }
 
