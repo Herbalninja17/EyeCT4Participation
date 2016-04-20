@@ -17,6 +17,7 @@ namespace EyeCT4Participation.DataBase
         static OracleCommand m_command;
         static string connectionString = "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi338530;PASSWORD=Hoi;";
         
+
         // Open de verbinding met de database
         public static bool OpenConnection()
         {
@@ -111,7 +112,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         //Rechard
-        public static void RegesterUser(string username, string password, string acctype, string email, string fullname, string address, string city, int phone, string gender) 
+        public static void RegesterUser(string username, string password, string acctype, string email, string fullname, string address, string city, int phone, string gender)
         {
             int AutoID = 0;
             try
@@ -180,6 +181,49 @@ namespace EyeCT4Participation.DataBase
                 Console.WriteLine(ex.Message);
             }
             return ok;
+        }
+
+        // HULPVRAAG UITZETTEN <Thom>
+
+        public static void placeARequest(string omschrijving, string locatie, int reistijd, string vervoerType, string startDatum, string eindDatum, string urgent, int aantalVrijwilligers)
+        {
+            int my_UserID = 0;
+            int this_hulpvraagID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT COUNT(HulpvraagID) from Hulpvraag";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        this_hulpvraagID = Convert.ToInt32(_Reader["COUNT(HulpvraagID)"]) + 1;
+                    }
+                }
+
+                m_command.CommandText = "INSERT INTO Hulpvraag(HulpvraagID, Omschrijving, Locatie, Reistijd, VervoerType, Startdatum, Einddatum, Urgent, AantalVrijwilligers, GebruikerID) VALUES(:HulpvraagID, :Omschrijving, :Locatie, :Reistijd, :Vervoertype, :Startdatum, :Einddatum, :Urgent, :AantalVrijwilligers, :GebruikerID)";
+
+                Command.Parameters.Add("HulpvraagID", OracleDbType.Int32).Value = this_hulpvraagID;
+                Command.Parameters.Add("Omschrijving", OracleDbType.Varchar2).Value = omschrijving;
+                Command.Parameters.Add("Locatie", OracleDbType.Varchar2).Value = locatie;
+                Command.Parameters.Add("Reistijd", OracleDbType.Int32).Value = reistijd;
+                Command.Parameters.Add("Vervoertype", OracleDbType.Varchar2).Value = vervoerType;
+                Command.Parameters.Add("Startdatum", OracleDbType.Varchar2).Value = startDatum;
+                Command.Parameters.Add("Einddatum", OracleDbType.Varchar2).Value = eindDatum;
+                Command.Parameters.Add("Urgent", OracleDbType.Char).Value = urgent;
+                Command.Parameters.Add("AantalVrijwilligers", OracleDbType.Int32).Value = aantalVrijwilligers;
+                Command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = "1";
+
+                Command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

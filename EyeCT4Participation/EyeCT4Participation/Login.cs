@@ -47,19 +47,24 @@ namespace EyeCT4Participation
                     new Vrijwilliger().Show();
                     label1.BackColor = Color.Red;
                 }
-                
+                else if (DataBase.Database.ac == "Admin")
+                {
+                    this.Hide();
+                    new Beheerder().Show();
+                    label1.BackColor = Color.Red;
+                }
             }
             else { MessageBox.Show("Incorrect login credentials"); }
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            rfid = new RFID();
+            /* rfid = new RFID();
             openCmdLine(rfid);
             rfid.Tag += new TagEventHandler(rfid_Tag);
             rfid.Attach += new AttachEventHandler(rfid_Attach);
             rfid.TagLost += new TagEventHandler(rfid_TagLost);
-            rfid.Detach += new DetachEventHandler(rfid_Detach);
+            rfid.Detach += new DetachEventHandler(rfid_Detach); */
             
         }
 

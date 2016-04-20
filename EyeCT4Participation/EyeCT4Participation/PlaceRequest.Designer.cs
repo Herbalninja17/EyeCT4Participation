@@ -39,22 +39,24 @@
             this.textBoxTransportType = new System.Windows.Forms.TextBox();
             this.placeRequestBTN = new System.Windows.Forms.Button();
             this.textBoxDescription = new System.Windows.Forms.RichTextBox();
+            this.textBoxTravelTime = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxTravelTime);
             this.groupBox1.Controls.Add(this.textBoxEndTime);
             this.groupBox1.Controls.Add(this.textBoxStartTime);
-            this.groupBox1.Controls.Add(this.lblEndTime);
             this.groupBox1.Controls.Add(this.UrgencyRadioBTN);
+            this.groupBox1.Controls.Add(this.lblEndTime);
             this.groupBox1.Controls.Add(this.lblBeginTime);
             this.groupBox1.Controls.Add(this.textBoxVolunteersNeeded);
             this.groupBox1.Controls.Add(this.textBoxLocation);
             this.groupBox1.Controls.Add(this.textBoxTransportType);
             this.groupBox1.Location = new System.Drawing.Point(278, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 135);
+            this.groupBox1.Size = new System.Drawing.Size(248, 146);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Other details";
@@ -85,7 +87,7 @@
             // UrgencyRadioBTN
             // 
             this.UrgencyRadioBTN.AutoSize = true;
-            this.UrgencyRadioBTN.Location = new System.Drawing.Point(142, 45);
+            this.UrgencyRadioBTN.Location = new System.Drawing.Point(100, 124);
             this.UrgencyRadioBTN.Name = "UrgencyRadioBTN";
             this.UrgencyRadioBTN.Size = new System.Drawing.Size(57, 17);
             this.UrgencyRadioBTN.TabIndex = 2;
@@ -143,6 +145,14 @@
             this.textBoxDescription.TabIndex = 9;
             this.textBoxDescription.Text = "Description of the request";
             // 
+            // textBoxTravelTime
+            // 
+            this.textBoxTravelTime.Location = new System.Drawing.Point(142, 45);
+            this.textBoxTravelTime.Name = "textBoxTravelTime";
+            this.textBoxTravelTime.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTravelTime.TabIndex = 12;
+            this.textBoxTravelTime.Text = "Travel time";
+            // 
             // PlaceRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,5 +182,6 @@
         private System.Windows.Forms.TextBox textBoxTransportType;
         private System.Windows.Forms.Button placeRequestBTN;
         private System.Windows.Forms.RichTextBox textBoxDescription;
+        private System.Windows.Forms.TextBox textBoxTravelTime;
     }
 }
