@@ -60,12 +60,12 @@ namespace EyeCT4Participation
 
         private void Login_Load(object sender, EventArgs e)
         {
-            rfid = new RFID();
+          /*  rfid = new RFID();
             openCmdLine(rfid);
             rfid.Tag += new TagEventHandler(rfid_Tag);
             rfid.Attach += new AttachEventHandler(rfid_Attach);
             rfid.TagLost += new TagEventHandler(rfid_TagLost);
-            rfid.Detach += new DetachEventHandler(rfid_Detach);
+            rfid.Detach += new DetachEventHandler(rfid_Detach);*/
             
         }
 

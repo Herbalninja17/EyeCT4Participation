@@ -126,7 +126,7 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
-                        AutoID = Convert.ToInt32(_Reader["COUNT(Gebruikerid)"]) + 1;
+                        AutoID = Convert.ToInt32(_Reader["COUNT(GebruikerID)"]) + 1;
                     }
                 }
                 m_command.CommandText = "INSERT INTO Gebruiker (GebruikerID, Gebruikersnaam, Wachtwoord, Naam, Geslacht, Adres, Woonplaats, Telefoonnummer, Email, Gebruikerstype) VALUES (:GebruikerID, :Gebruikersnaam, :Wachtwoord, :Naam, :Geslacht, :Adres, :Woonplaats, :Telefoonnummer, :Email, :Gebruikerstype)";
@@ -162,7 +162,7 @@ namespace EyeCT4Participation.DataBase
                 m_command.Connection = m_conn;      
                 m_command.CommandText = "SELECT Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username"; 
                 m_command.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
-                m_command.Parameters.Add("ussername", OracleDbType.Varchar2).Value = username;
+                m_command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
