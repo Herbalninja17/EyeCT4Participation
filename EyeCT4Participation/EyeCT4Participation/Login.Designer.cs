@@ -69,6 +69,7 @@
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Size = new System.Drawing.Size(128, 20);
             this.passwordTB.TabIndex = 1;
+            this.passwordTB.UseSystemPasswordChar = true;
             // 
             // loginBTN
             // 

@@ -39,15 +39,21 @@ namespace EyeCT4Participation
                 {
                     this.Hide();
                     new Hulpbehoevende().Show();
-                    label1.BackColor = Color.Red;
+                    //label1.BackColor = Color.Red;
                 }
                 else if (DataBase.Database.ac == "Volunteer")
                 {
                     this.Hide();
                     new Vrijwilliger().Show();
-                    label1.BackColor = Color.Red;
+                    //label1.BackColor = Color.Red;
                 }
-                
+                else if (DataBase.Database.ac == "Admin")
+                {
+                    this.Hide();
+                    new Beheerder().Show();
+                    //label1.BackColor = Color.Red;
+                }
+
             }
             else { MessageBox.Show("Incorrect login credentials"); }
         }
@@ -183,11 +189,15 @@ namespace EyeCT4Participation
             if (x == true)
             {
                 Test();
+                MessageBox.Show("Register complete");
+                this.Hide();
+                new Login().Show();
             }
             x = true;
             if (loginBTN.Enabled == false)
             {
                 confirm();
+
             }
         }
 
@@ -226,6 +236,7 @@ namespace EyeCT4Participation
             if (maleCHK.Checked == true) { gender = "M"; }
             if (femaleCHK.Checked == true) { gender = "V"; }
             DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender);
+            
         }
 
         public void Test()
