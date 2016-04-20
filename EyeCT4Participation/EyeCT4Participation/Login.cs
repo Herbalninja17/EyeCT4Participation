@@ -39,32 +39,33 @@ namespace EyeCT4Participation
                 {
                     this.Hide();
                     new Hulpbehoevende().Show();
-                    label1.BackColor = Color.Red;
+                    //label1.BackColor = Color.Red;
                 }
                 else if (DataBase.Database.ac == "Volunteer")
                 {
                     this.Hide();
                     new Vrijwilliger().Show();
-                    label1.BackColor = Color.Red;
+                    //label1.BackColor = Color.Red;
                 }
                 else if (DataBase.Database.ac == "Admin")
                 {
                     this.Hide();
                     new Beheerder().Show();
-                    label1.BackColor = Color.Red;
+                    //label1.BackColor = Color.Red;
                 }
+
             }
             else { MessageBox.Show("Incorrect login credentials"); }
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            /* rfid = new RFID();
+            rfid = new RFID();
             openCmdLine(rfid);
             rfid.Tag += new TagEventHandler(rfid_Tag);
             rfid.Attach += new AttachEventHandler(rfid_Attach);
             rfid.TagLost += new TagEventHandler(rfid_TagLost);
-            rfid.Detach += new DetachEventHandler(rfid_Detach); */
+            rfid.Detach += new DetachEventHandler(rfid_Detach);
             
         }
 
@@ -188,11 +189,15 @@ namespace EyeCT4Participation
             if (x == true)
             {
                 Test();
+                MessageBox.Show("Register complete");
+                this.Hide();
+                new Login().Show();
             }
             x = true;
             if (loginBTN.Enabled == false)
             {
                 confirm();
+
             }
         }
 
@@ -231,6 +236,7 @@ namespace EyeCT4Participation
             if (maleCHK.Checked == true) { gender = "M"; }
             if (femaleCHK.Checked == true) { gender = "V"; }
             DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender);
+            
         }
 
         public void Test()
