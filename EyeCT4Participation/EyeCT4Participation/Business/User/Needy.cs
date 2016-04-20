@@ -12,10 +12,10 @@ namespace EyeCT4Participation.Business.User
         public int needyID { get; set; }
         public List<Appointment> appointmentList { get; set;}
 
-        public Needy(int needyID, List<Appointment> appointmentList)
+        public Needy(int needyID/*, List<Appointment> appointmentList*/)
         {
             this.needyID = needyID;
-            this.appointmentList = appointmentList;
+            //this.appointmentList = appointmentList;
         }
 
     }

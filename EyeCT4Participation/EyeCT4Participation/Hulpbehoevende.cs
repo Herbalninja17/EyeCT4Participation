@@ -12,8 +12,8 @@ namespace EyeCT4Participation
 {
     public partial class Hulpbehoevende : Form
     {
-        
-
+        //Business.User.Needy needy = new Business.User.Needy(DataBase.Database.acID);
+        public int userID = DataBase.Database.acID;
         private PlaceRequest m_PlaceRequest;
         private Chat m_chat;
 
