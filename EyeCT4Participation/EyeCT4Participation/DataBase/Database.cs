@@ -232,9 +232,9 @@ namespace EyeCT4Participation.DataBase
         }
 
         // REVIEWS UIT DATABASE HALEN <THOM>
-        public static string GetReviews(int accountid)
+        public static string GetReviews(long accountid)
         {
-            string reviews = "no";
+            string reviews = "";
             string needyName = "";
             string needyRate = "";
             string needyRemark = "";
@@ -246,7 +246,7 @@ namespace EyeCT4Participation.DataBase
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
                 m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
-                Command.Parameters.Add(":GebruikerID", OracleDbType.Int32).Value = accountid;
+                Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
                 m_command.ExecuteNonQuery();                
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
@@ -256,7 +256,7 @@ namespace EyeCT4Participation.DataBase
                         needyRate = Convert.ToString((_Reader["Beoordeling"]));
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
-                        reviews = Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        reviews += Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
                     }
                 }
             }

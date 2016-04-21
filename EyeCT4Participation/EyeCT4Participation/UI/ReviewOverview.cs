@@ -8,7 +8,7 @@ using EyeCT4Participation.Business.User;
 
 namespace EyeCT4Participation.UI
 {
-    class ReviewOverview
+   public class ReviewOverview
     {
         public List<Review> m_reviews { get; set; }
 
@@ -18,8 +18,15 @@ namespace EyeCT4Participation.UI
         public ReviewOverview(List<Review> p_reviews, long p_gebruikerID)
         {
             this.m_reviews = p_reviews;
+            this.m_GebruikerID = p_gebruikerID;
+
         }
 
+        public void GetMyReviews(long UserID)
+        {
+            
+            
+        }
         public void WriteReview(Review review)
         {
 
