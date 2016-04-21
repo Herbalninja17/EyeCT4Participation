@@ -208,7 +208,7 @@ namespace EyeCT4Participation
 
         private void logoutBTN_Click(object sender, EventArgs e)
         {
-            /////////////////// teste code voor chat
+            /////////////////// test code voor chat
             this.Hide();
             new Chat().Show();
         }

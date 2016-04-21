@@ -44,7 +44,7 @@ namespace EyeCT4Participation
 
         private void sendBTN_Click(object sender, EventArgs e)
         {
-            DataBase.Database.chatsend(userID, 2, chattosendTB.Text.ToString());
+            DataBase.Database.chatsend(7, 4, chattosendTB.Text.ToString());
             //chathistory.Add(DataBase.Database.chatboc(userID, 2).ToString());
             //string message = chattosendTB.Text;
             //chats.MessageToChat(needyid, volunteerid, message);
