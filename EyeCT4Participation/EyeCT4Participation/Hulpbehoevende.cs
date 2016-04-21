@@ -47,7 +47,23 @@ namespace EyeCT4Participation
         private void reviewBTN_Click(object sender, EventArgs e)
         {
             // Open de lijst met reviews die bij deze user hoort
-            contentTB1.Text = DataBase.Database.GetReviews(userID);
+            if (string.IsNullOrEmpty(contentTB1.Text))
+            {
+                contentTB1.Text = DataBase.Database.GetReviews(userID);
+            }
+
+            else if (!string.IsNullOrEmpty(contentTB1.Text) && string.IsNullOrEmpty(contentTB2.Text))
+            {
+                contentTB2.Text = contentTB1.Text;
+                contentTB1.Text = DataBase.Database.GetReviews(userID);
+            }
+            
+            else
+            {
+                contentTB3.Text = contentTB2.Text;
+                contentTB2.Text = contentTB1.Text;
+                contentTB1.Text = DataBase.Database.GetReviews(userID);
+            }
         }
 
         private void appointmentBTN_Click(object sender, EventArgs e)
