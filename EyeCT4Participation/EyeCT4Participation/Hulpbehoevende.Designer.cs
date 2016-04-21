@@ -75,6 +75,7 @@
             this.logoutBTN.TabIndex = 2;
             this.logoutBTN.Text = "Logout";
             this.logoutBTN.UseVisualStyleBackColor = true;
+            this.logoutBTN.Click += new System.EventHandler(this.logoutBTN_Click);
             // 
             // groupBox1
             // 

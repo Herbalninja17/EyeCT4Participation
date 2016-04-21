@@ -228,6 +228,74 @@ namespace EyeCT4Participation.DataBase
                 Console.WriteLine(ex.Message);
             }
         }
+
+        
+        /// ////////////////chat rechard/////////////////////////////////////////////////////////////////////////////
+        
+        public static List<string> chathistory = new List<string>();
+        // rechard niet klaar
+        public static string chatboc(int needy, int volunteer)
+        {
+            chathistory.Clear();
+            string bericht = "";   
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT Bericht from chat WHERE GebruikerID = :needy AND GebruikerID2 = :volunteer ORDER BY ChatID ";
+                m_command.Parameters.Add("needy", OracleDbType.Varchar2).Value = needy;
+                m_command.Parameters.Add("volunteer", OracleDbType.Varchar2).Value = volunteer;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {                        
+                        bericht = Convert.ToString(_Reader["Bericht"]);
+                        chathistory.Add(bericht);                        
+                    }
+                }                
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return bericht;
+
+        }
+
+        public static void chatchat(int needy, int volunteer, string bericht)
+        {
+            int AutoID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT COUNT(ChatID) from Chat";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        AutoID = Convert.ToInt32(_Reader["COUNT(ChatID)"]) + 1;
+                    }
+                }
+                m_command.CommandText = "INSERT INTO Chat (ChatID, GebruikerID, GebruikerID2, Bericht) VALUES (:ChatID, :GebruikerID, :GebruikerID2, :Bericht)";
+                m_command.Parameters.Add("ChatID", OracleDbType.Int32).Value = AutoID;
+                m_command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = needy;
+                m_command.Parameters.Add("GebruikerID2", OracleDbType.Int32).Value = volunteer;
+                m_command.Parameters.Add("Bericht", OracleDbType.Varchar2).Value = bericht;                
+                m_command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        ////////////////chat rechard////////////////////////////////////////////////////////////////////////////////
     }
 }
 

@@ -88,5 +88,12 @@ namespace EyeCT4Participation
                 m_chat.BringToFront();
             }
         }
+
+        private void logoutBTN_Click(object sender, EventArgs e)
+        {
+            /////////////////// teste code voor chat
+            this.Hide();
+            new Chat().Show();
+        }
     }
 }
