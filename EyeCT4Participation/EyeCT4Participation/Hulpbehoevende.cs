@@ -29,11 +29,10 @@ namespace EyeCT4Participation
             foreach (Request request in Database.GetRequests())
             {
                 requests.Add(request);
-            }
-            
+            }           
 
-            LBvol1.Items.Add(requests[1]);
-            LBvol2.Items.Add(requests[2]);
+            //LBvol1.Items.Add(requests[1]);
+            //LBvol2.Items.Add(requests[2]);
         }
 
         private void submitBTN_Click(object sender, EventArgs e)
