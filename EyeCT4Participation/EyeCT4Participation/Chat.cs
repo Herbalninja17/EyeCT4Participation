@@ -44,7 +44,7 @@ namespace EyeCT4Participation
 
         private void sendBTN_Click(object sender, EventArgs e)
         {
-            DataBase.Database.chatchat(userID, 2, chattosendTB.Text.ToString());
+            DataBase.Database.chatsend(userID, 2, chattosendTB.Text.ToString());
             //chathistory.Add(DataBase.Database.chatboc(userID, 2).ToString());
             //string message = chattosendTB.Text;
             //chats.MessageToChat(needyid, volunteerid, message);
@@ -53,7 +53,7 @@ namespace EyeCT4Participation
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DataBase.Database.chatboc(userID, 2);
+            DataBase.Database.chatbox(userID, 2);
             chatLB.Items.Clear();
             foreach (string chat in Database.chathistory)
             {
