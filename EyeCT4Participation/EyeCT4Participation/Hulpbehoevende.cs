@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EyeCT4Participation.Business.User;
+using EyeCT4Participation.Business;
+using EyeCT4Participation.DataBase;
 
 namespace EyeCT4Participation
 {
@@ -18,16 +20,20 @@ namespace EyeCT4Participation
         private PlaceRequest m_PlaceRequest;
         private Chat m_chat;
         private Volunteer m_volunteer;
+        private List<Request> requests = new List<Request>();
 
         public Hulpbehoevende()
         {
             InitializeComponent();
-            Volunteer a = new Volunteer(1);
-            Volunteer b = new Volunteer(2);
-            Volunteer c = new Volunteer(3);
-            LBvol1.Items.Add(a);
-            LBvol2.Items.Add(b);
-            LBvol3.Items.Add(c);
+            Database.GetRequests();
+            foreach (Request request in Database.GetRequests())
+            {
+                requests.Add(request);
+            }
+            
+
+            LBvol1.Items.Add(requests[1]);
+            LBvol2.Items.Add(requests[2]);
         }
 
         private void submitBTN_Click(object sender, EventArgs e)

@@ -273,11 +273,6 @@ namespace EyeCT4Participation.DataBase
         public static List<Request> GetRequests()
         {
             List<Request> requests = new List<Request>();
-            string reviews = "no";
-            string needyName = "";
-            string needyRate = "";
-            string needyRemark = "";
-            string volunteerName = "";
 
             try
             {
@@ -290,7 +285,7 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
-                        Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), Convert.ToBoolean(_Reader["URGENT"]), _Reader["LOCATION"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]), Convert.ToBoolean(_Reader["ISREPORTED"]));
+                        Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
                         requests.Add(request);
                     }
                 }
