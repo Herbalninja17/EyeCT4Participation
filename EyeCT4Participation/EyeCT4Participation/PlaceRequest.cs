@@ -26,8 +26,6 @@ namespace EyeCT4Participation
             this.Dispose();
         }
 
-        
-
         public void confirmed()
         {
             string omschrijving = Convert.ToString(textBoxDescription.Text);
