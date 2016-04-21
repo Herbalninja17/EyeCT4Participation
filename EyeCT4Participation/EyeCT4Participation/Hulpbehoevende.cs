@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EyeCT4Participation.Business.User;
 
 namespace EyeCT4Participation
 {
@@ -16,10 +17,17 @@ namespace EyeCT4Participation
         public int userID = DataBase.Database.acID;
         private PlaceRequest m_PlaceRequest;
         private Chat m_chat;
+        private Volunteer m_volunteer;
 
         public Hulpbehoevende()
         {
             InitializeComponent();
+            Volunteer a = new Volunteer(1);
+            Volunteer b = new Volunteer(2);
+            Volunteer c = new Volunteer(3);
+            LBvol1.Items.Add(a);
+            LBvol2.Items.Add(b);
+            LBvol3.Items.Add(c);
         }
 
         private void submitBTN_Click(object sender, EventArgs e)
@@ -76,17 +84,103 @@ namespace EyeCT4Participation
 
         private void button6_Click(object sender, EventArgs e)
         {
-            // open chat met de geselecteerde vrijwilliger
-            if (m_chat == null || m_chat.IsDisposed)
+            if (LBvol1.SelectedItem != null)
             {
-                m_chat = new Chat {Parent = this.Parent};
-                m_chat.Show();
-            }
+                m_volunteer = (Volunteer)LBvol1.SelectedItem;
+                // open chat met de geselecteerde vrijwilliger moet nog gebeuren
+                if (m_chat == null || m_chat.IsDisposed)
+                {
+                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat.Show();
+                    MessageBox.Show(m_volunteer.volunteerID.ToString());
+                }
 
+                else
+                {
+                    m_chat.BringToFront();
+                }
+            }
+            else if (LBvol2.SelectedItem != null)
+            {
+                m_volunteer = (Volunteer)LBvol2.SelectedItem;
+                // open chat met de geselecteerde vrijwilliger moet nog gebeuren
+                if (m_chat == null || m_chat.IsDisposed)
+                {
+                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat.Show();
+                    MessageBox.Show(m_volunteer.volunteerID.ToString());
+                }
+
+                else
+                {
+                    m_chat.BringToFront();
+                }
+            }
+            else if (LBvol3.SelectedItem != null)
+            {
+                m_volunteer = (Volunteer)LBvol3.SelectedItem;
+                // open chat met de geselecteerde vrijwilliger moet nog gebeuren
+                if (m_chat == null || m_chat.IsDisposed)
+                {
+                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat.Show();
+                    MessageBox.Show(m_volunteer.volunteerID.ToString());
+                }
+
+                else
+                {
+                    m_chat.BringToFront();
+                }
+            }
             else
             {
-                m_chat.BringToFront();
+                MessageBox.Show("Choose a volunteer to chat with.", "Chat", MessageBoxButtons.OK);
             }
+        }
+
+        private void LBvol1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LBvol2.SetSelected(LBvol2.SelectedIndex, false);
+            }
+            catch (Exception) {}
+
+            try
+            {
+                LBvol3.SetSelected(LBvol3.SelectedIndex, false);
+            }
+            catch (Exception) { }
+        }
+
+        private void LBvol2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LBvol1.SetSelected(LBvol1.SelectedIndex, false);
+            }
+            catch (Exception) { }
+
+            try
+            {
+                LBvol3.SetSelected(LBvol3.SelectedIndex, false);
+            }
+            catch (Exception) { }
+        }
+
+        private void LBvol3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LBvol1.SetSelected(LBvol1.SelectedIndex, false);
+            }
+            catch (Exception) { }
+
+            try
+            {
+                LBvol2.SetSelected(LBvol2.SelectedIndex, false);
+            }
+            catch (Exception) { }
         }
     }
 }

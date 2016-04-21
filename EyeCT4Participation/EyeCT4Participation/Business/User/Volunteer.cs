@@ -17,11 +17,16 @@ namespace EyeCT4Participation.Business.User
         public Volunteer(int ID)
         {
 
-            this.volunteerID = volunteerID;
+            this.volunteerID = ID;
             //this.car = car;
             //this.license = license;
             //this.appointmentList = appointmentList;
             //bool car, bool license, List< Appointment > appointmentList
+        }
+
+        public override string ToString()
+        {
+            return this.volunteerID.ToString();
         }
     }
 }
