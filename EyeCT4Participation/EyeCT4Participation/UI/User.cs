@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCT4Participation.UI
 {
-    abstract class User
+    public abstract class User
     {
         string name;
         string address;

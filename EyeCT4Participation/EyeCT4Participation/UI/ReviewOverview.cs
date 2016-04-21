@@ -8,34 +8,38 @@ using EyeCT4Participation.Business.User;
 
 namespace EyeCT4Participation.UI
 {
-    class ReviewOverview
+   public class ReviewOverview
     {
-        public List<Review> reviews { get; set; }
+        //public List<Review> m_reviews { get; set; }
 
-        public int needyID { get; set; }
+        public long m_GebruikerID{ get; set; }
 
-        public int volunteerID { get; set; }
 
-        public ReviewOverview(List<Review> reviews, int needyID, int volunteerID)
-        {
-            this.reviews = reviews;
-            this.needyID = needyID;
-            this.volunteerID = volunteerID;
-        }
+        //public ReviewOverview(List<Review> p_reviews, long p_gebruikerID)
+        //{
+        //    this.m_reviews = p_reviews;
+        //    this.m_GebruikerID = p_gebruikerID;
 
-        public void WriteReview(Review review)
-        {
+        //}
 
-        }
+        //public void GetMyReviews(long UserID)
+        //{
+            
+            
+        //}
+        //public void WriteReview(Review review)
+        //{
 
-        public void DeleteReview(Review review)
-        {
+        //}
 
-        }
+        //public void DeleteReview(Review review)
+        //{
 
-        public void ReadReview(Needy needy)
-        {
+        //}
 
-        }
+        //public void ReadReview(Needy needy)
+        //{
+
+        //}
     }
 }

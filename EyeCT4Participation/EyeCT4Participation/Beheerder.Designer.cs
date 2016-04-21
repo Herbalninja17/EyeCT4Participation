@@ -35,6 +35,8 @@
             this.helprequestsReviewBTN = new System.Windows.Forms.Button();
             this.chatBTN = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
+            this.LBSelectedContent = new System.Windows.Forms.ListBox();
+            this.contentGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // reportedcontentBTN
@@ -45,10 +47,12 @@
             this.reportedcontentBTN.TabIndex = 0;
             this.reportedcontentBTN.Text = "Reported content";
             this.reportedcontentBTN.UseVisualStyleBackColor = true;
+            this.reportedcontentBTN.Click += new System.EventHandler(this.reportedcontentBTN_Click);
             // 
             // contentGB
             // 
             this.contentGB.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.contentGB.Controls.Add(this.LBSelectedContent);
             this.contentGB.Location = new System.Drawing.Point(191, 28);
             this.contentGB.Name = "contentGB";
             this.contentGB.Size = new System.Drawing.Size(200, 411);
@@ -64,6 +68,7 @@
             this.ignoreBTN.TabIndex = 2;
             this.ignoreBTN.Text = "Ignore selected";
             this.ignoreBTN.UseVisualStyleBackColor = true;
+            this.ignoreBTN.Click += new System.EventHandler(this.ignoreBTN_Click);
             // 
             // removeBTN
             // 
@@ -73,6 +78,7 @@
             this.removeBTN.TabIndex = 3;
             this.removeBTN.Text = "Remove selected";
             this.removeBTN.UseVisualStyleBackColor = true;
+            this.removeBTN.Click += new System.EventHandler(this.removeBTN_Click);
             // 
             // helprequestsReviewBTN
             // 
@@ -82,6 +88,7 @@
             this.helprequestsReviewBTN.TabIndex = 4;
             this.helprequestsReviewBTN.Text = "Helprequests/reviews";
             this.helprequestsReviewBTN.UseVisualStyleBackColor = true;
+            this.helprequestsReviewBTN.Click += new System.EventHandler(this.helprequestsReviewBTN_Click);
             // 
             // chatBTN
             // 
@@ -91,6 +98,7 @@
             this.chatBTN.TabIndex = 5;
             this.chatBTN.Text = "Chats";
             this.chatBTN.UseVisualStyleBackColor = true;
+            this.chatBTN.Click += new System.EventHandler(this.chatBTN_Click);
             // 
             // logoutBTN
             // 
@@ -100,6 +108,14 @@
             this.logoutBTN.TabIndex = 6;
             this.logoutBTN.Text = "Logout";
             this.logoutBTN.UseVisualStyleBackColor = true;
+            // 
+            // LBSelectedContent
+            // 
+            this.LBSelectedContent.FormattingEnabled = true;
+            this.LBSelectedContent.Location = new System.Drawing.Point(7, 20);
+            this.LBSelectedContent.Name = "LBSelectedContent";
+            this.LBSelectedContent.Size = new System.Drawing.Size(187, 381);
+            this.LBSelectedContent.TabIndex = 0;
             // 
             // Beheerder
             // 
@@ -115,6 +131,7 @@
             this.Controls.Add(this.reportedcontentBTN);
             this.Name = "Beheerder";
             this.Text = "Beheerder";
+            this.contentGB.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -128,5 +145,6 @@
         private System.Windows.Forms.Button helprequestsReviewBTN;
         private System.Windows.Forms.Button chatBTN;
         private System.Windows.Forms.Button logoutBTN;
+        private System.Windows.Forms.ListBox LBSelectedContent;
     }
 }
