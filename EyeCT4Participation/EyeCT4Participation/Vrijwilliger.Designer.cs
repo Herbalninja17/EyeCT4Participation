@@ -39,7 +39,8 @@
             this.contentTB3 = new System.Windows.Forms.TextBox();
             this.appointmentBTN = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx = new System.Windows.Forms.GroupBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.TxtBxReactionPost = new System.Windows.Forms.RichTextBox();
+            this.BtnReactionPost = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,7 +134,6 @@
             // 
             // VrijwilligerGrpBx
             // 
-            this.VrijwilligerGrpBx.Controls.Add(this.vScrollBar1);
             this.VrijwilligerGrpBx.Controls.Add(this.contentTB1);
             this.VrijwilligerGrpBx.Controls.Add(this.replyBTN1);
             this.VrijwilligerGrpBx.Controls.Add(this.contentTB3);
@@ -146,18 +146,30 @@
             this.VrijwilligerGrpBx.TabIndex = 14;
             this.VrijwilligerGrpBx.TabStop = false;
             // 
-            // vScrollBar1
+            // TxtBxReactionPost
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(479, 26);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(25, 424);
-            this.vScrollBar1.TabIndex = 13;
+            this.TxtBxReactionPost.Location = new System.Drawing.Point(266, 125);
+            this.TxtBxReactionPost.Name = "TxtBxReactionPost";
+            this.TxtBxReactionPost.Size = new System.Drawing.Size(296, 165);
+            this.TxtBxReactionPost.TabIndex = 15;
+            this.TxtBxReactionPost.Text = "";
+            // 
+            // BtnReactionPost
+            // 
+            this.BtnReactionPost.Location = new System.Drawing.Point(487, 298);
+            this.BtnReactionPost.Name = "BtnReactionPost";
+            this.BtnReactionPost.Size = new System.Drawing.Size(75, 23);
+            this.BtnReactionPost.TabIndex = 16;
+            this.BtnReactionPost.Text = "Post Reaction";
+            this.BtnReactionPost.UseVisualStyleBackColor = true;
             // 
             // Vrijwilliger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 524);
+            this.Controls.Add(this.BtnReactionPost);
+            this.Controls.Add(this.TxtBxReactionPost);
             this.Controls.Add(this.VrijwilligerGrpBx);
             this.Controls.Add(this.appointmentBTN);
             this.Controls.Add(this.reviewBTN);
@@ -184,6 +196,7 @@
         private System.Windows.Forms.TextBox contentTB3;
         private System.Windows.Forms.Button appointmentBTN;
         private System.Windows.Forms.GroupBox VrijwilligerGrpBx;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.RichTextBox TxtBxReactionPost;
+        private System.Windows.Forms.Button BtnReactionPost;
     }
 }
