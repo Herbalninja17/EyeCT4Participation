@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Oracle.DataAccess.Client;
+using EyeCT4Participation.Business;
 //using Oracle.DataAccess.Types;
 
 
@@ -266,6 +267,40 @@ namespace EyeCT4Participation.DataBase
                 Console.WriteLine(ex.Message);
             }
             return reviews;
+        }
+
+        // REQUEST UIT DATABASE <OLAF>
+        public static List<Request> GetRequests()
+        {
+            List<Request> requests = new List<Request>();
+            string reviews = "no";
+            string needyName = "";
+            string needyRate = "";
+            string needyRemark = "";
+            string volunteerName = "";
+
+            try
+            {
+                OpenConnection();                   // om connection open te maken
+                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+                m_command.Connection = m_conn;      // een connection maken met het command
+                m_command.CommandText = "SELECT * FROM HULPVRAAG";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), Convert.ToBoolean(_Reader["URGENT"]), _Reader["LOCATION"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]), Convert.ToBoolean(_Reader["ISREPORTED"]));
+                        requests.Add(request);
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return requests;
         }
     }
 }
