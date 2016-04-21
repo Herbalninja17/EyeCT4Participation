@@ -150,6 +150,7 @@ namespace EyeCT4Participation.DataBase
         } //goodluck! </Rechard>  
 
         public static string ac;
+        public static int acID;
         //Rechard
         public static bool Login(string username, string password)
         {             
@@ -160,7 +161,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   
                 m_command = new OracleCommand();    
                 m_command.Connection = m_conn;      
-                m_command.CommandText = "SELECT Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username"; 
+                m_command.CommandText = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username"; 
                 m_command.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
                 m_command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
                 m_command.ExecuteNonQuery();
@@ -170,6 +171,8 @@ namespace EyeCT4Participation.DataBase
                     {
                         string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
                         ac = acctype;
+                        int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        acID = accID;
                         result = Convert.ToString(_Reader["Gebruikersnaam"]);
                         if(result == username) { ok = true; }
                     }
@@ -185,7 +188,7 @@ namespace EyeCT4Participation.DataBase
 
         // HULPVRAAG UITZETTEN <Thom>
 
-        public static void placeARequest(string omschrijving, string locatie, int reistijd, string vervoerType, string startDatum, string eindDatum, string urgent, int aantalVrijwilligers)
+        public static void placeARequest(int accountid, string omschrijving, string locatie, int reistijd, string vervoerType, string startDatum, string eindDatum, string urgent, int aantalVrijwilligers)
         {
             int my_UserID = 0;
             int this_hulpvraagID = 0;
@@ -215,7 +218,7 @@ namespace EyeCT4Participation.DataBase
                 Command.Parameters.Add("Einddatum", OracleDbType.Varchar2).Value = eindDatum;
                 Command.Parameters.Add("Urgent", OracleDbType.Char).Value = urgent;
                 Command.Parameters.Add("AantalVrijwilligers", OracleDbType.Int32).Value = aantalVrijwilligers;
-                Command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = "1";
+                Command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = accountid;
 
                 Command.ExecuteNonQuery();
             }

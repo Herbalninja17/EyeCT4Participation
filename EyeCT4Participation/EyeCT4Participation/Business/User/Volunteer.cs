@@ -14,12 +14,14 @@ namespace EyeCT4Participation.Business.User
         public bool license { get; set; }
         public List<Appointment> appointmentList { get; set; }
 
-        public Volunteer(int ID, bool car, bool license, List<Appointment> appointmentList)
+        public Volunteer(int ID)
         {
+
             this.volunteerID = volunteerID;
-            this.car = car;
-            this.license = license;
-            this.appointmentList = appointmentList;
+            //this.car = car;
+            //this.license = license;
+            //this.appointmentList = appointmentList;
+            //bool car, bool license, List< Appointment > appointmentList
         }
     }
 }

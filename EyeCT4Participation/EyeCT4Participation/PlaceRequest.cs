@@ -26,6 +26,8 @@ namespace EyeCT4Participation
             this.Dispose();
         }
 
+        
+
         public void confirmed()
         {
             string omschrijving = Convert.ToString(textBoxDescription.Text);
@@ -38,7 +40,7 @@ namespace EyeCT4Participation
             if (UrgencyRadioBTN.Checked) { urgent = "Y"; }
             if (UrgencyRadioBTN.Checked == false) { urgent = "N"; }
             int aantalVrijwilligers = Convert.ToInt32(textBoxVolunteersNeeded.Text);
-            DataBase.Database.placeARequest(omschrijving, locatie, reistijd, vervoerType, startDatum, eindDatum, urgent, aantalVrijwilligers);
+            DataBase.Database.placeARequest(DataBase.Database.acID ,omschrijving, locatie, reistijd, vervoerType, startDatum, eindDatum, urgent, aantalVrijwilligers);
 
         }
     }
