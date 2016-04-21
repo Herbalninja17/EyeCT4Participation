@@ -10,17 +10,14 @@ namespace EyeCT4Participation.UI
 {
     class ReviewOverview
     {
-        public List<Review> reviews { get; set; }
+        public List<Review> m_reviews { get; set; }
 
-        public int needyID { get; set; }
+        public long m_GebruikerID{ get; set; }
 
-        public int volunteerID { get; set; }
 
-        public ReviewOverview(List<Review> reviews, int needyID, int volunteerID)
+        public ReviewOverview(List<Review> p_reviews, long p_gebruikerID)
         {
-            this.reviews = reviews;
-            this.needyID = needyID;
-            this.volunteerID = volunteerID;
+            this.m_reviews = p_reviews;
         }
 
         public void WriteReview(Review review)

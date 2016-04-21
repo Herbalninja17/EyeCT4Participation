@@ -55,6 +55,7 @@ namespace EyeCT4Participation
         private void reviewBTN_Click(object sender, EventArgs e)
         {
             // Open de lijst met reviews die bij deze user hoort
+            contentTB1.Text = DataBase.Database.GetReviews(userID);
         }
 
         private void appointmentBTN_Click(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace EyeCT4Participation
         private void requestsBTN_Click(object sender, EventArgs e)
         {
             // Open de verzoeken die deze user heeft ingediend
+
         }
 
         private void removeBTN_Click(object sender, EventArgs e)

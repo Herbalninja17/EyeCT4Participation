@@ -186,9 +186,10 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
 
-        // HULPVRAAG UITZETTEN <Thom>
+        // HULPVRAAG UITZETTEN <THOM>
 
-        public static void placeARequest(int accountid, string omschrijving, string locatie, int reistijd, string vervoerType, string startDatum, string eindDatum, string urgent, int aantalVrijwilligers)
+        public static void placeARequest(int accountid, string omschrijving, string locatie, int reistijd,
+            string vervoerType, string startDatum, string eindDatum, string urgent, int aantalVrijwilligers)
         {
             int my_UserID = 0;
             int this_hulpvraagID = 0;
@@ -207,7 +208,8 @@ namespace EyeCT4Participation.DataBase
                     }
                 }
 
-                m_command.CommandText = "INSERT INTO Hulpvraag(HulpvraagID, Omschrijving, Locatie, Reistijd, VervoerType, Startdatum, Einddatum, Urgent, AantalVrijwilligers, GebruikerID) VALUES(:HulpvraagID, :Omschrijving, :Locatie, :Reistijd, :Vervoertype, :Startdatum, :Einddatum, :Urgent, :AantalVrijwilligers, :GebruikerID)";
+                m_command.CommandText =
+                    "INSERT INTO Hulpvraag(HulpvraagID, Omschrijving, Locatie, Reistijd, VervoerType, Startdatum, Einddatum, Urgent, AantalVrijwilligers, GebruikerID) VALUES(:HulpvraagID, :Omschrijving, :Locatie, :Reistijd, :Vervoertype, :Startdatum, :Einddatum, :Urgent, :AantalVrijwilligers, :GebruikerID)";
 
                 Command.Parameters.Add("HulpvraagID", OracleDbType.Int32).Value = this_hulpvraagID;
                 Command.Parameters.Add("Omschrijving", OracleDbType.Varchar2).Value = omschrijving;
@@ -228,8 +230,42 @@ namespace EyeCT4Participation.DataBase
                 Console.WriteLine(ex.Message);
             }
         }
+
+        // REVIEWS UIT DATABASE HALEN <THOM>
+        public static string GetReviews(int accountid)
+        {
+            string reviews = "no";
+            string needyName = "";
+            string needyRate = "";
+            string needyRemark = "";
+            string volunteerName = "";
+
+            try
+            {
+                OpenConnection();                   // om connection open te maken
+                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+                m_command.Connection = m_conn;      // een connection maken met het command
+                m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
+                Command.Parameters.Add(":GebruikerID", OracleDbType.Int32).Value = accountid;
+                m_command.ExecuteNonQuery();                
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        needyName = Convert.ToString((_Reader["Needy"]));
+                        needyRate = Convert.ToString((_Reader["Beoordeling"]));
+                        needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
+                        volunteerName = Convert.ToString((_Reader["Volunteer"]));
+                        reviews = Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return reviews;
+        }
     }
 }
-
-
-
