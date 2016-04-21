@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="Phidget21.NET, Version=2.1.8.222, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Dropbox\Proftaak S2\Phidget21.NET.dll</HintPath>
+      <HintPath>..\..\..\..\..\Dropbox\Proftaak S2\Dll folder\Phidget21.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Business\Appointment.cs" />
     <Compile Include="Business\ChatHistory.cs" />
+    <Compile Include="Business\Reaction.cs" />
     <Compile Include="Business\Request.cs" />
     <Compile Include="Business\Review.cs" />
     <Compile Include="Business\User\Admin.cs" />

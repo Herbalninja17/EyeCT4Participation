@@ -38,6 +38,9 @@
             this.contentTB2 = new System.Windows.Forms.TextBox();
             this.contentTB3 = new System.Windows.Forms.TextBox();
             this.appointmentBTN = new System.Windows.Forms.Button();
+            this.VrijwilligerGrpBx = new System.Windows.Forms.GroupBox();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
             // helprequestBTN
@@ -51,7 +54,7 @@
             // 
             // replyBTN1
             // 
-            this.replyBTN1.Location = new System.Drawing.Point(524, 12);
+            this.replyBTN1.Location = new System.Drawing.Point(48, 19);
             this.replyBTN1.Name = "replyBTN1";
             this.replyBTN1.Size = new System.Drawing.Size(75, 23);
             this.replyBTN1.TabIndex = 3;
@@ -75,10 +78,11 @@
             this.reviewBTN.TabIndex = 5;
             this.reviewBTN.Text = "Reviews";
             this.reviewBTN.UseVisualStyleBackColor = true;
+            this.reviewBTN.Click += new System.EventHandler(this.reviewBTN_Click);
             // 
             // contentTB1
             // 
-            this.contentTB1.Location = new System.Drawing.Point(621, 12);
+            this.contentTB1.Location = new System.Drawing.Point(145, 19);
             this.contentTB1.Multiline = true;
             this.contentTB1.Name = "contentTB1";
             this.contentTB1.Size = new System.Drawing.Size(293, 129);
@@ -86,7 +90,7 @@
             // 
             // replyBTN2
             // 
-            this.replyBTN2.Location = new System.Drawing.Point(524, 158);
+            this.replyBTN2.Location = new System.Drawing.Point(48, 165);
             this.replyBTN2.Name = "replyBTN2";
             this.replyBTN2.Size = new System.Drawing.Size(75, 23);
             this.replyBTN2.TabIndex = 9;
@@ -95,7 +99,7 @@
             // 
             // replyBTN3
             // 
-            this.replyBTN3.Location = new System.Drawing.Point(524, 314);
+            this.replyBTN3.Location = new System.Drawing.Point(48, 321);
             this.replyBTN3.Name = "replyBTN3";
             this.replyBTN3.Size = new System.Drawing.Size(75, 23);
             this.replyBTN3.TabIndex = 10;
@@ -104,7 +108,7 @@
             // 
             // contentTB2
             // 
-            this.contentTB2.Location = new System.Drawing.Point(621, 158);
+            this.contentTB2.Location = new System.Drawing.Point(145, 165);
             this.contentTB2.Multiline = true;
             this.contentTB2.Name = "contentTB2";
             this.contentTB2.Size = new System.Drawing.Size(293, 129);
@@ -112,7 +116,7 @@
             // 
             // contentTB3
             // 
-            this.contentTB3.Location = new System.Drawing.Point(621, 314);
+            this.contentTB3.Location = new System.Drawing.Point(145, 321);
             this.contentTB3.Multiline = true;
             this.contentTB3.Name = "contentTB3";
             this.contentTB3.Size = new System.Drawing.Size(293, 129);
@@ -127,25 +131,43 @@
             this.appointmentBTN.Text = "Open calender";
             this.appointmentBTN.UseVisualStyleBackColor = true;
             // 
+            // VrijwilligerGrpBx
+            // 
+            this.VrijwilligerGrpBx.Controls.Add(this.vScrollBar1);
+            this.VrijwilligerGrpBx.Controls.Add(this.contentTB1);
+            this.VrijwilligerGrpBx.Controls.Add(this.replyBTN1);
+            this.VrijwilligerGrpBx.Controls.Add(this.contentTB3);
+            this.VrijwilligerGrpBx.Controls.Add(this.replyBTN2);
+            this.VrijwilligerGrpBx.Controls.Add(this.contentTB2);
+            this.VrijwilligerGrpBx.Controls.Add(this.replyBTN3);
+            this.VrijwilligerGrpBx.Location = new System.Drawing.Point(615, 22);
+            this.VrijwilligerGrpBx.Name = "VrijwilligerGrpBx";
+            this.VrijwilligerGrpBx.Size = new System.Drawing.Size(517, 466);
+            this.VrijwilligerGrpBx.TabIndex = 14;
+            this.VrijwilligerGrpBx.TabStop = false;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(479, 26);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(25, 424);
+            this.vScrollBar1.TabIndex = 13;
+            // 
             // Vrijwilliger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 499);
+            this.ClientSize = new System.Drawing.Size(1158, 524);
+            this.Controls.Add(this.VrijwilligerGrpBx);
             this.Controls.Add(this.appointmentBTN);
-            this.Controls.Add(this.contentTB3);
-            this.Controls.Add(this.contentTB2);
-            this.Controls.Add(this.replyBTN3);
-            this.Controls.Add(this.replyBTN2);
-            this.Controls.Add(this.contentTB1);
             this.Controls.Add(this.reviewBTN);
             this.Controls.Add(this.logoutBTN);
-            this.Controls.Add(this.replyBTN1);
             this.Controls.Add(this.helprequestBTN);
             this.Name = "Vrijwilliger";
             this.Text = "Vrijwilliger";
+            this.VrijwilligerGrpBx.ResumeLayout(false);
+            this.VrijwilligerGrpBx.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -161,5 +183,7 @@
         private System.Windows.Forms.TextBox contentTB2;
         private System.Windows.Forms.TextBox contentTB3;
         private System.Windows.Forms.Button appointmentBTN;
+        private System.Windows.Forms.GroupBox VrijwilligerGrpBx;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
