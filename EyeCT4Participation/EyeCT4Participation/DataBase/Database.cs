@@ -186,6 +186,80 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
 
+        // GetChat Raphael
+        public static List<string> chats = new List<string>();
+        public static bool getChat(long UserID1, long UserID2)
+        {
+            bool ok = false;
+
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT * FROM CHAT";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        //ac = acctype;
+                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        //acID = accID;
+                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        //if (result == username) { ok = true; }
+                        chats.Add(Convert.ToString(_Reader["BERICHT"]));
+
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
+        
+        // GetReported Raphael
+        public static List<string> reported = new List<string>();
+        public static bool getReported(string query)
+        {
+            bool ok = false;
+
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = query;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        //ac = acctype;
+                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        //acID = accID;
+                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        //if (result == username) { ok = true; }
+                        reported.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+                        reported.Add(Convert.ToString(_Reader["BERICHT"]));
+                        reported.Add(Convert.ToString(_Reader["OMSCHRIJVING"]));
+
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
+        
         // HULPVRAAG UITZETTEN <THOM>
 
         public static void placeARequest(int accountid, string omschrijving, string locatie, int reistijd,
