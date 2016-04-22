@@ -8,7 +8,7 @@ using EyeCT4Participation.Business.User;
 
 namespace EyeCT4Participation
 {
-    class RequestOverview
+    public class RequestOverview
     {
         public List<Request> requests { get; set; }
 

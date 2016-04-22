@@ -19,30 +19,58 @@ namespace EyeCT4Participation
 
         private void reportedcontentBTN_Click(object sender, EventArgs e)
         {
+            LBSelectedContent.Items.Clear();
+            DataBase.Database.reported.Clear();
             // SELECT CHATS, REVIEWS, REQUESTS
             // WHERE REPORTED = TRUE;
-            DataBase.Database.getReported("SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N';");
-            DataBase.Database.getReported("SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N';");
-            DataBase.Database.getReported("SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N';");
-            LBSelectedContent.Items.Add(DataBase.Database.reported);
+            DataBase.Database.getReported("SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N'");
+            foreach (string item in DataBase.Database.reported)
+            {
+                
+                LBSelectedContent.Items.Add(item);                
+            }
+            DataBase.Database.getReported("SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N'");
+            foreach (string item in DataBase.Database.reported)
+            {
+               
+                LBSelectedContent.Items.Add(item);
+            }
+            DataBase.Database.getReported("SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N'");
+            foreach (string item in DataBase.Database.reported)
+            {
+                
+                LBSelectedContent.Items.Add(item);              
+            }
             refresh();
         }
 
         private void chatBTN_Click(object sender, EventArgs e)
         {
             //SELECT * FROM CHAT
+            LBSelectedContent.Items.Clear();
+            DataBase.Database.chats.Clear();
             DataBase.Database.getChat(1, 2);
             foreach (string item in DataBase.Database.chats)
             {
+               
                 LBSelectedContent.Items.Add(item);
             }
-            
+
             refresh();
         }
 
         private void helprequestsReviewBTN_Click(object sender, EventArgs e)
         {
             //SELECT * REQUEST, REVIEWS
+            LBSelectedContent.Items.Clear();
+            DataBase.Database.reviewsRequests.Clear();
+            DataBase.Database.getRequestsReviews();
+            foreach (string item in DataBase.Database.reviewsRequests)
+            {
+
+                LBSelectedContent.Items.Add(item);
+            }
+
             refresh();
         }
 
@@ -64,8 +92,7 @@ namespace EyeCT4Participation
         }
 
         public void refresh()
-        {
-            
+        {          
             LBSelectedContent.Refresh();
         }
 
