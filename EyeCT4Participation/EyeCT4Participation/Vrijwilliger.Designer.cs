@@ -34,9 +34,9 @@
             this.reviewBTN = new System.Windows.Forms.Button();
             this.appointmentBTN = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.TxtBxReactionPost = new System.Windows.Forms.RichTextBox();
             this.BtnReactionPost = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +97,15 @@
             this.VrijwilligerGrpBx.TabIndex = 14;
             this.VrijwilligerGrpBx.TabStop = false;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.Location = new System.Drawing.Point(107, 10);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(404, 446);
+            this.listBox1.TabIndex = 11;
+            // 
             // TxtBxReactionPost
             // 
             this.TxtBxReactionPost.Location = new System.Drawing.Point(266, 125);
@@ -115,15 +124,7 @@
             this.BtnReactionPost.Text = "Post Reaction";
             this.BtnReactionPost.UseVisualStyleBackColor = true;
             this.BtnReactionPost.Visible = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(107, 10);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(404, 446);
-            this.listBox1.TabIndex = 11;
+            this.BtnReactionPost.Click += new System.EventHandler(this.BtnReactionPost_Click);
             // 
             // Vrijwilliger
             // 

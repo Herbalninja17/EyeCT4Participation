@@ -20,6 +20,8 @@ namespace EyeCT4Participation.Business
 
         public bool m_visible { get; set; }
 
+        public List<Reaction> reactions = new List<Reaction>();
+
         public Review(int p_score, string p_review, long p_volunteerID, long p_needyID)
         {
             this.m_score = p_score;
@@ -31,7 +33,9 @@ namespace EyeCT4Participation.Business
 
         public override string ToString()
         {
-            return  "score"+m_score+":" + "Review" +":"+ m_review;
+            return  "score"+m_score+":" + "Review" +":"+ m_review+Environment.NewLine+reactions;
         }
+
+      
     }
 }

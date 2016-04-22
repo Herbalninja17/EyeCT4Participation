@@ -36,7 +36,7 @@ namespace EyeCT4Participation
             Formstate = 2;
             BtnReactionPost.Visible = true;
             TxtBxReactionPost.Visible = true;
-            foreach (Review review in reviews.GetMyReviews(UserType.volunteer))
+            foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
             { 
                     listBox1.Items.Add(Convert.ToString(review));
             }
@@ -48,6 +48,17 @@ namespace EyeCT4Participation
             /////////////////// test code voor chat
             //this.Hide();
             //new Chat().Show();
+        }
+
+        private void BtnReactionPost_Click(object sender, EventArgs e)
+        {
+            int indexOfReview = listBox1.SelectedIndex
+            if (reviews.m_reviews.IndexOf)
+            {
+                
+            }
+
+            
         }
     }
 }

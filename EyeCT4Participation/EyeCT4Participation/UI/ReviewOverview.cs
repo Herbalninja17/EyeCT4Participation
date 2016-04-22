@@ -11,7 +11,7 @@ namespace EyeCT4Participation.UI
 {
    public class ReviewOverview
     {
-        private List<Review> m_reviews = new List<Review>();
+        public List<Review> m_reviews = new List<Review>();
 
         public long m_GebruikerID{ get; set; }
         private Review m_review;
@@ -23,7 +23,8 @@ namespace EyeCT4Participation.UI
 
         }
 
-        public List<Review> GetMyReviews(UserType TypeUser)
+
+        public List<Review> LoadMyReviews(UserType TypeUser)
         {
             string Myreviews = DataBase.Database.GetReviews(m_GebruikerID, TypeUser);
             List<string> SplitString = Myreviews.Split('@').ToList();
@@ -60,9 +61,11 @@ namespace EyeCT4Participation.UI
             }
             return m_reviews;
         }
-        public void WriteReview(Review review)
+        public void ReactToReview(Review review,long UserID,string content)
         {
-
+            Reaction NewReaction = new Reaction(UserID,review,content);
+            review.reactions.Add(NewReaction);
+           
         }
 
         public void DeleteReview(Review review)
