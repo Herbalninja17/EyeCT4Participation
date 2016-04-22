@@ -29,57 +29,7 @@ namespace EyeCT4Participation
         public Hulpbehoevende()
         {
             InitializeComponent();
-            foreach (Request request in Database.GetRequests(userID))
-            {
-                requests.Add(request);
-            }
-
-            int i = requests.Count();
-
-            if (i >= 1)
-            {
-                contentTB1.Text = Convert.ToString(requests[i - 1]);
-
-                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 1].requestID))
-                {
-                    volunteer1.Add(volunteer);
-                }
-
-                foreach (Volunteer volunteer in volunteer1)
-                {
-                    LBvol1.Items.Add(volunteer);
-                }
-            }
-
-            if (i >= 2)
-            {
-                contentTB2.Text = Convert.ToString(requests[i - 2]);
-                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 2].requestID))
-                {
-                    volunteer2.Add(volunteer);
-                }
-
-                foreach (Volunteer volunteer in volunteer2)
-                {
-                    LBvol2.Items.Add(volunteer);
-                }
-            }
-
-            if (i >= 3)
-            {
-                contentTB3.Text = Convert.ToString(requests[i - 3]);
-
-                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 3].requestID))
-                {
-                    volunteer3.Add(volunteer);
-                }
-
-                foreach (Volunteer volunteer in volunteer3)
-                {
-                    LBvol3.Items.Add(volunteer);
-                }
-            }
-
+            Request();
         }
 
         private void submitBTN_Click(object sender, EventArgs e)
@@ -134,7 +84,13 @@ namespace EyeCT4Participation
         private void requestsBTN_Click(object sender, EventArgs e)
         {
             // Open de verzoeken die deze user heeft ingediend
-
+            volunteer1.Clear();
+            volunteer2.Clear();
+            volunteer3.Clear();
+            LBvol1.Items.Clear();
+            LBvol2.Items.Clear();
+            LBvol3.Items.Clear();
+            Request();
         }
 
         private void removeBTN_Click(object sender, EventArgs e)
@@ -258,6 +214,60 @@ namespace EyeCT4Participation
             /////////////////// test code voor chat
             this.Hide();
             new Chat().Show();
+        }
+
+        private void Request()
+        {
+            foreach (Request request in Database.GetRequests(userID))
+            {
+                requests.Add(request);
+            }
+
+            int i = requests.Count();
+
+            if (i >= 1)
+            {
+                contentTB1.Text = Convert.ToString(requests[i - 1]);
+
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 1].requestID))
+                {
+                    volunteer1.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer1)
+                {
+                    LBvol1.Items.Add(volunteer);
+                }
+            }
+
+            if (i >= 2)
+            {
+                contentTB2.Text = Convert.ToString(requests[i - 2]);
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 2].requestID))
+                {
+                    volunteer2.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer2)
+                {
+                    LBvol2.Items.Add(volunteer);
+                }
+            }
+
+            if (i >= 3)
+            {
+                contentTB3.Text = Convert.ToString(requests[i - 3]);
+
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 3].requestID))
+                {
+                    volunteer3.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer3)
+                {
+                    LBvol3.Items.Add(volunteer);
+                }
+            }
         }
     }
 }
