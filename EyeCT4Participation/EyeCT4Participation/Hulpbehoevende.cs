@@ -281,24 +281,25 @@ namespace EyeCT4Participation
             if (LBvol1.SelectedIndex != -1)
             {
                 selectedVolunteer = (Volunteer)LBvol1.SelectedItem;
+                new ReviewVolunteer().Show();
             }
 
             else if (LBvol2.SelectedIndex != -1)
             {
                 selectedVolunteer = (Volunteer)LBvol2.SelectedItem;
+                new ReviewVolunteer().Show();
             }
 
             else if (LBvol3.SelectedIndex != -1)
             {
                 selectedVolunteer = (Volunteer)LBvol3.SelectedItem;
+                new ReviewVolunteer().Show();
             }
 
             else
             {
                 MessageBox.Show("Selecteer een vrijwilliger.");
             }
-
-            new ReviewVolunteer().Show();
         }      
     }
 }
