@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Oracle.DataAccess.Client;
 using EyeCT4Participation.Business;
+using EyeCT4Participation.Business.User;
 //using Oracle.DataAccess.Types;
 
 
@@ -436,37 +437,75 @@ namespace EyeCT4Participation.DataBase
         }
 
 
-        public static List<Request> requests = new List<Request>();
         // REQUEST UIT DATABASE <OLAF>
-    //    public static List<Request> GetRequests()
-    //    {
-            
+        public static List<Request> GetRequests(int ID)
+        {
+            List<Request> requests = new List<Request>();
 
-    //        try
-    //        {
-    //            OpenConnection();                   // om connection open te maken
-    //            m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
-    //            m_command.Connection = m_conn;      // een connection maken met het command
-    //            m_command.CommandText = "SELECT * FROM HULPVRAAG ORDER BY HULPVRAAGID";
-    //            m_command.ExecuteNonQuery();
-    //            using (OracleDataReader _Reader = Database.Command.ExecuteReader())
-    //            {
-    //                if (_Reader.HasRows)
-    //                {
-    //                while (_Reader.Read())
-    //                {
-    //                    //Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
-    //                    //requests.Add(request);
-    //                }
-    //            }
-    //        }
-    //        catch (OracleException ex)
-    //        {
-    //            Database.CloseConnection();
-    //            Console.WriteLine(ex.Message);
-    //        }
-    //        return requests;
-    //    }
+            try
+            {
+                OpenConnection();                   // om connection open te maken
+                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+                m_command.Connection = m_conn;      // een connection maken met het command
+                m_command.CommandText = "SELECT * FROM HULPVRAAG WHERE GEBRUIKERID = :ID ORDER BY HULPVRAAGID";
+                m_command.Parameters.Add("ID", OracleDbType.Int32).Value = ID;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    if (_Reader.HasRows)
+                    {
+                        while (_Reader.Read())
+                        {
+                            CultureInfo provider = CultureInfo.InvariantCulture;
+                            string start = Convert.ToString(_Reader["STARTDATUM"]);
+                            string end = Convert.ToString(_Reader["EINDDATUM"]);
+                            DateTime startdate = DateTime.ParseExact(start, "HH:mm", provider);
+                            DateTime enddate = DateTime.ParseExact(end, "HH:mm", provider);
+                            Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), startdate, enddate, Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
+                            requests.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return requests;
+        }
+
+        public static List<Volunteer> GetVolunteers(int HulpvraagID)
+        {
+            List<Volunteer> volunteers = new List<Volunteer>();
+
+            try
+            {
+                OpenConnection();                   // om connection open te maken
+                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+                m_command.Connection = m_conn;      // een connection maken met het command
+                m_command.CommandText = "SELECT G.GEBRUIKERID FROM GEBRUIKER G, INTRESSE I, HULPVRAAG H WHERE H.HULPVRAAGID = :HULPVRAAGID AND H.HULPVRAAGID = I.HULPVRAAGID AND I.GEBRUIKERID = G.GEBRUIKERID";
+                m_command.Parameters.Add("HULPVRAAGID", OracleDbType.Int32).Value = HulpvraagID;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    if (_Reader.HasRows)
+                    {
+                        while (_Reader.Read())
+                        {
+                            Volunteer volunteer = new Volunteer(Convert.ToInt32(_Reader["GEBRUIKERID"]));
+                            volunteers.Add(volunteer);
+                        }
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return volunteers;
+        }
 
 
 
