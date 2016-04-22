@@ -25,6 +25,7 @@ namespace EyeCT4Participation
         private List<Volunteer> volunteer1 = new List<Volunteer>();
         private List<Volunteer> volunteer2 = new List<Volunteer>();
         private List<Volunteer> volunteer3 = new List<Volunteer>();
+        public static int selectedVolunteer;
 
         public Hulpbehoevende()
         {
@@ -259,5 +260,30 @@ namespace EyeCT4Participation
             this.Hide();
             new Chat().Show();
         }
+
+        private void reviewVolunteerBTN_Click(object sender, EventArgs e)
+        {
+            if (LBvol1.SelectedIndex != -1)
+	        {
+                selectedVolunteer = Convert.ToInt32(LBvol1.SelectedIndex);
+	        }
+
+            else if (LBvol2.SelectedIndex != -1)
+            {
+                selectedVolunteer = Convert.ToInt32(LBvol2.SelectedIndex);
+            }
+
+            else if (LBvol3.SelectedIndex != -1)
+            {
+                selectedVolunteer = Convert.ToInt32(LBvol3.SelectedIndex);
+            }
+
+            else
+            {
+                MessageBox.Show("Selecteer een vrijwilliger.");
+            }
+            
+            new ReviewVolunteer().Show();
+        }      
     }
 }
