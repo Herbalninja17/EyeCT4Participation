@@ -475,6 +475,7 @@ namespace EyeCT4Participation.DataBase
             return requests;
         }
 
+        //dit is een change
         public static List<Volunteer> GetVolunteers(int HulpvraagID)
         {
             List<Volunteer> volunteers = new List<Volunteer>();
