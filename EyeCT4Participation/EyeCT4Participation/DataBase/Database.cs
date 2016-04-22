@@ -256,7 +256,8 @@ namespace EyeCT4Participation.DataBase
                         needyRate = Convert.ToString((_Reader["Beoordeling"]));
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
-                        reviews += Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        //@Voor makkelijke split
+                        reviews = reviews+"@"+Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
                     }
                 }
             }
