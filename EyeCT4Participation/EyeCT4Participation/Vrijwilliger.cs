@@ -25,18 +25,22 @@ namespace EyeCT4Participation
         private long userID = DataBase.Database.acID;
         public int Formstate = (int)FormState.nothingSelected;
         public ReviewOverview reviews;
+        private List<Request> requests = new List<Request>();
+        private RequestOverview requestoverview;
+
         public Vrijwilliger()
         {
             InitializeComponent();
 
            reviews= new ReviewOverview(userID);
         }
+
         private void reviewBTN_Click(object sender, EventArgs e)
         {
             Formstate = 2;
             BtnReactionPost.Visible = true;
             TxtBxReactionPost.Visible = true;
-            foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
+            foreach (Review review in reviews.GetMyReviews(UserType.volunteer))
             { 
                     listBox1.Items.Add(Convert.ToString(review));
             }
@@ -50,11 +54,24 @@ namespace EyeCT4Participation
             //new Chat().Show();
         }
 
-        private void BtnReactionPost_Click(object sender, EventArgs e)
+        private void helprequestBTN_Click(object sender, EventArgs e)
         {
-           
+            requests.Clear();
+            listBox1.Items.Clear();
+            requestoverview = new RequestOverview(requests);
+            foreach (Request request in requestoverview.GetALLRequestList())
+            {
+                listBox1.Items.Add(request);
+            }
         }
 
-      
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+            {
+                Request a = (Request)listBox1.SelectedItem;
+                MessageBox.Show(a.ToString(), "Request");
+            }
+        }
     }
 }

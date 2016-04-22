@@ -87,6 +87,12 @@
     <Compile Include="PlaceRequest.Designer.cs">
       <DependentUpon>PlaceRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReviewVolunteer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReviewVolunteer.Designer.cs">
+      <DependentUpon>ReviewVolunteer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Chatbox.cs" />
     <Compile Include="UI\RequestOverview.cs" />
     <Compile Include="Login.cs">
@@ -130,6 +136,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReviewVolunteer.resx">
+      <DependentUpon>ReviewVolunteer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vrijwilliger.resx">
       <DependentUpon>Vrijwilliger.cs</DependentUpon>
     </EmbeddedResource>

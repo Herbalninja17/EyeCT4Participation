@@ -48,6 +48,7 @@
             this.helprequestBTN.TabIndex = 0;
             this.helprequestBTN.Text = "Help requests";
             this.helprequestBTN.UseVisualStyleBackColor = true;
+            this.helprequestBTN.Click += new System.EventHandler(this.helprequestBTN_Click);
             // 
             // replyBTN1
             // 
@@ -105,6 +106,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(404, 446);
             this.listBox1.TabIndex = 11;
+            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // TxtBxReactionPost
             // 
@@ -124,7 +126,6 @@
             this.BtnReactionPost.Text = "Post Reaction";
             this.BtnReactionPost.UseVisualStyleBackColor = true;
             this.BtnReactionPost.Visible = false;
-            this.BtnReactionPost.Click += new System.EventHandler(this.BtnReactionPost_Click);
             // 
             // Vrijwilliger
             // 

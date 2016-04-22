@@ -26,6 +26,8 @@ namespace EyeCT4Participation
         private List<Volunteer> volunteer2 = new List<Volunteer>();
         private List<Volunteer> volunteer3 = new List<Volunteer>();
         public static int User2ID;
+        private RequestOverview requestoverview;
+        public static Volunteer selectedVolunteer;
 
         public Hulpbehoevende()
         {
@@ -214,7 +216,6 @@ namespace EyeCT4Participation
 
         private void logoutBTN_Click(object sender, EventArgs e)
         {
-            /////////////////// test code voor chat
             this.Close();
             Login Login = (Login)Application.OpenForms["Login"];
             Login.Show();
@@ -222,7 +223,8 @@ namespace EyeCT4Participation
 
         private void Request()
         {
-            foreach (Request request in Database.GetRequests(userID))
+            requestoverview = new RequestOverview(requests, userID);
+            foreach (Request request in requestoverview.GetRequestList())
             {
                 requests.Add(request);
             }
@@ -273,5 +275,30 @@ namespace EyeCT4Participation
                 }
             }
         }
+
+        private void reviewVolunteerBTN_Click(object sender, EventArgs e)
+        {
+            if (LBvol1.SelectedIndex != -1)
+            {
+                selectedVolunteer = (Volunteer)LBvol1.SelectedItem;
+            }
+
+            else if (LBvol2.SelectedIndex != -1)
+            {
+                selectedVolunteer = (Volunteer)LBvol2.SelectedItem;
+            }
+
+            else if (LBvol3.SelectedIndex != -1)
+            {
+                selectedVolunteer = (Volunteer)LBvol3.SelectedItem;
+            }
+
+            else
+            {
+                MessageBox.Show("Selecteer een vrijwilliger.");
+            }
+
+            new ReviewVolunteer().Show();
+        }      
     }
 }
