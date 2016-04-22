@@ -39,9 +39,8 @@
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>C:\Users\Thom\Dropbox\Proftaak S2\Dll folder\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Phidget21.NET, Version=2.1.8.222, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Dropbox\Proftaak S2\Dll folder\Phidget21.NET.dll</HintPath>
+    <Reference Include="Phidget21.NET">
+      <HintPath>..\..\..\..\..\Desktop\PT-S2\Phidget21.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

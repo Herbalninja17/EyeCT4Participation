@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCT4Participation.Business
 {
-    class Appointment
+    public class Appointment
     {
         public DateTime date { get; set; }
         public DateTime time { get; set; }
