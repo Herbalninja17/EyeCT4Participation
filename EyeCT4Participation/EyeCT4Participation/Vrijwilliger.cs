@@ -52,13 +52,9 @@ namespace EyeCT4Participation
 
         private void BtnReactionPost_Click(object sender, EventArgs e)
         {
-            int indexOfReview = listBox1.SelectedIndex
-            if (reviews.m_reviews.IndexOf)
-            {
-                
-            }
-
-            
+           
         }
+
+      
     }
 }
