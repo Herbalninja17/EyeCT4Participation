@@ -135,7 +135,7 @@ namespace EyeCT4Participation
                 {
                     m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };                    
                     m_chat.Show();
-                    MessageBox.Show(m_volunteer.name.ToString());                    
+                    MessageBox.Show(m_volunteer.name.ToString());        
                 }
 
                 else
@@ -215,8 +215,9 @@ namespace EyeCT4Participation
         private void logoutBTN_Click(object sender, EventArgs e)
         {
             /////////////////// test code voor chat
-            this.Hide();
-            new Chat(userID, m_volunteer.volunteerID).Show();
+            this.Close();
+            Login Login = (Login)Application.OpenForms["Login"];
+            Login.Show();
         }
 
         private void Request()
