@@ -14,7 +14,7 @@ namespace EyeCT4Participation.Business.User
         public bool license { get; set; }
         public List<Appointment> appointmentList { get; set; }
 
-        public Volunteer(int ID)
+        public Volunteer(string name, string address, string city, int phonenumber, int ID) :base(name, address, city, phonenumber)
         {
 
             this.volunteerID = ID;
@@ -26,7 +26,7 @@ namespace EyeCT4Participation.Business.User
 
         public override string ToString()
         {
-            return this.volunteerID.ToString();
+            return this.name;
         }
     }
 }

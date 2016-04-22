@@ -135,7 +135,7 @@ namespace EyeCT4Participation
                 {
                     m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };                    
                     m_chat.Show();
-                    MessageBox.Show(m_volunteer.volunteerID.ToString());                    
+                    MessageBox.Show(m_volunteer.name.ToString());                    
                 }
 
                 else
