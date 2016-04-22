@@ -378,12 +378,14 @@ namespace EyeCT4Participation.DataBase
         {
             chathistory.Clear();
             string bericht = "";
+            string hetzender = "";
+            string chatstring = "";
             try
             {
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT Bericht from chat WHERE GebruikerID = :needy AND GebruikerID2 = :volunteer ORDER BY ChatID ";
+                m_command.CommandText = "SELECT c.Bericht, c.Zender, g.Gebruikersnaam from Chat c LEFT JOIN Gebruiker g ON c.Zender = g.GebruikerID WHERE c.GebruikerID = :needy AND c.GebruikerID2 = :volunteer ORDER BY ChatID ";
                 m_command.Parameters.Add("needy", OracleDbType.Varchar2).Value = needy;
                 m_command.Parameters.Add("volunteer", OracleDbType.Varchar2).Value = volunteer;
                 m_command.ExecuteNonQuery();
@@ -391,8 +393,10 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
+                        hetzender = Convert.ToString(_Reader["Gebruikersnaam"]);
                         bericht = Convert.ToString(_Reader["Bericht"]);
-                        chathistory.Add(bericht);
+                        chatstring = hetzender + ": " + bericht;
+                        chathistory.Add(chatstring);
                     }
                 }
             }
@@ -405,7 +409,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         // CHAT INSERTS <RECHARD>
-        public static void chatsend(int needy, int volunteer, string bericht)
+        public static void chatsend(int needy, int volunteer, string bericht, int zender)
         {
             int AutoID = 0;
             try
@@ -422,8 +426,9 @@ namespace EyeCT4Participation.DataBase
                         AutoID = Convert.ToInt32(_Reader["COUNT(ChatID)"]) + 1;
                     }
                 }
-                m_command.CommandText = "INSERT INTO Chat (ChatID, GebruikerID, GebruikerID2, Bericht) VALUES (:ChatID, :GebruikerID, :GebruikerID2, :Bericht)";
+                m_command.CommandText = "INSERT INTO Chat (ChatID, Zender, GebruikerID, GebruikerID2, Bericht) VALUES (:ChatID, :Zender, :GebruikerID, :GebruikerID2, :Bericht)";
                 m_command.Parameters.Add("ChatID", OracleDbType.Int32).Value = AutoID;
+                m_command.Parameters.Add("Zender", OracleDbType.Int32).Value = zender;
                 m_command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = needy;
                 m_command.Parameters.Add("GebruikerID2", OracleDbType.Int32).Value = volunteer;
                 m_command.Parameters.Add("Bericht", OracleDbType.Varchar2).Value = bericht;
