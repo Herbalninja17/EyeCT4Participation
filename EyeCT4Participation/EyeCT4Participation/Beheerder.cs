@@ -21,10 +21,24 @@ namespace EyeCT4Participation
         {
             // SELECT CHATS, REVIEWS, REQUESTS
             // WHERE REPORTED = TRUE;
-            DataBase.Database.getReported("SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N';");
-            DataBase.Database.getReported("SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N';");
-            DataBase.Database.getReported("SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N';");
-            LBSelectedContent.Items.Add(DataBase.Database.reported);
+            DataBase.Database.getReported("SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N'");
+            foreach (string item in DataBase.Database.reported)
+            {
+                LBSelectedContent.Items.Add(item);
+                
+            }
+            DataBase.Database.getReported("SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N'");
+            foreach (string item in DataBase.Database.reported)
+            {
+                LBSelectedContent.Items.Add(item);
+               
+            }
+            DataBase.Database.getReported("SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N'");
+            foreach (string item in DataBase.Database.reported)
+            {
+                LBSelectedContent.Items.Add(item);
+                
+            }
             refresh();
         }
 
@@ -33,10 +47,10 @@ namespace EyeCT4Participation
             //SELECT * FROM CHAT
             DataBase.Database.getChat(1, 2);
             foreach (string item in DataBase.Database.chats)
-            {
+            {              
                 LBSelectedContent.Items.Add(item);
             }
-            
+
             refresh();
         }
 
@@ -64,8 +78,7 @@ namespace EyeCT4Participation
         }
 
         public void refresh()
-        {
-            
+        {          
             LBSelectedContent.Refresh();
         }
 

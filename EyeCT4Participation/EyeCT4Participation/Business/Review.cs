@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCT4Participation.Business
 {
-    class Review
+    public class Review
     {
         public int m_score { get; set; }
 

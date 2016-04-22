@@ -347,11 +347,7 @@ namespace EyeCT4Participation.DataBase
         public static List<Request> GetRequests()
         {
             List<Request> requests = new List<Request>();
-            string reviews = "no";
-            string needyName = "";
-            string needyRate = "";
-            string needyRemark = "";
-            string volunteerName = "";
+          
 
             try
             {

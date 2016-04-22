@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCT4Participation.Business
 {
-    class Request
+    public class Request
     {
         public int requestID { get; set; }
         public int needyID { get; set; }
@@ -22,7 +22,7 @@ namespace EyeCT4Participation.Business
         public bool reported { get; set; }
 
         public Request(int ID, int needyID, string description, bool urgency, string location, int traveltime, string transporttype,
-            DateTime startdate, DateTime enddate, int totalvolunteers, string reactionlist, bool reported)
+            DateTime startdate, DateTime enddate, int totalvolunteers, bool reported)
         {
             this.requestID = ID;
             this.needyID = needyID;
@@ -34,7 +34,6 @@ namespace EyeCT4Participation.Business
             this.startDate = startdate;
             this.endDate = enddate;
             this.totalVolunteer = totalvolunteers;
-            this.reactionList = reactionlist;
             this.reported = reported; 
         }
 

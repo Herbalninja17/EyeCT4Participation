@@ -12,7 +12,7 @@ namespace EyeCT4Participation.UI
     {
         //public List<Review> m_reviews { get; set; }
 
-        public long m_GebruikerID{ get; set; }
+        //public long m_GebruikerID { get; set; }
 
 
         //public ReviewOverview(List<Review> p_reviews, long p_gebruikerID)
@@ -24,8 +24,8 @@ namespace EyeCT4Participation.UI
 
         //public void GetMyReviews(long UserID)
         //{
-            
-            
+
+
         //}
         //public void WriteReview(Review review)
         //{
