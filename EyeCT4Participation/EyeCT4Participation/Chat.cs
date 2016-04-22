@@ -59,11 +59,6 @@ namespace EyeCT4Participation
             {                
                 chatLB.Items.Add(chat);
             }
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        }        
     }
 }

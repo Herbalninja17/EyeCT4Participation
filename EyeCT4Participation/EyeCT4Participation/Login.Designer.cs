@@ -32,7 +32,7 @@
             this.passwordTB = new System.Windows.Forms.TextBox();
             this.loginBTN = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rfidcodetb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.accounttypeCB = new System.Windows.Forms.ComboBox();
@@ -91,12 +91,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "EyeCT4Participation";
             // 
-            // textBox1
+            // rfidcodetb
             // 
-            this.textBox1.Location = new System.Drawing.Point(2, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(407, 20);
-            this.textBox1.TabIndex = 5;
+            this.rfidcodetb.Location = new System.Drawing.Point(2, 4);
+            this.rfidcodetb.Name = "rfidcodetb";
+            this.rfidcodetb.Size = new System.Drawing.Size(407, 20);
+            this.rfidcodetb.TabIndex = 5;
             // 
             // label2
             // 
@@ -328,7 +328,7 @@
             this.Controls.Add(this.accounttypeCB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.rfidcodetb);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginBTN);
             this.Controls.Add(this.passwordTB);
@@ -347,7 +347,7 @@
         private System.Windows.Forms.TextBox passwordTB;
         private System.Windows.Forms.Button loginBTN;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox rfidcodetb;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox accounttypeCB;
