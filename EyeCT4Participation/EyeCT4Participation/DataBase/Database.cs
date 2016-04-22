@@ -11,6 +11,7 @@ using EyeCT4Participation.Business;
 
 namespace EyeCT4Participation.DataBase
 {
+    public enum UserType {needy,volunteer};
     public static class Database
     {
         static readonly string m_databaseFilename = "Database.sql";
@@ -307,7 +308,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         // REVIEWS UIT DATABASE HALEN <THOM>
-        public static string GetReviews(long accountid)
+        public static string GetReviews(long accountid,UserType SoortUser)
         {
             string reviews = "";
             string needyName = "";
@@ -320,9 +321,26 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
+                switch (SoortUser )
+                {
+                    case UserType.needy:
+                                   m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
                 Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
-                m_command.ExecuteNonQuery();                
+                m_command.ExecuteNonQuery();
+                        break;
+                    case UserType.volunteer:
+                        m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G2.GebruikerID = :GebruikerID";
+                Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
+                m_command.ExecuteNonQuery();
+                        break;
+                        // Weet niet of het nodig is.
+                   // case UserType.admin:
+
+                    //    break;
+                      
+                  
+                }
+                     
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())

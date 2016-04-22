@@ -62,20 +62,20 @@ namespace EyeCT4Participation
             // Open de lijst met reviews die bij deze user hoort
             if (string.IsNullOrEmpty(contentTB1.Text))
             {
-                contentTB1.Text = DataBase.Database.GetReviews(userID);
+                contentTB1.Text = DataBase.Database.GetReviews(userID,UserType.needy);
             }
 
             else if (!string.IsNullOrEmpty(contentTB1.Text) && string.IsNullOrEmpty(contentTB2.Text))
             {
                 contentTB2.Text = contentTB1.Text;
-                contentTB1.Text = DataBase.Database.GetReviews(userID);
+                contentTB1.Text = DataBase.Database.GetReviews(userID,UserType.needy);
             }
             
             else
             {
                 contentTB3.Text = contentTB2.Text;
                 contentTB2.Text = contentTB1.Text;
-                contentTB1.Text = DataBase.Database.GetReviews(userID);
+                contentTB1.Text = DataBase.Database.GetReviews(userID,UserType.needy);
             }
         }
 

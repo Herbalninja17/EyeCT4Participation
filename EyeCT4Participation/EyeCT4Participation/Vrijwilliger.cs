@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EyeCT4Participation.DataBase;
 
 namespace EyeCT4Participation
 {
@@ -19,7 +20,7 @@ namespace EyeCT4Participation
     public partial class Vrijwilliger : Form
     {
         public long userID = DataBase.Database.acID;
-       
+        private int Formstate = (int)FormState.nothingSelected;
   
         public Vrijwilliger()
         {
@@ -27,8 +28,9 @@ namespace EyeCT4Participation
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)
-        {   
-            DataBase.Database.GetReviews(userID);
+        {
+            Formstate = 2;
+           
         }
 
         private void logoutBTN_Click(object sender, EventArgs e)
