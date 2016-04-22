@@ -23,8 +23,8 @@ namespace EyeCT4Participation.UI
 
         }
 
-        public void GetMyReviews(UserType TypeUser)
-        {
+        //public void GetMyReviews(UserType TypeUser)
+        //{
         //    switch (UserType)
         //    {
         //        default:
@@ -44,7 +44,7 @@ namespace EyeCT4Participation.UI
 
         
             
-        }
+        //}
         public void WriteReview(Review review)
         {
 
