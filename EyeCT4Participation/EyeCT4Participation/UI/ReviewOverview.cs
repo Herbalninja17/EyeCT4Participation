@@ -23,28 +23,28 @@ namespace EyeCT4Participation.UI
 
         }
 
-        public void GetMyReviews(UserType TypeUser)
-        {
-            switch (UserType)
-            {
-                default:
-            }
-            string Myreviews = DataBase.Database.GetReviews(m_GebruikerID, TypeUser);
-            List<string> SplitString = Myreviews.Split('@').ToList();
-            foreach (string X in SplitString)
-            {
-            int score= 0;
-                string review ="";
-               long volunteerID = this.m_GebruikerID;
-                long needyID = 1;
+        //public void GetMyReviews(UserType TypeUser)
+        //{
+        //    switch (UserType)
+        //    {
+        //        default:
+        //    }
+        //    string Myreviews = DataBase.Database.GetReviews(m_GebruikerID, TypeUser);
+        //    List<string> SplitString = Myreviews.Split('@').ToList();
+        //    foreach (string X in SplitString)
+        //    {
+        //    int score= 0;
+        //        string review ="";
+        //       long volunteerID = this.m_GebruikerID;
+        //        long needyID = 1;
 
-                Review MyReview = new Review(score, review, volunteerID, needyID);
-                m_reviews.Add(MyReview);
-            }
+        //        Review MyReview = new Review(score, review, volunteerID, needyID);
+        //        m_reviews.Add(MyReview);
+        //    }
 
         
             
-        }
+        //}
         public void WriteReview(Review review)
         {
 
