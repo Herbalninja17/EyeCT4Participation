@@ -31,6 +31,9 @@
             this.reviewBTN = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LBvol3 = new System.Windows.Forms.ListBox();
+            this.LBvol2 = new System.Windows.Forms.ListBox();
+            this.LBvol1 = new System.Windows.Forms.ListBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
@@ -45,9 +48,6 @@
             this.profileBTN = new System.Windows.Forms.Button();
             this.appointmentBTN = new System.Windows.Forms.Button();
             this.requestsBTN = new System.Windows.Forms.Button();
-            this.LBvol1 = new System.Windows.Forms.ListBox();
-            this.LBvol2 = new System.Windows.Forms.ListBox();
-            this.LBvol3 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +94,33 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My requests/reviews";
+            // 
+            // LBvol3
+            // 
+            this.LBvol3.FormattingEnabled = true;
+            this.LBvol3.Location = new System.Drawing.Point(351, 317);
+            this.LBvol3.Name = "LBvol3";
+            this.LBvol3.Size = new System.Drawing.Size(119, 108);
+            this.LBvol3.TabIndex = 34;
+            this.LBvol3.Click += new System.EventHandler(this.LBvol3_Click);
+            // 
+            // LBvol2
+            // 
+            this.LBvol2.FormattingEnabled = true;
+            this.LBvol2.Location = new System.Drawing.Point(351, 182);
+            this.LBvol2.Name = "LBvol2";
+            this.LBvol2.Size = new System.Drawing.Size(119, 108);
+            this.LBvol2.TabIndex = 33;
+            this.LBvol2.Click += new System.EventHandler(this.LBvol2_Click);
+            // 
+            // LBvol1
+            // 
+            this.LBvol1.FormattingEnabled = true;
+            this.LBvol1.Location = new System.Drawing.Point(351, 43);
+            this.LBvol1.Name = "LBvol1";
+            this.LBvol1.Size = new System.Drawing.Size(119, 108);
+            this.LBvol1.TabIndex = 32;
+            this.LBvol1.Click += new System.EventHandler(this.LBvol1_Click);
             // 
             // textBox6
             // 
@@ -156,6 +183,7 @@
             this.contentTB3.Location = new System.Drawing.Point(17, 295);
             this.contentTB3.Multiline = true;
             this.contentTB3.Name = "contentTB3";
+            this.contentTB3.ReadOnly = true;
             this.contentTB3.Size = new System.Drawing.Size(328, 130);
             this.contentTB3.TabIndex = 10;
             // 
@@ -164,6 +192,7 @@
             this.contentTB2.Location = new System.Drawing.Point(17, 159);
             this.contentTB2.Multiline = true;
             this.contentTB2.Name = "contentTB2";
+            this.contentTB2.ReadOnly = true;
             this.contentTB2.Size = new System.Drawing.Size(328, 130);
             this.contentTB2.TabIndex = 9;
             // 
@@ -172,6 +201,7 @@
             this.contentTB1.Location = new System.Drawing.Point(17, 21);
             this.contentTB1.Multiline = true;
             this.contentTB1.Name = "contentTB1";
+            this.contentTB1.ReadOnly = true;
             this.contentTB1.Size = new System.Drawing.Size(328, 130);
             this.contentTB1.TabIndex = 8;
             // 
@@ -234,33 +264,6 @@
             this.requestsBTN.Text = "My requests";
             this.requestsBTN.UseVisualStyleBackColor = true;
             this.requestsBTN.Click += new System.EventHandler(this.requestsBTN_Click);
-            // 
-            // LBvol1
-            // 
-            this.LBvol1.FormattingEnabled = true;
-            this.LBvol1.Location = new System.Drawing.Point(351, 43);
-            this.LBvol1.Name = "LBvol1";
-            this.LBvol1.Size = new System.Drawing.Size(119, 108);
-            this.LBvol1.TabIndex = 32;
-            this.LBvol1.Click += new System.EventHandler(this.LBvol1_Click);
-            // 
-            // LBvol2
-            // 
-            this.LBvol2.FormattingEnabled = true;
-            this.LBvol2.Location = new System.Drawing.Point(351, 182);
-            this.LBvol2.Name = "LBvol2";
-            this.LBvol2.Size = new System.Drawing.Size(119, 108);
-            this.LBvol2.TabIndex = 33;
-            this.LBvol2.Click += new System.EventHandler(this.LBvol2_Click);
-            // 
-            // LBvol3
-            // 
-            this.LBvol3.FormattingEnabled = true;
-            this.LBvol3.Location = new System.Drawing.Point(351, 317);
-            this.LBvol3.Name = "LBvol3";
-            this.LBvol3.Size = new System.Drawing.Size(119, 108);
-            this.LBvol3.TabIndex = 34;
-            this.LBvol3.Click += new System.EventHandler(this.LBvol3_Click);
             // 
             // Hulpbehoevende
             // 
