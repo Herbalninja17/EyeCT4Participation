@@ -21,30 +21,64 @@ namespace EyeCT4Participation
         private Chat m_chat;
         private Volunteer m_volunteer;
         private List<Request> requests = new List<Request>();
+        private List<Volunteer> volunteer1 = new List<Volunteer>();
+        private List<Volunteer> volunteer2 = new List<Volunteer>();
+        private List<Volunteer> volunteer3 = new List<Volunteer>();
 
         public Hulpbehoevende()
         {
             InitializeComponent();
-            ////Database.GetRequests();
-            //foreach (Request request in Database.GetRequests())
-            //{
-            //    requests.Add(request);
-            //}
+            foreach (Request request in Database.GetRequests(userID))
+            {
+                requests.Add(request);
+            }
 
-            //int i = requests.Count();
-            //if (i >= 1)
-            //{
-            //    contentTB1.Text = Convert.ToString(requests[i - 1]);
-            //}
-            //if (i >= 2)
-            //{
-            //    contentTB2.Text = Convert.ToString(requests[i - 2]);
-            //}
-            //if (i >= 3)
-            //{
-            //    contentTB3.Text = Convert.ToString(requests[i - 3]);
-            //}
-            
+            int i = requests.Count();
+
+            if (i >= 1)
+            {
+                contentTB1.Text = Convert.ToString(requests[i - 1]);
+
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 1].requestID))
+                {
+                    volunteer1.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer1)
+                {
+                    LBvol1.Items.Add(volunteer);
+                }
+            }
+
+            if (i >= 2)
+            {
+                contentTB2.Text = Convert.ToString(requests[i - 2]);
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 2].requestID))
+                {
+                    volunteer2.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer2)
+                {
+                    LBvol2.Items.Add(volunteer);
+                }
+            }
+
+            if (i >= 3)
+            {
+                contentTB3.Text = Convert.ToString(requests[i - 3]);
+
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 3].requestID))
+                {
+                    volunteer3.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer3)
+                {
+                    LBvol3.Items.Add(volunteer);
+                }
+            }
+
         }
 
         private void submitBTN_Click(object sender, EventArgs e)
