@@ -26,6 +26,7 @@ namespace EyeCT4Participation
         private List<Volunteer> volunteer2 = new List<Volunteer>();
         private List<Volunteer> volunteer3 = new List<Volunteer>();
         public static int User2ID;
+        private RequestOverview requestoverview;
 
         public Hulpbehoevende()
         {
@@ -214,7 +215,6 @@ namespace EyeCT4Participation
 
         private void logoutBTN_Click(object sender, EventArgs e)
         {
-            /////////////////// test code voor chat
             this.Close();
             Login Login = (Login)Application.OpenForms["Login"];
             Login.Show();
@@ -222,7 +222,8 @@ namespace EyeCT4Participation
 
         private void Request()
         {
-            foreach (Request request in Database.GetRequests(userID))
+            requestoverview = new RequestOverview(requests, userID);
+            foreach (Request request in requestoverview.GetRequestList())
             {
                 requests.Add(request);
             }
