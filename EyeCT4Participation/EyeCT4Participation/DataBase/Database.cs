@@ -566,7 +566,7 @@ namespace EyeCT4Participation.DataBase
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
                         //@Voor makkelijke split
-                        reviews = reviews+"@"+Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        reviews = reviews+Convert.ToString("Hulpbehoevende " + needyName + "." + "beoordeelt vrijwilliger " + volunteerName + " met een :" + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark+"@");
                     }
                 }
             }
@@ -616,6 +616,42 @@ namespace EyeCT4Participation.DataBase
             return requests;
         }
 
+        public static List<Request> GetAllRequests()
+        {
+            List<Request> requests = new List<Request>();
+
+            try
+            {
+                OpenConnection();                   // om connection open te maken
+                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+                m_command.Connection = m_conn;      // een connection maken met het command
+                m_command.CommandText = "SELECT * FROM HULPVRAAG";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    if (_Reader.HasRows)
+                    {
+                        while (_Reader.Read())
+                        {
+                            CultureInfo provider = CultureInfo.InvariantCulture;
+                            string start = Convert.ToString(_Reader["STARTDATUM"]);
+                            string end = Convert.ToString(_Reader["EINDDATUM"]);
+                            DateTime startdate = DateTime.ParseExact(start, "HH:mm", provider);
+                            DateTime enddate = DateTime.ParseExact(end, "HH:mm", provider);
+                            Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), startdate, enddate, Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
+                            requests.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return requests;
+        }
+
         //dit is een change
         public static List<Volunteer> GetVolunteers(int HulpvraagID)
         {
@@ -626,7 +662,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT G.GEBRUIKERID FROM GEBRUIKER G, INTRESSE I, HULPVRAAG H WHERE H.HULPVRAAGID = :HULPVRAAGID AND H.HULPVRAAGID = I.HULPVRAAGID AND I.GEBRUIKERID = G.GEBRUIKERID";
+                m_command.CommandText = "SELECT G.GEBRUIKERSNAAM, G.ADRES, G.WOONPLAATS, G.TELEFOONNUMMER , G.GEBRUIKERID FROM GEBRUIKER G, INTRESSE I, HULPVRAAG H WHERE H.HULPVRAAGID = :HULPVRAAGID AND H.HULPVRAAGID = I.HULPVRAAGID AND I.GEBRUIKERID = G.GEBRUIKERID";
                 m_command.Parameters.Add("HULPVRAAGID", OracleDbType.Int32).Value = HulpvraagID;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
@@ -635,7 +671,7 @@ namespace EyeCT4Participation.DataBase
                     {
                         while (_Reader.Read())
                         {
-                            Volunteer volunteer = new Volunteer(Convert.ToInt32(_Reader["GEBRUIKERID"]));
+                            Volunteer volunteer = new Volunteer(_Reader["GEBRUIKERSNAAM"].ToString(), _Reader["ADRES"].ToString(), _Reader["WOONPLAATS"].ToString(), Convert.ToInt32(_Reader["TELEFOONNUMMER"]), Convert.ToInt32(_Reader["GEBRUIKERID"]));
                             volunteers.Add(volunteer);
                         }
                     }
@@ -714,6 +750,73 @@ namespace EyeCT4Participation.DataBase
             catch (OracleException ex)
             {
                 Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static long GetDiffUserID(string UserName)
+        {
+            long UserID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT GebruikerID From Gebruiker Where naam = :naam";
+                m_command.Parameters.Add(":naam", OracleDbType.Varchar2).Value = UserName;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        UserID = Convert.ToInt64(_Reader["GebruikerID"]);
+                    }
+                    return UserID;
+                }
+
+            }
+
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return UserID;
+        }
+
+        public static void ReviewVolunteer(string beoordeling, string opmerkingen, int needyID, int volunteerID)
+        {
+            int my_UserID = 0;
+            int this_reviewID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT COUNT(ReviewID) FROM Review";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        this_reviewID = Convert.ToInt32(_Reader["COUNT(ReviewID)"]) + 1;
+                    }
+                }
+
+                m_command.CommandText =
+                    "INSERT INTO Review(ReviewID, Beoordeling, Opmerkingen, NeedyID, VolunteerID) VALUES(:ReviewID, :Beoordeling, :Opmerkingen, :NeedyID, :VolunteerID)";
+
+                Command.Parameters.Add("ReviewID", OracleDbType.Int32).Value = this_reviewID;
+                Command.Parameters.Add("Beoordeling", OracleDbType.Varchar2).Value = beoordeling;
+                Command.Parameters.Add("Opmerkingen", OracleDbType.Varchar2).Value = opmerkingen;
+                Command.Parameters.Add("NeedyID", OracleDbType.Int32).Value = needyID;
+                Command.Parameters.Add("VolunteerID", OracleDbType.Int32).Value = Convert.ToInt32(Hulpbehoevende.selectedVolunteer.volunteerID);
+
+                Command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+
                 Console.WriteLine(ex.Message);
             }
         }
