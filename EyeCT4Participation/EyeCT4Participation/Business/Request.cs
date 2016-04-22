@@ -34,9 +34,11 @@ namespace EyeCT4Participation.Business
             this.startDate = startdate;
             this.endDate = enddate;
             this.totalVolunteer = totalvolunteers;
-            this.reported = reported; 
         }
 
-
+        public override string ToString()
+        {
+            return "Location: " + this.location + ", Transport: " + this.transportType + ", Travel time:" + this.travelTime + Environment.NewLine + Environment.NewLine + "Start date: " + this.startDate + ", End date: " + this.endDate + Environment.NewLine + Environment.NewLine + "Volunteers needed: " + this.totalVolunteer + Environment.NewLine + Environment.NewLine + this.description;
+        }
     }
 }

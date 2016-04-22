@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EyeCT4Participation.Business.User
 {
-    class Admin : UI.User 
+    public class Admin : UI.User 
     {
         public int adminID { get; set; }
 
-        public Admin (int ID)
+        public Admin (string name, string address, string city, int phonenumber, int ID) :base(name, address, city, phonenumber)
         {
             this.adminID = ID;
         }

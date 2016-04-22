@@ -19,17 +19,15 @@ namespace EyeCT4Participation
         public Login()
         {
             InitializeComponent();
-        }        
-
-       
+        }               
 
         private void loginBTN_Click(object sender, EventArgs e)
         {
-            // ----- test conectivity ------ //
+            //-----test conectivity------ //
             //if (rfid.LED == false) { rfid.LED = true; }
             //else if (rfid.LED == true) { rfid.LED = false; }
             //string acctype = "x";
-            
+
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();
             DataBase.Database.Login(username, password);
@@ -60,22 +58,22 @@ namespace EyeCT4Participation
 
         private void Login_Load(object sender, EventArgs e)
         {
-          /*  rfid = new RFID();
-            openCmdLine(rfid);
-            rfid.Tag += new TagEventHandler(rfid_Tag);
-            rfid.Attach += new AttachEventHandler(rfid_Attach);
-            rfid.TagLost += new TagEventHandler(rfid_TagLost);
-            rfid.Detach += new DetachEventHandler(rfid_Detach);*/
-            
+            //rfid = new RFID();
+            //openCmdLine(rfid);
+            //rfid.Tag += new TagEventHandler(rfid_Tag);
+            //rfid.Attach += new AttachEventHandler(rfid_Attach);
+            //rfid.TagLost += new TagEventHandler(rfid_TagLost);
+            //rfid.Detach += new DetachEventHandler(rfid_Detach);
+
         }
 
         void rfid_Tag(object sender, TagEventArgs e)
         {
-            textBox1.Text = e.Tag;
+            rfidcodetb.Text = e.Tag;
         }
         void rfid_TagLost(object sender, TagEventArgs e)
         {
-            //textBox1.Text = "";
+            rfidcodetb.Text = "NULL";
         }
 
         void rfid_Attach(object sender, AttachEventArgs e)
@@ -223,6 +221,7 @@ namespace EyeCT4Participation
 
         public void confirm()
         {
+            string rfidcode = rfidcodetb.Text.ToString();
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();
             string acctype = accounttypeCB.Text.ToString();

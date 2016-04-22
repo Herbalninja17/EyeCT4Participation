@@ -15,24 +15,22 @@ namespace EyeCT4Participation
 {
     public partial class Hulpbehoevende : Form
     {
+        //dit is ook een change
         //Business.User.Needy needy = new Business.User.Needy(DataBase.Database.acID);
         public int userID = DataBase.Database.acID;
         private PlaceRequest m_PlaceRequest;
         private Chat m_chat;
         private Volunteer m_volunteer;
         private List<Request> requests = new List<Request>();
+        private List<Volunteer> volunteer1 = new List<Volunteer>();
+        private List<Volunteer> volunteer2 = new List<Volunteer>();
+        private List<Volunteer> volunteer3 = new List<Volunteer>();
+        public static int User2ID;
 
         public Hulpbehoevende()
         {
             InitializeComponent();
-            Database.GetRequests();
-            foreach (Request request in Database.GetRequests())
-            {
-                requests.Add(request);
-            }           
-
-            //LBvol1.Items.Add(requests[1]);
-            //LBvol2.Items.Add(requests[2]);
+            Request();
         }
 
         private void submitBTN_Click(object sender, EventArgs e)
@@ -87,7 +85,13 @@ namespace EyeCT4Participation
         private void requestsBTN_Click(object sender, EventArgs e)
         {
             // Open de verzoeken die deze user heeft ingediend
-
+            volunteer1.Clear();
+            volunteer2.Clear();
+            volunteer3.Clear();
+            LBvol1.Items.Clear();
+            LBvol2.Items.Clear();
+            LBvol3.Items.Clear();
+            Request();
         }
 
         private void removeBTN_Click(object sender, EventArgs e)
@@ -113,7 +117,7 @@ namespace EyeCT4Participation
                 // open chat met de geselecteerde vrijwilliger moet nog gebeuren
                 if (m_chat == null || m_chat.IsDisposed)
                 {
-                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };
                     m_chat.Show();
                     MessageBox.Show(m_volunteer.volunteerID.ToString());
                 }
@@ -129,9 +133,9 @@ namespace EyeCT4Participation
                 // open chat met de geselecteerde vrijwilliger moet nog gebeuren
                 if (m_chat == null || m_chat.IsDisposed)
                 {
-                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };                    
                     m_chat.Show();
-                    MessageBox.Show(m_volunteer.volunteerID.ToString());
+                    MessageBox.Show(m_volunteer.name.ToString());                    
                 }
 
                 else
@@ -145,7 +149,7 @@ namespace EyeCT4Participation
                 // open chat met de geselecteerde vrijwilliger moet nog gebeuren
                 if (m_chat == null || m_chat.IsDisposed)
                 {
-                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };
                     m_chat.Show();
                     MessageBox.Show(m_volunteer.volunteerID.ToString());
                 }
@@ -159,7 +163,9 @@ namespace EyeCT4Participation
             {
                 MessageBox.Show("Choose a volunteer to chat with.", "Chat", MessageBoxButtons.OK);
             }
+            
         }
+
 
         private void LBvol1_Click(object sender, EventArgs e)
         {
@@ -210,7 +216,61 @@ namespace EyeCT4Participation
         {
             /////////////////// test code voor chat
             this.Hide();
-            new Chat().Show();
+            new Chat(userID, m_volunteer.volunteerID).Show();
+        }
+
+        private void Request()
+        {
+            foreach (Request request in Database.GetRequests(userID))
+            {
+                requests.Add(request);
+            }
+
+            int i = requests.Count();
+
+            if (i >= 1)
+            {
+                contentTB1.Text = Convert.ToString(requests[i - 1]);
+
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 1].requestID))
+                {
+                    volunteer1.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer1)
+                {
+                    LBvol1.Items.Add(volunteer);
+                }
+            }
+
+            if (i >= 2)
+            {
+                contentTB2.Text = Convert.ToString(requests[i - 2]);
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 2].requestID))
+                {
+                    volunteer2.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer2)
+                {
+                    LBvol2.Items.Add(volunteer);
+                }
+            }
+
+            if (i >= 3)
+            {
+                contentTB3.Text = Convert.ToString(requests[i - 3]);
+
+                foreach (Volunteer volunteer in Database.GetVolunteers(requests[i - 3].requestID))
+                {
+                    volunteer3.Add(volunteer);
+                }
+
+                foreach (Volunteer volunteer in volunteer3)
+                {
+                    LBvol3.Items.Add(volunteer);
+                }
+            }
         }
     }
 }
