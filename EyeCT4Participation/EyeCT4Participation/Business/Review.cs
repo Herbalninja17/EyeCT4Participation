@@ -28,5 +28,10 @@ namespace EyeCT4Participation.Business
             this.m_NeedyID =p_needyID;
 
         }
+
+        public override string ToString()
+        {
+            return  "score"+m_score+":" + "Review" +":"+ m_review;
+        }
     }
 }

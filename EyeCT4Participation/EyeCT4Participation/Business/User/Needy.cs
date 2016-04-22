@@ -12,7 +12,7 @@ namespace EyeCT4Participation.Business.User
         public int needyID { get; set; }
         public List<Appointment> appointmentList { get; set;}
 
-        public Needy(int needyID/*, List<Appointment> appointmentList*/)
+        public Needy(string name, string address, string city, int phonenumber, int needyID/*, List<Appointment> appointmentList*/) :base(name, address, city, phonenumber)
         {
             this.needyID = needyID;
             //this.appointmentList = appointmentList;

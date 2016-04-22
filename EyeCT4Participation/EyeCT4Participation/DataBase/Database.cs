@@ -424,7 +424,7 @@ namespace EyeCT4Participation.DataBase
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
                         //@Voor makkelijke split
-                        reviews = reviews+"@"+Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        reviews = reviews+Convert.ToString("Hulpbehoevende " + needyName + "." + "beoordeelt vrijwilliger " + volunteerName + " met een :" + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark+"@");
                     }
                 }
             }
@@ -485,7 +485,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT G.GEBRUIKERID FROM GEBRUIKER G, INTRESSE I, HULPVRAAG H WHERE H.HULPVRAAGID = :HULPVRAAGID AND H.HULPVRAAGID = I.HULPVRAAGID AND I.GEBRUIKERID = G.GEBRUIKERID";
+                m_command.CommandText = "SELECT G.GEBRUIKERSNAAM, G.ADRES, G.WOONPLAATS, G.TELEFOONNUMMER , G.GEBRUIKERID FROM GEBRUIKER G, INTRESSE I, HULPVRAAG H WHERE H.HULPVRAAGID = :HULPVRAAGID AND H.HULPVRAAGID = I.HULPVRAAGID AND I.GEBRUIKERID = G.GEBRUIKERID";
                 m_command.Parameters.Add("HULPVRAAGID", OracleDbType.Int32).Value = HulpvraagID;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
@@ -494,7 +494,7 @@ namespace EyeCT4Participation.DataBase
                     {
                         while (_Reader.Read())
                         {
-                            Volunteer volunteer = new Volunteer(Convert.ToInt32(_Reader["GEBRUIKERID"]));
+                            Volunteer volunteer = new Volunteer(_Reader["GEBRUIKERSNAAM"].ToString(), _Reader["ADRES"].ToString(), _Reader["WOONPLAATS"].ToString(), Convert.ToInt32(_Reader["TELEFOONNUMMER"]), Convert.ToInt32(_Reader["GEBRUIKERID"]));
                             volunteers.Add(volunteer);
                         }
                     }
@@ -579,42 +579,37 @@ namespace EyeCT4Participation.DataBase
             }
         }
 
-        public static void ReviewVolunteer(string beoordeling, string opmerkingen, int needyID, int volunteerID)
+        public static long GetDiffUserID(string UserName)
         {
-            int my_UserID = 0;
-            int this_reviewID = 0;
+            long UserID = 0;
             try
             {
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT COUNT(ReviewID) from Review";
+                m_command.CommandText = "SELECT GebruikerID From Gebruiker Where naam = :naam";
+                m_command.Parameters.Add(":naam", OracleDbType.Varchar2).Value = UserName;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
                     {
-                        this_reviewID = Convert.ToInt32(_Reader["COUNT(ReviewID)"]) + 1;
+                        UserID = Convert.ToInt64(_Reader["GebruikerID"]);
                     }
+                    return UserID;
                 }
 
-                m_command.CommandText =
-                    "INSERT INTO Hulpvraag(ReviewID, Beoordeling, Opmerkingen, NeedyID, VolunteerID) VALUES(:ReviewID, :Beoordeling, :Opmerkingen, :NeedyID, :VolunteerID)";
-
-                Command.Parameters.Add("ReviewID", OracleDbType.Int32).Value = this_reviewID;
-                Command.Parameters.Add("Beoordeling", OracleDbType.Varchar2).Value = beoordeling;
-                Command.Parameters.Add("Opmerkingen", OracleDbType.Varchar2).Value = opmerkingen;
-                Command.Parameters.Add("NeedyID", OracleDbType.Int32).Value = needyID;
-                Command.Parameters.Add("VolunteerID", OracleDbType.Int32).Value = Hulpbehoevende.selectedVolunteer;
-
-                Command.ExecuteNonQuery();
             }
+
             catch (OracleException ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
+
+            return UserID;
         }
+
+
 
     }
 }
