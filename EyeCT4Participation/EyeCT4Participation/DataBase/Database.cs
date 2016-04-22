@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -353,14 +354,22 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT * FROM HULPVRAAG";
+                m_command.CommandText = "SELECT * FROM HULPVRAAG ORDER BY HULPVRAAGID";
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
-                    while (_Reader.Read())
+                    if (_Reader.HasRows)
                     {
-                        //Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
-                        //requests.Add(request);
+                        while (_Reader.Read())
+                        {
+                            CultureInfo provider = CultureInfo.InvariantCulture;
+                            string start = Convert.ToString(_Reader["STARTDATUM"]);
+                            string end = Convert.ToString(_Reader["EINDDATUM"]);
+                            DateTime startdate = DateTime.ParseExact(start, "HH:mm", provider);
+                            DateTime enddate = DateTime.ParseExact(end, "HH:mm", provider);
+                            Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), startdate, enddate, Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
+                            requests.Add(request);
+                        }
                     }
                 }
             }
@@ -371,6 +380,8 @@ namespace EyeCT4Participation.DataBase
             }
             return requests;
         }
+
+
 
         public static List<string> chathistory = new List<string>();
         // CHATHALEN <RECHARD>

@@ -7,7 +7,7 @@ using EyeCT4Participation.Business;
 
 namespace EyeCT4Participation.Business.User
 {
-    class Volunteer : UI.User 
+    public class Volunteer : UI.User 
     {
         public int volunteerID { get; set; }
         public bool car { get; set; }

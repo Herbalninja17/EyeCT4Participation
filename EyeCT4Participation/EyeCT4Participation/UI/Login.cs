@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCT4Participation.UI
 {
-    class Login
+    public class Login
     {
         public string name { get; set; }
 

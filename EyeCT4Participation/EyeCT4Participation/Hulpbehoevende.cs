@@ -29,10 +29,22 @@ namespace EyeCT4Participation
             foreach (Request request in Database.GetRequests())
             {
                 requests.Add(request);
-            }           
+            }
 
-            //LBvol1.Items.Add(requests[1]);
-            //LBvol2.Items.Add(requests[2]);
+            int i = requests.Count();
+            if (i >= 1)
+            {
+                contentTB1.Text = Convert.ToString(requests[i - 1]);
+            }
+            if (i >= 2)
+            {
+                contentTB2.Text = Convert.ToString(requests[i - 2]);
+            }
+            if (i >= 3)
+            {
+                contentTB3.Text = Convert.ToString(requests[i - 3]);
+            }
+            
         }
 
         private void submitBTN_Click(object sender, EventArgs e)
