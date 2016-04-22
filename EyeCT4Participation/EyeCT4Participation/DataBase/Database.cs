@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 using System.IO;
 using Oracle.DataAccess.Client;
 using EyeCT4Participation.Business;
+using EyeCT4Participation.UI;
 //using Oracle.DataAccess.Types;
 
 
 namespace EyeCT4Participation.DataBase
 {
-    public enum UserType {needy,volunteer};
+    public enum UserType { needy, volunteer };
     public static class Database
     {
         static readonly string m_databaseFilename = "Database.sql";
         static OracleConnection m_conn;
         static OracleCommand m_command;
         static string connectionString = "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi338530;PASSWORD=Hoi;";
-        
+
 
         // Open de verbinding met de database
         public static bool OpenConnection()
@@ -31,9 +32,9 @@ namespace EyeCT4Participation.DataBase
                 m_conn.Open();
                 // Controleer of de verbinding niet al open is
                 if (m_conn.State != System.Data.ConnectionState.Open)
-                {return true;}
+                { return true; }
             }
-            catch (Exception ex) {Console.WriteLine("Connection failed: " + ex.Message);}
+            catch (Exception ex) { Console.WriteLine("Connection failed: " + ex.Message); }
             return returnvalue;
         }
 
@@ -55,8 +56,8 @@ namespace EyeCT4Participation.DataBase
                     m_command = new OracleCommand(value, m_conn);
                     m_conn.Open();
                 }
-                catch (Exception ex) { Console.WriteLine("Connection failed: " + ex.Message); }                
-            }            
+                catch (Exception ex) { Console.WriteLine("Connection failed: " + ex.Message); }
+            }
         }
 
         /// Haalt het command-object op waarmee queries uitgevoerd kunnen worden.
@@ -69,12 +70,12 @@ namespace EyeCT4Participation.DataBase
         public static void TestMethode(string data) // zet all uw data in als parameter in volgorde <Rechard>
         {
             try
-            {                
+            {
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
                 //                                   kolom   table             data    //de : link met de parameter
-                m_command.CommandText = "INSERT INTO testt (testdata) VALUES (:test2)"; 
+                m_command.CommandText = "INSERT INTO testt (testdata) VALUES (:test2)";
                 //                      :linken                datatype          value
                 m_command.Parameters.Add("test2", OracleDbType.Varchar2).Value = data;
                 m_command.ExecuteNonQuery();        //execute het query
@@ -86,7 +87,7 @@ namespace EyeCT4Participation.DataBase
             }
         } //goodluck! </Rechard>        
         /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         public static string GetUser() // Gebruik deze om jullie command en results te testen jongens
         {
             string _test = "no";
@@ -96,7 +97,7 @@ namespace EyeCT4Participation.DataBase
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
                 m_command.CommandText = "SELECT COUNT(Gebruikerid) from Gebruiker";
-                m_command.ExecuteNonQuery();                
+                m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
@@ -155,15 +156,15 @@ namespace EyeCT4Participation.DataBase
         public static int acID;
         //Rechard
         public static bool Login(string username, string password)
-        {             
+        {
             string result = "no";
             bool ok = false;
             try
             {
-                OpenConnection();                   
-                m_command = new OracleCommand();    
-                m_command.Connection = m_conn;      
-                m_command.CommandText = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username"; 
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username";
                 m_command.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
                 m_command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
                 m_command.ExecuteNonQuery();
@@ -176,7 +177,7 @@ namespace EyeCT4Participation.DataBase
                         int accID = Convert.ToInt32(_Reader["GebruikerID"]);
                         acID = accID;
                         result = Convert.ToString(_Reader["Gebruikersnaam"]);
-                        if(result == username) { ok = true; }
+                        if (result == username) { ok = true; }
                     }
                 }
             }
@@ -223,7 +224,7 @@ namespace EyeCT4Participation.DataBase
             }
             return ok;
         }
-        
+
         // GetReported Raphael
         public static List<string> reported = new List<string>();
         public static bool getReported(string query)
@@ -261,7 +262,7 @@ namespace EyeCT4Participation.DataBase
             }
             return ok;
         }
-        
+
         // HULPVRAAG UITZETTEN <THOM>
 
         public static void placeARequest(int accountid, string omschrijving, string locatie, int reistijd,
@@ -308,7 +309,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         // REVIEWS UIT DATABASE HALEN <THOM>
-        public static string GetReviews(long accountid,UserType SoortUser)
+        public static string GetReviews(long accountid, UserType SoortUser)
         {
             string reviews = "";
             string needyName = "";
@@ -321,26 +322,26 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                switch (SoortUser )
+                switch (SoortUser)
                 {
                     case UserType.needy:
-                                   m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
-                Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
-                m_command.ExecuteNonQuery();
+                        m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
+                        Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
+                        m_command.ExecuteNonQuery();
                         break;
                     case UserType.volunteer:
                         m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G2.GebruikerID = :GebruikerID";
-                Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
-                m_command.ExecuteNonQuery();
+                        Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
+                        m_command.ExecuteNonQuery();
                         break;
-                        // Weet niet of het nodig is.
-                   // case UserType.admin:
+                    // Weet niet of het nodig is.
+                    // case UserType.admin:
 
                     //    break;
-                      
-                  
+
+
                 }
-                     
+
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
@@ -350,7 +351,7 @@ namespace EyeCT4Participation.DataBase
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
                         //@Voor makkelijke split
-                        reviews = reviews+"@"+Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        reviews = reviews + Convert.ToString("Hulpbehoevende :" + needyName + "." + " " + "beoordeelt vrijwilliger :" + volunteerName + "." + " met een :" + needyRate + "." + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark + "." + "@");
                     }
                 }
             }
@@ -454,6 +455,36 @@ namespace EyeCT4Participation.DataBase
                 Console.WriteLine(ex.Message);
             }
         }
+        //Get Diff User ID
+        // Handig Als je andere user nodig hebt dan de User die logged in is.
+        public static long GetDiffUserID(string UserName)
+        {
+            long UserID=0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT GebruikerID From Gebruiker Where naam = :naam";
+                m_command.Parameters.Add(":naam", OracleDbType.Varchar2).Value = UserName;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        UserID = Convert.ToInt64(_Reader["GebruikerID"]);
+                    }
+                    return UserID;
+                }
 
+            }
+
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return UserID;
+        }
     }
 }

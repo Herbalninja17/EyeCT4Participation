@@ -32,15 +32,11 @@
             this.replyBTN1 = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
             this.reviewBTN = new System.Windows.Forms.Button();
-            this.contentTB1 = new System.Windows.Forms.TextBox();
-            this.replyBTN2 = new System.Windows.Forms.Button();
-            this.replyBTN3 = new System.Windows.Forms.Button();
-            this.contentTB2 = new System.Windows.Forms.TextBox();
-            this.contentTB3 = new System.Windows.Forms.TextBox();
             this.appointmentBTN = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx = new System.Windows.Forms.GroupBox();
             this.TxtBxReactionPost = new System.Windows.Forms.RichTextBox();
             this.BtnReactionPost = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +51,7 @@
             // 
             // replyBTN1
             // 
-            this.replyBTN1.Location = new System.Drawing.Point(48, 19);
+            this.replyBTN1.Location = new System.Drawing.Point(26, 19);
             this.replyBTN1.Name = "replyBTN1";
             this.replyBTN1.Size = new System.Drawing.Size(75, 23);
             this.replyBTN1.TabIndex = 3;
@@ -82,48 +78,6 @@
             this.reviewBTN.UseVisualStyleBackColor = true;
             this.reviewBTN.Click += new System.EventHandler(this.reviewBTN_Click);
             // 
-            // contentTB1
-            // 
-            this.contentTB1.Location = new System.Drawing.Point(145, 19);
-            this.contentTB1.Multiline = true;
-            this.contentTB1.Name = "contentTB1";
-            this.contentTB1.Size = new System.Drawing.Size(293, 129);
-            this.contentTB1.TabIndex = 7;
-            // 
-            // replyBTN2
-            // 
-            this.replyBTN2.Location = new System.Drawing.Point(48, 165);
-            this.replyBTN2.Name = "replyBTN2";
-            this.replyBTN2.Size = new System.Drawing.Size(75, 23);
-            this.replyBTN2.TabIndex = 9;
-            this.replyBTN2.Text = "Reply";
-            this.replyBTN2.UseVisualStyleBackColor = true;
-            // 
-            // replyBTN3
-            // 
-            this.replyBTN3.Location = new System.Drawing.Point(48, 321);
-            this.replyBTN3.Name = "replyBTN3";
-            this.replyBTN3.Size = new System.Drawing.Size(75, 23);
-            this.replyBTN3.TabIndex = 10;
-            this.replyBTN3.Text = "Reply";
-            this.replyBTN3.UseVisualStyleBackColor = true;
-            // 
-            // contentTB2
-            // 
-            this.contentTB2.Location = new System.Drawing.Point(145, 165);
-            this.contentTB2.Multiline = true;
-            this.contentTB2.Name = "contentTB2";
-            this.contentTB2.Size = new System.Drawing.Size(293, 129);
-            this.contentTB2.TabIndex = 11;
-            // 
-            // contentTB3
-            // 
-            this.contentTB3.Location = new System.Drawing.Point(145, 321);
-            this.contentTB3.Multiline = true;
-            this.contentTB3.Name = "contentTB3";
-            this.contentTB3.Size = new System.Drawing.Size(293, 129);
-            this.contentTB3.TabIndex = 12;
-            // 
             // appointmentBTN
             // 
             this.appointmentBTN.Location = new System.Drawing.Point(12, 233);
@@ -135,15 +89,11 @@
             // 
             // VrijwilligerGrpBx
             // 
-            this.VrijwilligerGrpBx.Controls.Add(this.contentTB1);
+            this.VrijwilligerGrpBx.Controls.Add(this.listBox1);
             this.VrijwilligerGrpBx.Controls.Add(this.replyBTN1);
-            this.VrijwilligerGrpBx.Controls.Add(this.contentTB3);
-            this.VrijwilligerGrpBx.Controls.Add(this.replyBTN2);
-            this.VrijwilligerGrpBx.Controls.Add(this.contentTB2);
-            this.VrijwilligerGrpBx.Controls.Add(this.replyBTN3);
             this.VrijwilligerGrpBx.Location = new System.Drawing.Point(615, 22);
             this.VrijwilligerGrpBx.Name = "VrijwilligerGrpBx";
-            this.VrijwilligerGrpBx.Size = new System.Drawing.Size(517, 466);
+            this.VrijwilligerGrpBx.Size = new System.Drawing.Size(531, 490);
             this.VrijwilligerGrpBx.TabIndex = 14;
             this.VrijwilligerGrpBx.TabStop = false;
             // 
@@ -154,6 +104,7 @@
             this.TxtBxReactionPost.Size = new System.Drawing.Size(296, 165);
             this.TxtBxReactionPost.TabIndex = 15;
             this.TxtBxReactionPost.Text = "";
+            this.TxtBxReactionPost.Visible = false;
             // 
             // BtnReactionPost
             // 
@@ -163,6 +114,16 @@
             this.BtnReactionPost.TabIndex = 16;
             this.BtnReactionPost.Text = "Post Reaction";
             this.BtnReactionPost.UseVisualStyleBackColor = true;
+            this.BtnReactionPost.Visible = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.Location = new System.Drawing.Point(107, 10);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(404, 446);
+            this.listBox1.TabIndex = 11;
             // 
             // Vrijwilliger
             // 
@@ -179,7 +140,6 @@
             this.Name = "Vrijwilliger";
             this.Text = "Vrijwilliger";
             this.VrijwilligerGrpBx.ResumeLayout(false);
-            this.VrijwilligerGrpBx.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -190,14 +150,10 @@
         private System.Windows.Forms.Button replyBTN1;
         private System.Windows.Forms.Button logoutBTN;
         private System.Windows.Forms.Button reviewBTN;
-        private System.Windows.Forms.TextBox contentTB1;
-        private System.Windows.Forms.Button replyBTN2;
-        private System.Windows.Forms.Button replyBTN3;
-        private System.Windows.Forms.TextBox contentTB2;
-        private System.Windows.Forms.TextBox contentTB3;
         private System.Windows.Forms.Button appointmentBTN;
         private System.Windows.Forms.GroupBox VrijwilligerGrpBx;
         private System.Windows.Forms.RichTextBox TxtBxReactionPost;
         private System.Windows.Forms.Button BtnReactionPost;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
