@@ -579,5 +579,37 @@ namespace EyeCT4Participation.DataBase
             }
         }
 
+        public static long GetDiffUserID(string UserName)
+        {
+            long UserID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT GebruikerID From Gebruiker Where naam = :naam";
+                m_command.Parameters.Add(":naam", OracleDbType.Varchar2).Value = UserName;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        UserID = Convert.ToInt64(_Reader["GebruikerID"]);
+                    }
+                    return UserID;
+                }
+
+            }
+
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return UserID;
+        }
+
+
+
     }
 }
