@@ -27,7 +27,7 @@ namespace EyeCT4Participation
         {
             string beoordeling = Convert.ToString(trackBarReview.Value);
             string opmerkingen = Convert.ToString(textBoxOpmerkingen.Text);
-            DataBase.Database.ReviewVolunteer(beoordeling, opmerkingen, DataBase.Database.acID, Hulpbehoevende.selectedVolunteer);
+            DataBase.Database.ReviewVolunteer(beoordeling, opmerkingen, DataBase.Database.acID, Hulpbehoevende.selectedVolunteer.volunteerID);
         }
     }
 }
