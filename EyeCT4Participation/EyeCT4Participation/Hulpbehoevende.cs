@@ -26,6 +26,8 @@ namespace EyeCT4Participation
         private List<Volunteer> volunteer2 = new List<Volunteer>();
         private List<Volunteer> volunteer3 = new List<Volunteer>();
         public static int User2ID;
+        private RequestOverview requestoverview;
+        public static Volunteer selectedVolunteer;
 
         public Hulpbehoevende()
         {
@@ -85,12 +87,6 @@ namespace EyeCT4Participation
         private void requestsBTN_Click(object sender, EventArgs e)
         {
             // Open de verzoeken die deze user heeft ingediend
-            volunteer1.Clear();
-            volunteer2.Clear();
-            volunteer3.Clear();
-            LBvol1.Items.Clear();
-            LBvol2.Items.Clear();
-            LBvol3.Items.Clear();
             Request();
         }
 
@@ -214,15 +210,21 @@ namespace EyeCT4Participation
 
         private void logoutBTN_Click(object sender, EventArgs e)
         {
-            /////////////////// test code voor chat
             this.Close();
             Login Login = (Login)Application.OpenForms["Login"];
             Login.Show();
         }
 
-        private void Request()
+        public void Request()
         {
-            foreach (Request request in Database.GetRequests(userID))
+            volunteer1.Clear();
+            volunteer2.Clear();
+            volunteer3.Clear();
+            LBvol1.Items.Clear();
+            LBvol2.Items.Clear();
+            LBvol3.Items.Clear();
+            requestoverview = new RequestOverview(requests, userID);
+            foreach (Request request in requestoverview.GetRequestList())
             {
                 requests.Add(request);
             }
@@ -273,5 +275,31 @@ namespace EyeCT4Participation
                 }
             }
         }
+
+        private void reviewVolunteerBTN_Click(object sender, EventArgs e)
+        {
+            if (LBvol1.SelectedIndex != -1)
+            {
+                selectedVolunteer = (Volunteer)LBvol1.SelectedItem;
+                new ReviewVolunteer().Show();
+            }
+
+            else if (LBvol2.SelectedIndex != -1)
+            {
+                selectedVolunteer = (Volunteer)LBvol2.SelectedItem;
+                new ReviewVolunteer().Show();
+            }
+
+            else if (LBvol3.SelectedIndex != -1)
+            {
+                selectedVolunteer = (Volunteer)LBvol3.SelectedItem;
+                new ReviewVolunteer().Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Selecteer een vrijwilliger.");
+            }
+        }      
     }
 }

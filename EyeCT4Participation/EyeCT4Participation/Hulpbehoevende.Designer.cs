@@ -31,6 +31,7 @@
             this.reviewBTN = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.reviewVolunteerBTN = new System.Windows.Forms.Button();
             this.LBvol3 = new System.Windows.Forms.ListBox();
             this.LBvol2 = new System.Windows.Forms.ListBox();
             this.LBvol1 = new System.Windows.Forms.ListBox();
@@ -74,6 +75,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.reviewVolunteerBTN);
             this.groupBox1.Controls.Add(this.LBvol3);
             this.groupBox1.Controls.Add(this.LBvol2);
             this.groupBox1.Controls.Add(this.LBvol1);
@@ -94,6 +96,16 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My requests/reviews";
+            // 
+            // reviewVolunteerBTN
+            // 
+            this.reviewVolunteerBTN.Location = new System.Drawing.Point(637, 184);
+            this.reviewVolunteerBTN.Name = "reviewVolunteerBTN";
+            this.reviewVolunteerBTN.Size = new System.Drawing.Size(105, 70);
+            this.reviewVolunteerBTN.TabIndex = 35;
+            this.reviewVolunteerBTN.Text = "Review selected volunteer";
+            this.reviewVolunteerBTN.UseVisualStyleBackColor = true;
+            this.reviewVolunteerBTN.Click += new System.EventHandler(this.reviewVolunteerBTN_Click);
             // 
             // LBvol3
             // 
@@ -148,7 +160,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(637, 246);
+            this.button8.Location = new System.Drawing.Point(637, 260);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(105, 70);
             this.button8.TabIndex = 20;
@@ -158,9 +170,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(637, 321);
+            this.button6.Location = new System.Drawing.Point(637, 336);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 89);
+            this.button6.Size = new System.Drawing.Size(105, 70);
             this.button6.TabIndex = 19;
             this.button6.Text = "Initiate chat with selected volunteer";
             this.button6.UseVisualStyleBackColor = true;
@@ -184,6 +196,7 @@
             this.contentTB3.Multiline = true;
             this.contentTB3.Name = "contentTB3";
             this.contentTB3.ReadOnly = true;
+            this.contentTB3.ShortcutsEnabled = false;
             this.contentTB3.Size = new System.Drawing.Size(328, 130);
             this.contentTB3.TabIndex = 10;
             // 
@@ -193,6 +206,7 @@
             this.contentTB2.Multiline = true;
             this.contentTB2.Name = "contentTB2";
             this.contentTB2.ReadOnly = true;
+            this.contentTB2.ShortcutsEnabled = false;
             this.contentTB2.Size = new System.Drawing.Size(328, 130);
             this.contentTB2.TabIndex = 9;
             // 
@@ -202,6 +216,7 @@
             this.contentTB1.Multiline = true;
             this.contentTB1.Name = "contentTB1";
             this.contentTB1.ReadOnly = true;
+            this.contentTB1.ShortcutsEnabled = false;
             this.contentTB1.Size = new System.Drawing.Size(328, 130);
             this.contentTB1.TabIndex = 8;
             // 
@@ -306,6 +321,7 @@
         private System.Windows.Forms.ListBox LBvol3;
         private System.Windows.Forms.ListBox LBvol2;
         private System.Windows.Forms.ListBox LBvol1;
+        private System.Windows.Forms.Button reviewVolunteerBTN;
     }
 }
 
