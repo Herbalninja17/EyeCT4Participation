@@ -12,6 +12,7 @@ using EyeCT4Participation.Business;
 
 namespace EyeCT4Participation.DataBase
 {
+    public enum UserType {needy,volunteer};
     public static class Database
     {
         static readonly string m_databaseFilename = "Database.sql";
@@ -308,7 +309,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         // REVIEWS UIT DATABASE HALEN <THOM>
-        public static string GetReviews(long accountid)
+        public static string GetReviews(long accountid,UserType SoortUser)
         {
             string reviews = "";
             string needyName = "";
@@ -321,9 +322,26 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
+                switch (SoortUser )
+                {
+                    case UserType.needy:
+                                   m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
                 Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
-                m_command.ExecuteNonQuery();                
+                m_command.ExecuteNonQuery();
+                        break;
+                    case UserType.volunteer:
+                        m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G2.GebruikerID = :GebruikerID";
+                Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
+                m_command.ExecuteNonQuery();
+                        break;
+                        // Weet niet of het nodig is.
+                   // case UserType.admin:
+
+                    //    break;
+                      
+                  
+                }
+                     
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
@@ -332,7 +350,8 @@ namespace EyeCT4Participation.DataBase
                         needyRate = Convert.ToString((_Reader["Beoordeling"]));
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
-                        reviews += Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        //@Voor makkelijke split
+                        reviews = reviews+"@"+Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
                     }
                 }
             }
@@ -389,12 +408,14 @@ namespace EyeCT4Participation.DataBase
         {
             chathistory.Clear();
             string bericht = "";
+            string hetzender = "";
+            string chatstring = "";
             try
             {
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT Bericht from chat WHERE GebruikerID = :needy AND GebruikerID2 = :volunteer ORDER BY ChatID ";
+                m_command.CommandText = "SELECT c.Bericht, c.Zender, g.Gebruikersnaam from Chat c LEFT JOIN Gebruiker g ON c.Zender = g.GebruikerID WHERE c.GebruikerID = :needy AND c.GebruikerID2 = :volunteer ORDER BY ChatID ";
                 m_command.Parameters.Add("needy", OracleDbType.Varchar2).Value = needy;
                 m_command.Parameters.Add("volunteer", OracleDbType.Varchar2).Value = volunteer;
                 m_command.ExecuteNonQuery();
@@ -402,8 +423,10 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
+                        hetzender = Convert.ToString(_Reader["Gebruikersnaam"]);
                         bericht = Convert.ToString(_Reader["Bericht"]);
-                        chathistory.Add(bericht);
+                        chatstring = hetzender + ": " + bericht;
+                        chathistory.Add(chatstring);
                     }
                 }
             }
@@ -416,7 +439,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         // CHAT INSERTS <RECHARD>
-        public static void chatsend(int needy, int volunteer, string bericht)
+        public static void chatsend(int needy, int volunteer, string bericht, int zender)
         {
             int AutoID = 0;
             try
@@ -433,8 +456,9 @@ namespace EyeCT4Participation.DataBase
                         AutoID = Convert.ToInt32(_Reader["COUNT(ChatID)"]) + 1;
                     }
                 }
-                m_command.CommandText = "INSERT INTO Chat (ChatID, GebruikerID, GebruikerID2, Bericht) VALUES (:ChatID, :GebruikerID, :GebruikerID2, :Bericht)";
+                m_command.CommandText = "INSERT INTO Chat (ChatID, Zender, GebruikerID, GebruikerID2, Bericht) VALUES (:ChatID, :Zender, :GebruikerID, :GebruikerID2, :Bericht)";
                 m_command.Parameters.Add("ChatID", OracleDbType.Int32).Value = AutoID;
+                m_command.Parameters.Add("Zender", OracleDbType.Int32).Value = zender;
                 m_command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = needy;
                 m_command.Parameters.Add("GebruikerID2", OracleDbType.Int32).Value = volunteer;
                 m_command.Parameters.Add("Bericht", OracleDbType.Varchar2).Value = bericht;
