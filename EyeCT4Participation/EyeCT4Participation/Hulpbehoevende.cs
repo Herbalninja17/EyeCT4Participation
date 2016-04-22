@@ -25,6 +25,7 @@ namespace EyeCT4Participation
         private List<Volunteer> volunteer1 = new List<Volunteer>();
         private List<Volunteer> volunteer2 = new List<Volunteer>();
         private List<Volunteer> volunteer3 = new List<Volunteer>();
+        public static int User2ID;
 
         public Hulpbehoevende()
         {
@@ -116,7 +117,7 @@ namespace EyeCT4Participation
                 // open chat met de geselecteerde vrijwilliger moet nog gebeuren
                 if (m_chat == null || m_chat.IsDisposed)
                 {
-                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };
                     m_chat.Show();
                     MessageBox.Show(m_volunteer.volunteerID.ToString());
                 }
@@ -132,9 +133,9 @@ namespace EyeCT4Participation
                 // open chat met de geselecteerde vrijwilliger moet nog gebeuren
                 if (m_chat == null || m_chat.IsDisposed)
                 {
-                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };                    
                     m_chat.Show();
-                    MessageBox.Show(m_volunteer.volunteerID.ToString());
+                    MessageBox.Show(m_volunteer.volunteerID.ToString());                    
                 }
 
                 else
@@ -148,7 +149,7 @@ namespace EyeCT4Participation
                 // open chat met de geselecteerde vrijwilliger moet nog gebeuren
                 if (m_chat == null || m_chat.IsDisposed)
                 {
-                    m_chat = new Chat { Parent = this.Parent };
+                    m_chat = new Chat(userID, m_volunteer.volunteerID) { Parent = this.Parent };
                     m_chat.Show();
                     MessageBox.Show(m_volunteer.volunteerID.ToString());
                 }
@@ -162,7 +163,9 @@ namespace EyeCT4Participation
             {
                 MessageBox.Show("Choose a volunteer to chat with.", "Chat", MessageBoxButtons.OK);
             }
+            
         }
+
 
         private void LBvol1_Click(object sender, EventArgs e)
         {
@@ -213,7 +216,7 @@ namespace EyeCT4Participation
         {
             /////////////////// test code voor chat
             this.Hide();
-            new Chat().Show();
+            new Chat(userID, m_volunteer.volunteerID).Show();
         }
 
         private void Request()
