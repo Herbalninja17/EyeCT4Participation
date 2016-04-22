@@ -28,37 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportedcontentBTN = new System.Windows.Forms.Button();
+            this.reportedrequestsBTN = new System.Windows.Forms.Button();
             this.contentGB = new System.Windows.Forms.GroupBox();
+            this.LBSelectedContent = new System.Windows.Forms.ListBox();
             this.ignoreBTN = new System.Windows.Forms.Button();
             this.removeBTN = new System.Windows.Forms.Button();
-            this.helprequestsReviewBTN = new System.Windows.Forms.Button();
+            this.helprequestsBTN = new System.Windows.Forms.Button();
             this.chatBTN = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
-            this.LBSelectedContent = new System.Windows.Forms.ListBox();
+            this.reviewsBTN = new System.Windows.Forms.Button();
+            this.reportedReviewsBTN = new System.Windows.Forms.Button();
+            this.reportedChatsBTN = new System.Windows.Forms.Button();
             this.contentGB.SuspendLayout();
             this.SuspendLayout();
             // 
-            // reportedcontentBTN
+            // reportedrequestsBTN
             // 
-            this.reportedcontentBTN.Location = new System.Drawing.Point(13, 28);
-            this.reportedcontentBTN.Name = "reportedcontentBTN";
-            this.reportedcontentBTN.Size = new System.Drawing.Size(147, 79);
-            this.reportedcontentBTN.TabIndex = 0;
-            this.reportedcontentBTN.Text = "Reported content";
-            this.reportedcontentBTN.UseVisualStyleBackColor = true;
-            this.reportedcontentBTN.Click += new System.EventHandler(this.reportedcontentBTN_Click);
+            this.reportedrequestsBTN.Location = new System.Drawing.Point(164, 201);
+            this.reportedrequestsBTN.Name = "reportedrequestsBTN";
+            this.reportedrequestsBTN.Size = new System.Drawing.Size(141, 79);
+            this.reportedrequestsBTN.TabIndex = 0;
+            this.reportedrequestsBTN.Text = "Reported Requests";
+            this.reportedrequestsBTN.UseVisualStyleBackColor = true;
+            this.reportedrequestsBTN.Click += new System.EventHandler(this.reportedcontentBTN_Click);
             // 
             // contentGB
             // 
             this.contentGB.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.contentGB.Controls.Add(this.LBSelectedContent);
-            this.contentGB.Location = new System.Drawing.Point(191, 28);
+            this.contentGB.Location = new System.Drawing.Point(311, 28);
             this.contentGB.Name = "contentGB";
             this.contentGB.Size = new System.Drawing.Size(200, 411);
             this.contentGB.TabIndex = 1;
             this.contentGB.TabStop = false;
             this.contentGB.Text = "Content";
+            // 
+            // LBSelectedContent
+            // 
+            this.LBSelectedContent.FormattingEnabled = true;
+            this.LBSelectedContent.Location = new System.Drawing.Point(6, 24);
+            this.LBSelectedContent.Name = "LBSelectedContent";
+            this.LBSelectedContent.Size = new System.Drawing.Size(187, 381);
+            this.LBSelectedContent.TabIndex = 0;
             // 
             // ignoreBTN
             // 
@@ -80,19 +91,19 @@
             this.removeBTN.UseVisualStyleBackColor = true;
             this.removeBTN.Click += new System.EventHandler(this.removeBTN_Click);
             // 
-            // helprequestsReviewBTN
+            // helprequestsBTN
             // 
-            this.helprequestsReviewBTN.Location = new System.Drawing.Point(13, 201);
-            this.helprequestsReviewBTN.Name = "helprequestsReviewBTN";
-            this.helprequestsReviewBTN.Size = new System.Drawing.Size(147, 79);
-            this.helprequestsReviewBTN.TabIndex = 4;
-            this.helprequestsReviewBTN.Text = "Helprequests/reviews";
-            this.helprequestsReviewBTN.UseVisualStyleBackColor = true;
-            this.helprequestsReviewBTN.Click += new System.EventHandler(this.helprequestsReviewBTN_Click);
+            this.helprequestsBTN.Location = new System.Drawing.Point(13, 201);
+            this.helprequestsBTN.Name = "helprequestsBTN";
+            this.helprequestsBTN.Size = new System.Drawing.Size(147, 79);
+            this.helprequestsBTN.TabIndex = 4;
+            this.helprequestsBTN.Text = "Helprequests";
+            this.helprequestsBTN.UseVisualStyleBackColor = true;
+            this.helprequestsBTN.Click += new System.EventHandler(this.helprequestsReviewBTN_Click);
             // 
             // chatBTN
             // 
-            this.chatBTN.Location = new System.Drawing.Point(13, 116);
+            this.chatBTN.Location = new System.Drawing.Point(12, 12);
             this.chatBTN.Name = "chatBTN";
             this.chatBTN.Size = new System.Drawing.Size(147, 79);
             this.chatBTN.TabIndex = 5;
@@ -109,26 +120,51 @@
             this.logoutBTN.Text = "Logout";
             this.logoutBTN.UseVisualStyleBackColor = true;
             // 
-            // LBSelectedContent
+            // reviewsBTN
             // 
-            this.LBSelectedContent.FormattingEnabled = true;
-            this.LBSelectedContent.Location = new System.Drawing.Point(7, 20);
-            this.LBSelectedContent.Name = "LBSelectedContent";
-            this.LBSelectedContent.Size = new System.Drawing.Size(187, 381);
-            this.LBSelectedContent.TabIndex = 0;
+            this.reviewsBTN.Location = new System.Drawing.Point(12, 106);
+            this.reviewsBTN.Name = "reviewsBTN";
+            this.reviewsBTN.Size = new System.Drawing.Size(147, 79);
+            this.reviewsBTN.TabIndex = 7;
+            this.reviewsBTN.Text = "Reviews";
+            this.reviewsBTN.UseVisualStyleBackColor = true;
+            this.reviewsBTN.Click += new System.EventHandler(this.reviewsBTN_Click);
+            // 
+            // reportedReviewsBTN
+            // 
+            this.reportedReviewsBTN.Location = new System.Drawing.Point(165, 106);
+            this.reportedReviewsBTN.Name = "reportedReviewsBTN";
+            this.reportedReviewsBTN.Size = new System.Drawing.Size(141, 79);
+            this.reportedReviewsBTN.TabIndex = 8;
+            this.reportedReviewsBTN.Text = "Reported Reviews";
+            this.reportedReviewsBTN.UseVisualStyleBackColor = true;
+            this.reportedReviewsBTN.Click += new System.EventHandler(this.reportedReviewsBTN_Click);
+            // 
+            // reportedChatsBTN
+            // 
+            this.reportedChatsBTN.Location = new System.Drawing.Point(164, 12);
+            this.reportedChatsBTN.Name = "reportedChatsBTN";
+            this.reportedChatsBTN.Size = new System.Drawing.Size(141, 79);
+            this.reportedChatsBTN.TabIndex = 9;
+            this.reportedChatsBTN.Text = "Reported Chats";
+            this.reportedChatsBTN.UseVisualStyleBackColor = true;
+            this.reportedChatsBTN.Click += new System.EventHandler(this.reportedChatsBTN_Click);
             // 
             // Beheerder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 465);
+            this.ClientSize = new System.Drawing.Size(523, 457);
+            this.Controls.Add(this.reportedChatsBTN);
+            this.Controls.Add(this.reportedReviewsBTN);
+            this.Controls.Add(this.reviewsBTN);
             this.Controls.Add(this.logoutBTN);
             this.Controls.Add(this.chatBTN);
-            this.Controls.Add(this.helprequestsReviewBTN);
+            this.Controls.Add(this.helprequestsBTN);
             this.Controls.Add(this.removeBTN);
             this.Controls.Add(this.ignoreBTN);
             this.Controls.Add(this.contentGB);
-            this.Controls.Add(this.reportedcontentBTN);
+            this.Controls.Add(this.reportedrequestsBTN);
             this.Name = "Beheerder";
             this.Text = "Beheerder";
             this.contentGB.ResumeLayout(false);
@@ -138,13 +174,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button reportedcontentBTN;
+        private System.Windows.Forms.Button reportedrequestsBTN;
         private System.Windows.Forms.GroupBox contentGB;
         private System.Windows.Forms.Button ignoreBTN;
         private System.Windows.Forms.Button removeBTN;
-        private System.Windows.Forms.Button helprequestsReviewBTN;
+        private System.Windows.Forms.Button helprequestsBTN;
         private System.Windows.Forms.Button chatBTN;
         private System.Windows.Forms.Button logoutBTN;
         private System.Windows.Forms.ListBox LBSelectedContent;
+        private System.Windows.Forms.Button reviewsBTN;
+        private System.Windows.Forms.Button reportedReviewsBTN;
+        private System.Windows.Forms.Button reportedChatsBTN;
     }
 }
