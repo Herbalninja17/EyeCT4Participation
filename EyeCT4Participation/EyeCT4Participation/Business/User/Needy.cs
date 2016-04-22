@@ -10,7 +10,7 @@ namespace EyeCT4Participation.Business.User
     public class Needy : UI.User 
     {
         public int needyID { get; set; }
-        //public List<Appointment> appointmentList { get; set;}
+        public List<Appointment> appointmentList { get; set;}
 
         public Needy(int needyID/*, List<Appointment> appointmentList*/)
         {

@@ -331,7 +331,8 @@ namespace EyeCT4Participation.DataBase
                         needyRate = Convert.ToString((_Reader["Beoordeling"]));
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
-                        reviews += Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        //@Voor makkelijke split
+                        reviews = reviews+"@"+Convert.ToString("Hulpbehoevende " + needyName + " " + "beoordeelt vrijwilliger " + volunteerName + " met een " + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
                     }
                 }
             }
@@ -347,7 +348,6 @@ namespace EyeCT4Participation.DataBase
         public static List<Request> GetRequests()
         {
             List<Request> requests = new List<Request>();
-          
 
             try
             {
@@ -360,8 +360,8 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
-                        Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), Convert.ToBoolean(_Reader["URGENT"]), _Reader["LOCATION"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]), Convert.ToBoolean(_Reader["ISREPORTED"]));
-                        requests.Add(request);
+                        //Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
+                        //requests.Add(request);
                     }
                 }
             }
@@ -372,5 +372,70 @@ namespace EyeCT4Participation.DataBase
             }
             return requests;
         }
+
+        public static List<string> chathistory = new List<string>();
+        // CHATHALEN <RECHARD>
+        public static string chatbox(int needy, int volunteer)
+        {
+            chathistory.Clear();
+            string bericht = "";
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT Bericht from chat WHERE GebruikerID = :needy AND GebruikerID2 = :volunteer ORDER BY ChatID ";
+                m_command.Parameters.Add("needy", OracleDbType.Varchar2).Value = needy;
+                m_command.Parameters.Add("volunteer", OracleDbType.Varchar2).Value = volunteer;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        bericht = Convert.ToString(_Reader["Bericht"]);
+                        chathistory.Add(bericht);
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return bericht;
+
+        }
+
+        // CHAT INSERTS <RECHARD>
+        public static void chatsend(int needy, int volunteer, string bericht)
+        {
+            int AutoID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT COUNT(ChatID) from Chat";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        AutoID = Convert.ToInt32(_Reader["COUNT(ChatID)"]) + 1;
+                    }
+                }
+                m_command.CommandText = "INSERT INTO Chat (ChatID, GebruikerID, GebruikerID2, Bericht) VALUES (:ChatID, :GebruikerID, :GebruikerID2, :Bericht)";
+                m_command.Parameters.Add("ChatID", OracleDbType.Int32).Value = AutoID;
+                m_command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = needy;
+                m_command.Parameters.Add("GebruikerID2", OracleDbType.Int32).Value = volunteer;
+                m_command.Parameters.Add("Bericht", OracleDbType.Varchar2).Value = bericht;
+                m_command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }

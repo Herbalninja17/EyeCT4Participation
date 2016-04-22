@@ -70,6 +70,7 @@
             this.logoutBTN.TabIndex = 4;
             this.logoutBTN.Text = "Logout";
             this.logoutBTN.UseVisualStyleBackColor = true;
+            this.logoutBTN.Click += new System.EventHandler(this.logoutBTN_Click);
             // 
             // reviewBTN
             // 

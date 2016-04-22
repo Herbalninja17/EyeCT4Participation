@@ -15,8 +15,9 @@ namespace EyeCT4Participation
 {
     public partial class Chat : Form
     {
-        int needyid = 1;
+        
         int volunteerid = 1;
+        public int userID = DataBase.Database.acID;
 
         public Chat()
         {
@@ -39,13 +40,27 @@ namespace EyeCT4Participation
             //chatLB.SelectedIndex = chatLB.Items.Count - 1;
         }
 
+        //List<string> chathistory = new List<string>();
+
         private void sendBTN_Click(object sender, EventArgs e)
         {
+            DataBase.Database.chatsend(7, 4, chattosendTB.Text.ToString());
+            //chathistory.Add(DataBase.Database.chatboc(userID, 2).ToString());
             //string message = chattosendTB.Text;
             //chats.MessageToChat(needyid, volunteerid, message);
-            DataBase.Database.GetUser();
+            //DataBase.Database.GetUser();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DataBase.Database.chatbox(userID, 2);
+            chatLB.Items.Clear();
+            foreach (string chat in Database.chathistory)
+            {
+                chatLB.Items.Add(chat);
+            }
+        }
 
+        
     }
 }

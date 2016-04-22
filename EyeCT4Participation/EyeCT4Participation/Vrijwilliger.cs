@@ -10,24 +10,32 @@ using System.Windows.Forms;
 
 namespace EyeCT4Participation
 {
-
-    public partial class Vrijwilliger : Form
-    {
-        public long userID = DataBase.Database.acID;
-        enum FormState
+        public enum FormState
         {
             nothingSelected,
             reviews,
             hulpvraag
         }
+    public partial class Vrijwilliger : Form
+    {
+        public long userID = DataBase.Database.acID;
+       
+  
         public Vrijwilliger()
         {
             InitializeComponent();
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)
-        {
+        {   
             DataBase.Database.GetReviews(userID);
+        }
+
+        private void logoutBTN_Click(object sender, EventArgs e)
+        {
+            /////////////////// test code voor chat
+            this.Hide();
+            new Chat().Show();
         }
     }
 }
