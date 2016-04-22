@@ -189,7 +189,7 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
 
-        // GetChat Raphael
+        // GetChat admin <Raphael>
         public static List<string> chats = new List<string>();
         public static bool getChat(long UserID1, long UserID2)
         {
@@ -225,7 +225,7 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
         
-        // GetReported Raphael
+        // GetReported admin <Raphael>
         public static List<string> reported = new List<string>();
         public static bool getReported(string query)
         {
@@ -248,10 +248,18 @@ namespace EyeCT4Participation.DataBase
                         //acID = accID;
                         //result = Convert.ToString(_Reader["Gebruikersnaam"]);
                         //if (result == username) { ok = true; }
+                        if (query == "SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N'")
+                        {
                         reported.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+                        }
+                        if (query == "SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N'")
+                        {
                         reported.Add(Convert.ToString(_Reader["BERICHT"]));
+                        }
+                        if (query == "SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N'")
+                        {
                         reported.Add(Convert.ToString(_Reader["OMSCHRIJVING"]));
-
+                        }
                     }
                 }
             }
@@ -262,7 +270,71 @@ namespace EyeCT4Participation.DataBase
             }
             return ok;
         }
-        
+
+        // GetRequests/Reviews admin <Raphael>
+        public static List<string> reviewsRequests = new List<string>();
+        public static bool getRequestsReviews()
+        {
+            bool ok = false;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT * FROM HULPVRAAG";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        //ac = acctype;
+                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        //acID = accID;
+                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        //if (result == username) { ok = true; }
+                        reviewsRequests.Add(Convert.ToString(_Reader["OMSCHRIJVING"]));
+
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            
+            
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT * FROM REVIEW";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        //ac = acctype;
+                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        //acID = accID;
+                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        //if (result == username) { ok = true; }
+                        reviewsRequests.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+
+        }
         // HULPVRAAG UITZETTEN <THOM>
 
         public static void placeARequest(int accountid, string omschrijving, string locatie, int reistijd,
@@ -363,42 +435,38 @@ namespace EyeCT4Participation.DataBase
             return reviews;
         }
 
-        // REQUEST UIT DATABASE <OLAF>
-        public static List<Request> GetRequests()
-        {
-            List<Request> requests = new List<Request>();
 
-            try
-            {
-                OpenConnection();                   // om connection open te maken
-                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
-                m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT * FROM HULPVRAAG ORDER BY HULPVRAAGID";
-                m_command.ExecuteNonQuery();
-                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
-                {
-                    if (_Reader.HasRows)
-                    {
-                        while (_Reader.Read())
-                        {
-                            CultureInfo provider = CultureInfo.InvariantCulture;
-                            string start = Convert.ToString(_Reader["STARTDATUM"]);
-                            string end = Convert.ToString(_Reader["EINDDATUM"]);
-                            DateTime startdate = DateTime.ParseExact(start, "HH:mm", provider);
-                            DateTime enddate = DateTime.ParseExact(end, "HH:mm", provider);
-                            Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), startdate, enddate, Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
-                            requests.Add(request);
-                        }
-                    }
-                }
-            }
-            catch (OracleException ex)
-            {
-                Database.CloseConnection();
-                Console.WriteLine(ex.Message);
-            }
-            return requests;
-        }
+        public static List<Request> requests = new List<Request>();
+        // REQUEST UIT DATABASE <OLAF>
+    //    public static List<Request> GetRequests()
+    //    {
+            
+
+    //        try
+    //        {
+    //            OpenConnection();                   // om connection open te maken
+    //            m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+    //            m_command.Connection = m_conn;      // een connection maken met het command
+    //            m_command.CommandText = "SELECT * FROM HULPVRAAG ORDER BY HULPVRAAGID";
+    //            m_command.ExecuteNonQuery();
+    //            using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+    //            {
+    //                if (_Reader.HasRows)
+    //                {
+    //                while (_Reader.Read())
+    //                {
+    //                    //Request request = new Request(Convert.ToInt32(_Reader["HULPVRAAGID"]), Convert.ToInt32(_Reader["GEBRUIKERID"]), _Reader["OMSCHRIJVING"].ToString(), _Reader["LOCATIE"].ToString(), Convert.ToInt32(_Reader["REISTIJD"]), _Reader["VERVOERTYPE"].ToString(), Convert.ToDateTime(_Reader["STARTDATUM"]), Convert.ToDateTime(_Reader["EINDDATUM"]), Convert.ToInt32(_Reader["AANTALVRIJWILLIGERS"]));
+    //                    //requests.Add(request);
+    //                }
+    //            }
+    //        }
+    //        catch (OracleException ex)
+    //        {
+    //            Database.CloseConnection();
+    //            Console.WriteLine(ex.Message);
+    //        }
+    //        return requests;
+    //    }
 
 
 

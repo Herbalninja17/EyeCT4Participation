@@ -25,25 +25,25 @@ namespace EyeCT4Participation
         public Hulpbehoevende()
         {
             InitializeComponent();
-            Database.GetRequests();
-            foreach (Request request in Database.GetRequests())
-            {
-                requests.Add(request);
-            }
+            ////Database.GetRequests();
+            //foreach (Request request in Database.GetRequests())
+            //{
+            //    requests.Add(request);
+            //}
 
-            int i = requests.Count();
-            if (i >= 1)
-            {
-                contentTB1.Text = Convert.ToString(requests[i - 1]);
-            }
-            if (i >= 2)
-            {
-                contentTB2.Text = Convert.ToString(requests[i - 2]);
-            }
-            if (i >= 3)
-            {
-                contentTB3.Text = Convert.ToString(requests[i - 3]);
-            }
+            //int i = requests.Count();
+            //if (i >= 1)
+            //{
+            //    contentTB1.Text = Convert.ToString(requests[i - 1]);
+            //}
+            //if (i >= 2)
+            //{
+            //    contentTB2.Text = Convert.ToString(requests[i - 2]);
+            //}
+            //if (i >= 3)
+            //{
+            //    contentTB3.Text = Convert.ToString(requests[i - 3]);
+            //}
             
         }
 
