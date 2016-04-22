@@ -14,12 +14,7 @@ namespace EyeCT4Participation.Business
             get;
             set;
         }
-        public long m_ReviewID
-        {
-            get;
-            set;
-
-        }
+        public Review m_MEINREVIEW;
         public string m_Content
         {
             get;
@@ -27,12 +22,16 @@ namespace EyeCT4Participation.Business
 
         }
         //constructor
-        public Reaction(long p_GebruikerID, long p_ReviewID, string p_Content)
+        public Reaction(long p_GebruikerID, Review p_Review, string p_Content)
         {
             this.m_GebruikerID = p_GebruikerID;
-            this.m_ReviewID = p_ReviewID;
+            this.m_MEINREVIEW = p_Review;
             this.m_Content = p_Content;
 
+        }
+        public override string ToString()
+        {
+            return "gebruikerID" + m_GebruikerID + "content" + m_Content;
         }
     }
 }
