@@ -17,7 +17,8 @@ namespace EyeCT4Participation
     {
         //dit is ook een change
         //Business.User.Needy needy = new Business.User.Needy(DataBase.Database.acID);
-        public int userID = DataBase.Database.acID;
+        public static int userID = DataBase.Database.acID;
+        private MyProfile m_MyProfile;
         private PlaceRequest m_PlaceRequest;
         private Chat m_chat;
         private Volunteer m_volunteer;
@@ -52,9 +53,16 @@ namespace EyeCT4Participation
         private void profileBTN_Click(object sender, EventArgs e)
         {
             // open het profiel van deze user
-            //DataBase.Database.GetUser();
-            contentTB1.Text = DataBase.Database.GetUser();
+            if (m_MyProfile == null || m_MyProfile.IsDisposed)
+            {
+                m_MyProfile = new MyProfile { Parent = this.Parent };
+                m_MyProfile.Show();
+            }
 
+            else
+            {
+                m_MyProfile.BringToFront();
+            }
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)

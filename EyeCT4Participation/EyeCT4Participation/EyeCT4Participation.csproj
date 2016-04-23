@@ -81,6 +81,12 @@
     <Compile Include="Hulpbehoevende.Designer.cs">
       <DependentUpon>Hulpbehoevende.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyProfile.Designer.cs">
+      <DependentUpon>MyProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlaceRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyProfile.resx">
+      <DependentUpon>MyProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaceRequest.resx">
       <DependentUpon>PlaceRequest.cs</DependentUpon>

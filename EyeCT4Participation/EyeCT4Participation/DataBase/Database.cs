@@ -89,7 +89,7 @@ namespace EyeCT4Participation.DataBase
         } //goodluck! </Rechard>        
         /// /////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        public static string GetUser() // Gebruik deze om jullie command en results te testen jongens
+        public static string GetUser(int accountid) // Gebruik deze om jullie command en results te testen jongens
         {
             string _test = "no";
             try
@@ -97,13 +97,14 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT COUNT(Gebruikerid) from Gebruiker";
-                m_command.ExecuteNonQuery();                
+                m_command.CommandText = "SELECT Gebruikerid from Gebruiker WHERE Gebruikerid = :GebruikerID";
+                Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
+                m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
                     {
-                        _test = Convert.ToString(Convert.ToInt32(_Reader["COUNT(Gebruikerid)"]));
+                        _test = Convert.ToString(Convert.ToInt32(_Reader["Gebruikerid"]));
                     }
                 }
             }
@@ -842,5 +843,52 @@ namespace EyeCT4Participation.DataBase
             }
         }
 
+        public static string getUserInformation(long userinformationid)
+        {
+        string userInformation = "";
+        string gebruikersnaam = "";
+        string wachtwoord = "";
+        string naam = "";
+        string geslacht = "";
+        string adres = "";
+        string woonplaats = "";
+        string telefoonnummer = "";
+        string email = "";
+            
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT * From Gebruiker Where GebruikerID = :id";
+                m_command.Parameters.Add(":id", OracleDbType.Varchar2).Value = userinformationid;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        gebruikersnaam = Convert.ToString((_Reader["Gebruikersnaam"]));
+                        wachtwoord = Convert.ToString((_Reader["Wachtwoord"]));
+                        naam = Convert.ToString((_Reader["Naam"]));
+                        geslacht = Convert.ToString((_Reader["Geslacht"]));
+                        adres = Convert.ToString((_Reader["Adres"]));
+                        woonplaats = Convert.ToString((_Reader["Woonplaats"]));
+                        telefoonnummer = Convert.ToString((_Reader["telefoonnummer"]));
+                        email = Convert.ToString((_Reader["email"]));
+                        userInformation = ("Gebruikersnaam: " + gebruikersnaam + "#" + "Wachtwoord: " + wachtwoord + "#" + "Naam: " + naam + "#" + "Geslacht: " + geslacht + "#" + "Adres: " + adres + "#" + "Woonplaats: " + woonplaats + "#" + "Telefoonnummer: " + telefoonnummer + "#" + "E-mail: " +email);
+
+                        userInformation = userInformation.Replace("#", System.Environment.NewLine);
+                    }
+                    return userInformation;
+                }
+            }
+
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return userInformation;
+        }
     }
 }
