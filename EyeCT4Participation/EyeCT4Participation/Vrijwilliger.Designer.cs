@@ -37,6 +37,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.TxtBxReactionPost = new System.Windows.Forms.RichTextBox();
             this.BtnReactionPost = new System.Windows.Forms.Button();
+            this.instresseBTN = new System.Windows.Forms.Button();
+            this.openchatBTN = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,12 +54,13 @@
             // 
             // replyBTN1
             // 
-            this.replyBTN1.Location = new System.Drawing.Point(26, 19);
+            this.replyBTN1.Location = new System.Drawing.Point(6, 19);
             this.replyBTN1.Name = "replyBTN1";
-            this.replyBTN1.Size = new System.Drawing.Size(75, 23);
+            this.replyBTN1.Size = new System.Drawing.Size(95, 23);
             this.replyBTN1.TabIndex = 3;
             this.replyBTN1.Text = "Reply";
             this.replyBTN1.UseVisualStyleBackColor = true;
+            this.replyBTN1.Click += new System.EventHandler(this.replyBTN1_Click);
             // 
             // logoutBTN
             // 
@@ -90,6 +93,8 @@
             // 
             // VrijwilligerGrpBx
             // 
+            this.VrijwilligerGrpBx.Controls.Add(this.openchatBTN);
+            this.VrijwilligerGrpBx.Controls.Add(this.instresseBTN);
             this.VrijwilligerGrpBx.Controls.Add(this.listBox1);
             this.VrijwilligerGrpBx.Controls.Add(this.replyBTN1);
             this.VrijwilligerGrpBx.Location = new System.Drawing.Point(615, 22);
@@ -127,6 +132,26 @@
             this.BtnReactionPost.UseVisualStyleBackColor = true;
             this.BtnReactionPost.Visible = false;
             // 
+            // instresseBTN
+            // 
+            this.instresseBTN.Location = new System.Drawing.Point(6, 49);
+            this.instresseBTN.Name = "instresseBTN";
+            this.instresseBTN.Size = new System.Drawing.Size(95, 23);
+            this.instresseBTN.TabIndex = 12;
+            this.instresseBTN.Text = "Add to interest";
+            this.instresseBTN.UseVisualStyleBackColor = true;
+            this.instresseBTN.Click += new System.EventHandler(this.instresseBTN_Click);
+            // 
+            // openchatBTN
+            // 
+            this.openchatBTN.Location = new System.Drawing.Point(6, 78);
+            this.openchatBTN.Name = "openchatBTN";
+            this.openchatBTN.Size = new System.Drawing.Size(95, 23);
+            this.openchatBTN.TabIndex = 13;
+            this.openchatBTN.Text = "Open Chat";
+            this.openchatBTN.UseVisualStyleBackColor = true;
+            this.openchatBTN.Click += new System.EventHandler(this.openchatBTN_Click);
+            // 
             // Vrijwilliger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,5 +182,7 @@
         private System.Windows.Forms.RichTextBox TxtBxReactionPost;
         private System.Windows.Forms.Button BtnReactionPost;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button instresseBTN;
+        private System.Windows.Forms.Button openchatBTN;
     }
 }

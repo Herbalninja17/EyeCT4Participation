@@ -31,6 +31,7 @@
             this.reviewBTN = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.reviewVolunteerBTN = new System.Windows.Forms.Button();
             this.LBvol3 = new System.Windows.Forms.ListBox();
             this.LBvol2 = new System.Windows.Forms.ListBox();
             this.LBvol1 = new System.Windows.Forms.ListBox();
@@ -48,7 +49,6 @@
             this.profileBTN = new System.Windows.Forms.Button();
             this.appointmentBTN = new System.Windows.Forms.Button();
             this.requestsBTN = new System.Windows.Forms.Button();
-            this.reviewVolunteerBTN = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +96,16 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My requests/reviews";
+            // 
+            // reviewVolunteerBTN
+            // 
+            this.reviewVolunteerBTN.Location = new System.Drawing.Point(637, 184);
+            this.reviewVolunteerBTN.Name = "reviewVolunteerBTN";
+            this.reviewVolunteerBTN.Size = new System.Drawing.Size(105, 70);
+            this.reviewVolunteerBTN.TabIndex = 35;
+            this.reviewVolunteerBTN.Text = "Review selected volunteer";
+            this.reviewVolunteerBTN.UseVisualStyleBackColor = true;
+            this.reviewVolunteerBTN.Click += new System.EventHandler(this.reviewVolunteerBTN_Click);
             // 
             // LBvol3
             // 
@@ -186,6 +196,7 @@
             this.contentTB3.Multiline = true;
             this.contentTB3.Name = "contentTB3";
             this.contentTB3.ReadOnly = true;
+            this.contentTB3.ShortcutsEnabled = false;
             this.contentTB3.Size = new System.Drawing.Size(328, 130);
             this.contentTB3.TabIndex = 10;
             // 
@@ -195,6 +206,7 @@
             this.contentTB2.Multiline = true;
             this.contentTB2.Name = "contentTB2";
             this.contentTB2.ReadOnly = true;
+            this.contentTB2.ShortcutsEnabled = false;
             this.contentTB2.Size = new System.Drawing.Size(328, 130);
             this.contentTB2.TabIndex = 9;
             // 
@@ -204,6 +216,7 @@
             this.contentTB1.Multiline = true;
             this.contentTB1.Name = "contentTB1";
             this.contentTB1.ReadOnly = true;
+            this.contentTB1.ShortcutsEnabled = false;
             this.contentTB1.Size = new System.Drawing.Size(328, 130);
             this.contentTB1.TabIndex = 8;
             // 
@@ -266,16 +279,6 @@
             this.requestsBTN.Text = "My requests";
             this.requestsBTN.UseVisualStyleBackColor = true;
             this.requestsBTN.Click += new System.EventHandler(this.requestsBTN_Click);
-            // 
-            // reviewVolunteerBTN
-            // 
-            this.reviewVolunteerBTN.Location = new System.Drawing.Point(637, 184);
-            this.reviewVolunteerBTN.Name = "reviewVolunteerBTN";
-            this.reviewVolunteerBTN.Size = new System.Drawing.Size(105, 70);
-            this.reviewVolunteerBTN.TabIndex = 35;
-            this.reviewVolunteerBTN.Text = "Review selected volunteer";
-            this.reviewVolunteerBTN.UseVisualStyleBackColor = true;
-            this.reviewVolunteerBTN.Click += new System.EventHandler(this.reviewVolunteerBTN_Click);
             // 
             // Hulpbehoevende
             // 

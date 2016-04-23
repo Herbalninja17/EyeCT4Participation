@@ -87,12 +87,6 @@ namespace EyeCT4Participation
         private void requestsBTN_Click(object sender, EventArgs e)
         {
             // Open de verzoeken die deze user heeft ingediend
-            volunteer1.Clear();
-            volunteer2.Clear();
-            volunteer3.Clear();
-            LBvol1.Items.Clear();
-            LBvol2.Items.Clear();
-            LBvol3.Items.Clear();
             Request();
         }
 
@@ -221,8 +215,14 @@ namespace EyeCT4Participation
             Login.Show();
         }
 
-        private void Request()
+        public void Request()
         {
+            volunteer1.Clear();
+            volunteer2.Clear();
+            volunteer3.Clear();
+            LBvol1.Items.Clear();
+            LBvol2.Items.Clear();
+            LBvol3.Items.Clear();
             requestoverview = new RequestOverview(requests, userID);
             foreach (Request request in requestoverview.GetRequestList())
             {
@@ -281,24 +281,25 @@ namespace EyeCT4Participation
             if (LBvol1.SelectedIndex != -1)
             {
                 selectedVolunteer = (Volunteer)LBvol1.SelectedItem;
+                new ReviewVolunteer().Show();
             }
 
             else if (LBvol2.SelectedIndex != -1)
             {
                 selectedVolunteer = (Volunteer)LBvol2.SelectedItem;
+                new ReviewVolunteer().Show();
             }
 
             else if (LBvol3.SelectedIndex != -1)
             {
                 selectedVolunteer = (Volunteer)LBvol3.SelectedItem;
+                new ReviewVolunteer().Show();
             }
 
             else
             {
                 MessageBox.Show("Selecteer een vrijwilliger.");
             }
-
-            new ReviewVolunteer().Show();
         }      
     }
 }

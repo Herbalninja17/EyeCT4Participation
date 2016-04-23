@@ -190,6 +190,66 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
 
+        // Update table IsVisible <Raphael>
+        public static bool alterYorN (string COLUMN, int ID, string YorN, string visibleOrReported)
+        {
+            bool ok = false;
+
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "UPDATE :COLUMN SET " + visibleOrReported + " = :Y WHERE CHATID = :1";
+                Command.Parameters.Add("Y", OracleDbType.Varchar2).Value = YorN;
+                Command.Parameters.Add("1", OracleDbType.Int32).Value = ID;
+                Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = COLUMN;
+                m_command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
+        
+        // GetReviews admin <Raphael>
+        public static List<string> reviewsListAdmin = new List<string>();
+        public static bool getReviewAdmin()
+        {
+            bool ok = false;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT * FROM REVIEW";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        //ac = acctype;
+                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        //acID = accID;
+                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        //if (result == username) { ok = true; }
+                        reviewsListAdmin.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+
+        }
+        
         // GetChat admin <Raphael>
         public static List<string> chats = new List<string>();
         public static bool getChat(long UserID1, long UserID2)
@@ -226,9 +286,9 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
         
-        // GetReported admin <Raphael>
-        public static List<string> reported = new List<string>();
-        public static bool getReported(string query)
+        // GetReported reviews admin <Raphael>
+        public static List<string> reportedReviews = new List<string>();
+        public static bool getReportedReviews(string query)
         {
             bool ok = false;
 
@@ -243,24 +303,24 @@ namespace EyeCT4Participation.DataBase
                 {
                     while (_Reader.Read())
                     {
-                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
-                        //ac = acctype;
-                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
-                        //acID = accID;
-                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
-                        //if (result == username) { ok = true; }
-                        if (query == "SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N'")
-                        {
-                        reported.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
-                        }
-                        if (query == "SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N'")
-                        {
-                        reported.Add(Convert.ToString(_Reader["BERICHT"]));
-                        }
-                        if (query == "SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N'")
-                        {
-                        reported.Add(Convert.ToString(_Reader["OMSCHRIJVING"]));
-                        }
+                        ////string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        ////ac = acctype;
+                        ////int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        ////acID = accID;
+                        ////result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        ////if (result == username) { ok = true; }
+                        //if (query == "SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N'")
+                        //{
+                        //reported.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+                        //}
+                        //if (query == "SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N'")
+                        //{
+                        //reported.Add(Convert.ToString(_Reader["BERICHT"]));
+                        //}
+                        //if (query == "SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N'")
+                        //{
+                        reportedReviews.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+                        //}
                     }
                 }
             }
@@ -272,9 +332,91 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
 
-        // GetRequests/Reviews admin <Raphael>
+        // GetreportedChat admin <Raphael>
+        public static List<string> reportedChats = new List<string>();
+        public static bool getreportedChat()
+        {
+            bool ok = false;
+
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'Y'";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        //ac = acctype;
+                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        //acID = accID;
+                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        //if (result == username) { ok = true; }
+                        reportedChats.Add(Convert.ToString(_Reader["BERICHT"]));
+
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
+        
+        // GetReported requests admin <Raphael>
+        public static List<string> reportedRequests = new List<string>();
+        public static bool getReportedRequests(string query)
+        {
+            bool ok = false;
+
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = query;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        ////string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+                        ////ac = acctype;
+                        ////int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+                        ////acID = accID;
+                        ////result = Convert.ToString(_Reader["Gebruikersnaam"]);
+                        ////if (result == username) { ok = true; }
+                        //if (query == "SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N'")
+                        //{
+                        //reported.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+                        //}
+                        //if (query == "SELECT BERICHT FROM CHAT WHERE ISREPORTED = 'N'")
+                        //{
+                        //reported.Add(Convert.ToString(_Reader["BERICHT"]));
+                        //}
+                        //if (query == "SELECT OMSCHRIJVING FROM HULPVRAAG WHERE ISREPORTED = 'N'")
+                        //{
+                        reportedRequests.Add(Convert.ToString(_Reader["OMSCHRIJVING"]));
+                        //}
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
+
+        // GetRequests admin <Raphael>
         public static List<string> reviewsRequests = new List<string>();
-        public static bool getRequestsReviews()
+        public static bool getRequests()
         {
             bool ok = false;
             try
@@ -306,38 +448,38 @@ namespace EyeCT4Participation.DataBase
             }
             
             
-            try
-            {
-                OpenConnection();
-                m_command = new OracleCommand();
-                m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT * FROM REVIEW";
-                m_command.ExecuteNonQuery();
-                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
-                {
-                    while (_Reader.Read())
-                    {
-                        //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
-                        //ac = acctype;
-                        //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
-                        //acID = accID;
-                        //result = Convert.ToString(_Reader["Gebruikersnaam"]);
-                        //if (result == username) { ok = true; }
-                        reviewsRequests.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
+        //    try
+        //    {
+        //        OpenConnection();
+        //        m_command = new OracleCommand();
+        //        m_command.Connection = m_conn;
+        //        m_command.CommandText = "SELECT * FROM REVIEW";
+        //        m_command.ExecuteNonQuery();
+        //        using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+        //        {
+        //            while (_Reader.Read())
+        //            {
+        //                //string acctype = Convert.ToString(_Reader["Gebruikerstype"]);
+        //                //ac = acctype;
+        //                //int accID = Convert.ToInt32(_Reader["GebruikerID"]);
+        //                //acID = accID;
+        //                //result = Convert.ToString(_Reader["Gebruikersnaam"]);
+        //                //if (result == username) { ok = true; }
+        //                reviewsRequests.Add(Convert.ToString(_Reader["OPMERKINGEN"]));
 
-                    }
-                }
-            }
-            catch (OracleException ex)
-            {
-                Database.CloseConnection();
-                Console.WriteLine(ex.Message);
-            }
-            return ok;
+        //            }
+        //        }
+        //    }
+        //    catch (OracleException ex)
+        //    {
+        //        Database.CloseConnection();
+        //        Console.WriteLine(ex.Message);
+        //    }
+               return ok;
 
         }
+        
         // HULPVRAAG UITZETTEN <THOM>
-
         public static void placeARequest(int accountid, string omschrijving, string locatie, int reistijd,
             string vervoerType, string startDatum, string eindDatum, string urgent, int aantalVrijwilligers)
         {
@@ -435,7 +577,6 @@ namespace EyeCT4Participation.DataBase
             }
             return reviews;
         }
-
 
         // REQUEST UIT DATABASE <OLAF>
         public static List<Request> GetRequests(int ID)
@@ -543,8 +684,6 @@ namespace EyeCT4Participation.DataBase
             }
             return volunteers;
         }
-
-
 
         public static List<string> chathistory = new List<string>();
         // CHATHALEN <RECHARD>
@@ -678,6 +817,27 @@ namespace EyeCT4Participation.DataBase
             catch (OracleException ex)
             {
 
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        public static void reactneedy (int hulpvraagID, int myID)
+        {
+            
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;                
+                m_command.CommandText = "INSERT INTO Intresse (HulpvraagID, GebruikerID) VALUES (:HID, :GID)";
+                m_command.Parameters.Add("HID", OracleDbType.Int32).Value = hulpvraagID;
+                m_command.Parameters.Add("GID", OracleDbType.Int32).Value = myID;
+                m_command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
                 Console.WriteLine(ex.Message);
             }
         }

@@ -19,7 +19,9 @@ namespace EyeCT4Participation
         public Login()
         {
             InitializeComponent();
-        }               
+        }
+
+        public bool y = false;            
 
         private void loginBTN_Click(object sender, EventArgs e)
         {
@@ -58,22 +60,24 @@ namespace EyeCT4Participation
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //rfid = new RFID();
-            //openCmdLine(rfid);
-            //rfid.Tag += new TagEventHandler(rfid_Tag);
-            //rfid.Attach += new AttachEventHandler(rfid_Attach);
-            //rfid.TagLost += new TagEventHandler(rfid_TagLost);
-            //rfid.Detach += new DetachEventHandler(rfid_Detach);
+            rfid = new RFID();
+            openCmdLine(rfid);
+            rfid.Tag += new TagEventHandler(rfid_Tag);
+            rfid.Attach += new AttachEventHandler(rfid_Attach);
+            rfid.TagLost += new TagEventHandler(rfid_TagLost);
+            rfid.Detach += new DetachEventHandler(rfid_Detach);
 
         }
 
         void rfid_Tag(object sender, TagEventArgs e)
         {
             rfidcodetb.Text = e.Tag;
+            y = true;
         }
         void rfid_TagLost(object sender, TagEventArgs e)
         {
             rfidcodetb.Text = "NULL";
+            y = false;
         }
 
         void rfid_Attach(object sender, AttachEventArgs e)
@@ -217,11 +221,14 @@ namespace EyeCT4Participation
             registerBTN.Text = "Confirm";
             fingerprintCKB.Visible = true;
             loginBTN.Enabled = false;
-        } 
+        }
+
+        string rfidcode = null;
+        string rfid_yn = "X";        
 
         public void confirm()
         {
-            string rfidcode = rfidcodetb.Text.ToString();
+            string userrfid = null;
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();
             string acctype = accounttypeCB.Text.ToString();
@@ -231,9 +238,16 @@ namespace EyeCT4Participation
             string city = cityTB.Text.ToString();
             string p = phoneTB.Text.ToString();
             int phone = 563455;
-            string gender = "X";
+            string gender = "X";            
             if (maleCHK.Checked == true) { gender = "M"; }
             if (femaleCHK.Checked == true) { gender = "V"; }
+            if (fingerprintCKB.Checked == true) { rfid_yn = "Y"; }
+            if (fingerprintCKB.Checked == false) { rfid_yn = "N"; }
+            if (rfid_yn == "Y")
+            {
+                userrfid = rfidcodetb.Text;
+            }
+
             DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender);
             
         }
@@ -241,6 +255,26 @@ namespace EyeCT4Participation
         public void Test()
         {
             registerBTN.BackColor = Color.Red;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (fingerprintCKB.Checked == true) { rfid_yn = "Y"; }
+            if (fingerprintCKB.Checked == false) { rfid_yn = "N"; }
+            if (rfid_yn == "Y")
+            {
+                label11.Text = "Place finger on scanner";
+                if (y == true)
+                {
+                    rfidcode = rfidcodetb.Text.ToString();
+                    label11.Text = "Press confirm to register";
+                }   
+                else 
+                {
+                    label11.Text = "Place finger on scanner";
+                }                          
+            }
+            
         }
     }
 }

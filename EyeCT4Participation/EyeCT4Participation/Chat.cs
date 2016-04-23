@@ -15,10 +15,11 @@ namespace EyeCT4Participation
 {
     public partial class Chat : Form
     {
-        
-        
-        int userID = DataBase.Database.acID;
+
+
+        int userID; 
         int userID2;
+        int zenderID = DataBase.Database.acID;
 
         public Chat(int user1, int user2 )
         {
@@ -49,7 +50,7 @@ namespace EyeCT4Participation
 
         private void sendBTN_Click(object sender, EventArgs e)
         {
-            DataBase.Database.chatsend(userID, userID2, chattosendTB.Text.ToString(), userID);
+            DataBase.Database.chatsend(userID, userID2, chattosendTB.Text.ToString(), zenderID);
             //chathistory.Add(DataBase.Database.chatboc(userID, 2).ToString());
             //string message = chattosendTB.Text;
             //chats.MessageToChat(needyid, volunteerid, message);

@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxTravelTime = new System.Windows.Forms.TextBox();
             this.textBoxEndTime = new System.Windows.Forms.TextBox();
             this.textBoxStartTime = new System.Windows.Forms.TextBox();
-            this.lblEndTime = new System.Windows.Forms.Label();
             this.UrgencyRadioBTN = new System.Windows.Forms.RadioButton();
+            this.lblEndTime = new System.Windows.Forms.Label();
             this.lblBeginTime = new System.Windows.Forms.Label();
             this.textBoxVolunteersNeeded = new System.Windows.Forms.TextBox();
             this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.textBoxTransportType = new System.Windows.Forms.TextBox();
             this.placeRequestBTN = new System.Windows.Forms.Button();
             this.textBoxDescription = new System.Windows.Forms.RichTextBox();
-            this.textBoxTravelTime = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Other details";
             // 
+            // textBoxTravelTime
+            // 
+            this.textBoxTravelTime.Location = new System.Drawing.Point(142, 45);
+            this.textBoxTravelTime.Name = "textBoxTravelTime";
+            this.textBoxTravelTime.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTravelTime.TabIndex = 12;
+            this.textBoxTravelTime.Text = "Travel time";
+            // 
             // textBoxEndTime
             // 
             this.textBoxEndTime.Location = new System.Drawing.Point(142, 98);
@@ -75,15 +83,6 @@
             this.textBoxStartTime.Size = new System.Drawing.Size(100, 20);
             this.textBoxStartTime.TabIndex = 10;
             // 
-            // lblEndTime
-            // 
-            this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Location = new System.Drawing.Point(139, 82);
-            this.lblEndTime.Name = "lblEndTime";
-            this.lblEndTime.Size = new System.Drawing.Size(84, 13);
-            this.lblEndTime.TabIndex = 9;
-            this.lblEndTime.Text = "End time hh/mm";
-            // 
             // UrgencyRadioBTN
             // 
             this.UrgencyRadioBTN.AutoSize = true;
@@ -93,6 +92,15 @@
             this.UrgencyRadioBTN.TabIndex = 2;
             this.UrgencyRadioBTN.Text = "Urgent";
             this.UrgencyRadioBTN.UseVisualStyleBackColor = true;
+            // 
+            // lblEndTime
+            // 
+            this.lblEndTime.AutoSize = true;
+            this.lblEndTime.Location = new System.Drawing.Point(139, 82);
+            this.lblEndTime.Name = "lblEndTime";
+            this.lblEndTime.Size = new System.Drawing.Size(84, 13);
+            this.lblEndTime.TabIndex = 9;
+            this.lblEndTime.Text = "End time hh/mm";
             // 
             // lblBeginTime
             // 
@@ -144,14 +152,6 @@
             this.textBoxDescription.Size = new System.Drawing.Size(259, 175);
             this.textBoxDescription.TabIndex = 9;
             this.textBoxDescription.Text = "Description of the request";
-            // 
-            // textBoxTravelTime
-            // 
-            this.textBoxTravelTime.Location = new System.Drawing.Point(142, 45);
-            this.textBoxTravelTime.Name = "textBoxTravelTime";
-            this.textBoxTravelTime.Size = new System.Drawing.Size(100, 20);
-            this.textBoxTravelTime.TabIndex = 12;
-            this.textBoxTravelTime.Text = "Travel time";
             // 
             // PlaceRequest
             // 

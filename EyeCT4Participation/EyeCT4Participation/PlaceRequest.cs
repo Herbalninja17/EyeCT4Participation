@@ -39,7 +39,8 @@ namespace EyeCT4Participation
             if (UrgencyRadioBTN.Checked == false) { urgent = "N"; }
             int aantalVrijwilligers = Convert.ToInt32(textBoxVolunteersNeeded.Text);
             DataBase.Database.placeARequest(DataBase.Database.acID ,omschrijving, locatie, reistijd, vervoerType, startDatum, eindDatum, urgent, aantalVrijwilligers);
-
+            Hulpbehoevende Hulpbehoevende = (Hulpbehoevende)Application.OpenForms["Hulpbehoevende"];
+            Hulpbehoevende.Request();
         }
     }
 }
