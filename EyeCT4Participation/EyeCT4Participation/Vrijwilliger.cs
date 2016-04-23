@@ -40,10 +40,10 @@ namespace EyeCT4Participation
             Formstate = 2;
             BtnReactionPost.Visible = true;
             TxtBxReactionPost.Visible = true;
-            foreach (Review review in reviews.GetMyReviews(UserType.volunteer))
-            { 
-                    listBox1.Items.Add(Convert.ToString(review));
-            }
+            //foreach (Review review in reviews.GetMyReviews(UserType.volunteer))
+            //{ 
+            //        listBox1.Items.Add(Convert.ToString(review));
+            //}
             
         }
 
@@ -72,6 +72,23 @@ namespace EyeCT4Participation
                 Request a = (Request)listBox1.SelectedItem;
                 MessageBox.Show(a.ToString(), "Request");
             }
+        }
+
+        private void replyBTN1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void instresseBTN_Click(object sender, EventArgs e)
+        {
+            Request a = (Request)listBox1.SelectedItem;
+            Database.reactneedy(a.requestID, Convert.ToInt32(userID));
+        }
+
+        private void openchatBTN_Click(object sender, EventArgs e)
+        {
+            Request a = (Request)listBox1.SelectedItem;
+            new Chat( a.needyID, Convert.ToInt32(userID)).Show();
         }
     }
 }

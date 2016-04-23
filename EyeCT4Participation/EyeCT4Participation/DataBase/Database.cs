@@ -821,5 +821,26 @@ namespace EyeCT4Participation.DataBase
             }
         }
 
+
+        public static void reactneedy (int hulpvraagID, int myID)
+        {
+            
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;                
+                m_command.CommandText = "INSERT INTO Intresse (HulpvraagID, GebruikerID) VALUES (:HID, :GID)";
+                m_command.Parameters.Add("HID", OracleDbType.Int32).Value = hulpvraagID;
+                m_command.Parameters.Add("GID", OracleDbType.Int32).Value = myID;
+                m_command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
