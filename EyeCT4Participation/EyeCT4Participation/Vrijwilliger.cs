@@ -38,12 +38,13 @@ namespace EyeCT4Participation
         private void reviewBTN_Click(object sender, EventArgs e)
         {
             Formstate = 2;
+            listBox1.ResetText();
             BtnReactionPost.Visible = true;
             TxtBxReactionPost.Visible = true;
-            //foreach (Review review in reviews.GetMyReviews(UserType.volunteer))
-            //{ 
-            //        listBox1.Items.Add(Convert.ToString(review));
-            //}
+            foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
+            { 
+                    listBox1.Items.Add(Convert.ToString(review));
+            }
             
         }
 
