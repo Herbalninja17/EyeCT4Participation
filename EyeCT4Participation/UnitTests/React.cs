@@ -13,6 +13,7 @@ namespace Login_test
             //Code
             //De gebruiker selecteert een beoordeling waar hij/zij mee 
             //te maken heeft. En plaatst een reactie.
+
         }
     }
 }
