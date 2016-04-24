@@ -566,6 +566,8 @@ namespace EyeCT4Participation.DataBase
         }
 
         // REVIEWS UIT DATABASE HALEN <THOM>
+        public static string _needyname = "";
+
         public static string GetReviews(long accountid,UserType SoortUser)
         {
             string reviews = "";
@@ -604,6 +606,7 @@ namespace EyeCT4Participation.DataBase
                     while (_Reader.Read())
                     {
                         needyName = Convert.ToString((_Reader["Needy"]));
+                        _needyname = needyName;
                         needyRate = Convert.ToString((_Reader["Beoordeling"]));
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
@@ -931,5 +934,75 @@ namespace EyeCT4Participation.DataBase
 
             return userInformation;
         }
+
+        public static void makeapointment(int request, int needy, int volunteer)
+        {
+            int AutoID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT COUNT(AfspraakID) from Afspraak";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        AutoID = Convert.ToInt32(_Reader["COUNT(AfspraakID)"]) + 1;
+                    }
+                }
+                m_command.CommandText = "INSERT INTO Afspraak (AfspraakID, HulpvraagID, NeedyID, VolunteerID) VALUES (:AID, :HID, :NID, :VID)";
+                m_command.Parameters.Add("AID", OracleDbType.Int32).Value = AutoID;
+                m_command.Parameters.Add("HID", OracleDbType.Int32).Value = request;
+                m_command.Parameters.Add("NID", OracleDbType.Int32).Value = needy;
+                m_command.Parameters.Add("VID", OracleDbType.Int32).Value = volunteer;
+                m_command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        //nog niet af
+        //public static string getap(int account)
+        //{
+        //    string agenda = "";
+        //    string Hulpvraag = "";
+        //    string Needy = "";
+        //    string Volunteer = "";
+        //    try
+        //    {
+        //        OpenConnection();
+        //        m_command = new OracleCommand();
+        //        m_command.Connection = m_conn;
+        //        m_command.CommandText = "SELECT g.GEBRUIKERSNAAM, g.GEBRUIKERSNAAM, h.OMSCHRIJVING from gebruiker g, gebruiker g1, afspraak a join hulpvraag h on a.HULPVRAAGID = h.HULPVRAAGID where a.NEEDYID = g.:ID or a.VOLUNTEERID = g1.:ID";
+        //        m_command.Parameters.Add("ID", OracleDbType.Int32).Value = account;
+        //        m_command.ExecuteNonQuery();
+        //        using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+        //        {
+        //            while (_Reader.Read())
+        //            {
+        //                Hulpvraag = Convert.ToString(_Reader["h.OMSCHRIJVING"]);
+        //                Needy = Convert.ToString(_Reader["g.GEBRUIKERSNAAM"]);
+        //                Volunteer = Convert.ToString(_Reader["g.GEBRUIKERSNAAM"]);
+        //            }
+        //        }
+
+        //        agenda = Needy + Volunteer + Hulpvraag;
+                                
+                
+        //    }
+        //    catch (OracleException ex)
+        //    {
+        //        Database.CloseConnection();
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    return agenda;
+        //}
+
+        
     }
 }

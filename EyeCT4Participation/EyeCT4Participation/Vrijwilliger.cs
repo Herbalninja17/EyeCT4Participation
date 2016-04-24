@@ -27,12 +27,13 @@ namespace EyeCT4Participation
         public ReviewOverview reviews;
         private List<Request> requests = new List<Request>();
         private RequestOverview requestoverview;
+        public List<Review> r = new List<Review>();
 
         public Vrijwilliger()
         {
             InitializeComponent();
-
            reviews= new ReviewOverview(userID);
+            
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)
@@ -45,7 +46,8 @@ namespace EyeCT4Participation
             listBox1.Items.Clear();
             foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
             { 
-                    listBox1.Items.Add(Convert.ToString(review));
+                listBox1.Items.Add(Convert.ToString(review));
+                r.Add(review);
             }
             
         }
@@ -79,6 +81,8 @@ namespace EyeCT4Participation
 
         private void replyBTN1_Click(object sender, EventArgs e)
         {
+
+            
             
         }
 
@@ -92,6 +96,11 @@ namespace EyeCT4Participation
         {
             Request a = (Request)listBox1.SelectedItem;
             new Chat( a.needyID, Convert.ToInt32(userID)).Show();
+        }
+
+        private void appointmentBTN_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Database.getap(Database.acID).ToString());
         }
     }
 }

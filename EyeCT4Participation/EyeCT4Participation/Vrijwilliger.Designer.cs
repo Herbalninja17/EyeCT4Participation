@@ -90,6 +90,7 @@
             this.appointmentBTN.TabIndex = 13;
             this.appointmentBTN.Text = "Open calender";
             this.appointmentBTN.UseVisualStyleBackColor = true;
+            this.appointmentBTN.Click += new System.EventHandler(this.appointmentBTN_Click);
             // 
             // VrijwilligerGrpBx
             // 

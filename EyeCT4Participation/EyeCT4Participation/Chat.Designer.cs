@@ -90,6 +90,7 @@
             this.planappointmentBTN.TabIndex = 13;
             this.planappointmentBTN.Text = "Plan appointment";
             this.planappointmentBTN.UseVisualStyleBackColor = true;
+            this.planappointmentBTN.Click += new System.EventHandler(this.planappointmentBTN_Click);
             // 
             // logoutBTN
             // 
