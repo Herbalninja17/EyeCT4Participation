@@ -17,13 +17,15 @@ namespace EyeCT4Participation
             InitializeComponent();
         }
 
-        string currentContent;
+        public static string nameOfMessage;
+        public static string currentContent;
         private Chat chat;
 
         //Admin Reported Requests opvragen <Raphael>
         private void reportedcontentBTN_Click(object sender, EventArgs e)
         {
             currentContent = "HULPVRAAG";
+            nameOfMessage = "OMSCHRIJVING";
             LBSelectedContent.Items.Clear();
             DataBase.Database.reportedRequests.Clear();
           
@@ -40,6 +42,7 @@ namespace EyeCT4Participation
         private void chatBTN_Click(object sender, EventArgs e)
         {
             //SELECT * FROM CHAT
+            nameOfMessage = "BERICHT";
             currentContent = "CHAT";
             LBSelectedContent.Items.Clear();
             DataBase.Database.chats.Clear();
@@ -57,6 +60,7 @@ namespace EyeCT4Participation
         private void helprequestsReviewBTN_Click(object sender, EventArgs e)
         {
             //SELECT * REQUEST
+            nameOfMessage = "OMSCHRIJVING";
             currentContent = "REQUEST";
             LBSelectedContent.Items.Clear();
             DataBase.Database.reviewsRequests.Clear();
@@ -78,13 +82,14 @@ namespace EyeCT4Participation
             }
             else
             {
-                DataBase.Database.alterYorN("CHAT", 1, "Y", "IsVisible");
+                DataBase.Database.getSelected(currentContent, Convert.ToString(LBSelectedContent.SelectedItem), currentContent + "ID", nameOfMessage);
+                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID" , "Y", "ISVISIBLE");
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
             refresh();
         }
 
-        //Ignore Selected (UPDATE  'Y' or 'N') <Raphael>
+        //Ignore Selected (reported becomes 'N', false) works for all types <Raphael>
         private void ignoreBTN_Click(object sender, EventArgs e)
         {
             // ALTER 'CONTENT' BOOL REPORTED = FALSE 
@@ -94,7 +99,9 @@ namespace EyeCT4Participation
             }
             else
             {
-                DataBase.Database.alterYorN(currentContent, 24, "Y", "ISREPORTED");
+                // SELECT CHATID FROM CHAT WHERE MESSAGE = SELECTEDITEMMESSAGE
+                DataBase.Database.getSelected(currentContent, Convert.ToString(LBSelectedContent.SelectedItem), currentContent + "ID", nameOfMessage);
+                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID", "Y", "ISVISIBLE");
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
             refresh();
@@ -115,7 +122,8 @@ namespace EyeCT4Participation
         //Get reported Reviews <Raphael>
         private void reportedReviewsBTN_Click(object sender, EventArgs e)
         {
-            currentContent = "REVIEW"; 
+            currentContent = "REVIEW";
+            nameOfMessage = "OPMERKINGEN";
             LBSelectedContent.Items.Clear();
             DataBase.Database.reportedReviews.Clear();
             DataBase.Database.getReportedReviews("SELECT OPMERKINGEN FROM REVIEW WHERE ISREPORTED = 'N'");
@@ -130,6 +138,7 @@ namespace EyeCT4Participation
         private void reviewsBTN_Click(object sender, EventArgs e)
         {
             // SELECT * FROM REVIEWS
+            nameOfMessage = "OPMERKINGEN";
             currentContent = "REVIEW";
             LBSelectedContent.Items.Clear();
             DataBase.Database.reviewsListAdmin.Clear();
@@ -147,6 +156,7 @@ namespace EyeCT4Participation
         private void reportedChatsBTN_Click(object sender, EventArgs e)
         {
             currentContent = "CHAT";
+            nameOfMessage = "BERICHT";
             LBSelectedContent.Items.Clear();
             DataBase.Database.reportedChats.Clear();
             DataBase.Database.getreportedChat();
