@@ -33,7 +33,8 @@ namespace EyeCT4Participation.Business
 
         public override string ToString()
         {
-            return  "score"+m_score+":" + "Review" +":"+ m_review+Environment.NewLine+reactions;
+            //return  "score"+m_score+":" + "Review" +":"+ m_review+Environment.NewLine+reactions;
+            return "Score :" + m_score + "\t" + "Needy name: " + m_NeedyID + "\t" + ", Review: " + m_review;
         }
 
       
