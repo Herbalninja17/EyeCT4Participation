@@ -16,11 +16,12 @@ namespace EyeCT4Participation.DataBase
     public enum UserType {needy,volunteer};
     public static class Database
     {
+        
         static readonly string m_databaseFilename = "Database.sql";
         static OracleConnection m_conn;
         static OracleCommand m_command;
         static string connectionString = "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS=(PROTOCOL=TCP)(HOST=fhictora01.fhict.local)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=fhictora)));User ID=dbi338530;PASSWORD=Hoi;";
-        
+      
 
         // Open de verbinding met de database
         public static bool OpenConnection()
@@ -191,8 +192,47 @@ namespace EyeCT4Participation.DataBase
             return ok;
         }
 
-        // Update table IsVisible <Raphael>
-        public static bool alterYorN (string COLUMN, int ID, string YorN, string visibleOrReported)
+      
+
+        // REVIEWID - OPMERKINGEN, CHATID - BERICHT, HULPVRAAGID - OMSCHRIJVING
+        // Get ID from selected chat/review/request to change visibility/reported
+        public static string ItemIDSelected;
+        public static bool getSelected(string column, string message, string IDFromWich, string nameOfMessage)
+        {
+            bool ok = false;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT :ITEMID FROM :COLUMN WHERE :BERICHT = :GEKOZENBERICHT";
+                Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = column;
+                Command.Parameters.Add("GEKOZENBERICHT", OracleDbType.Varchar2).Value = message;
+                Command.Parameters.Add("ITEMID", OracleDbType.Varchar2).Value = IDFromWich;
+                Command.Parameters.Add("BERICHT", OracleDbType.Varchar2).Value = nameOfMessage;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+
+                        ItemIDSelected = (Convert.ToString(_Reader[Beheerder.currentContent + "ID"]));
+
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+
+        }
+
+        
+        // Update table IsVisible/IsReported <Raphael>
+        public static bool alterYorN (string COLUMN, int ID, string YorN, string IDFromWich, string visibleOrReported)
         {
             bool ok = false;
 
@@ -201,9 +241,10 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "UPDATE :COLUMN SET " + visibleOrReported + " = :Y WHERE CHATID = :1";
+                m_command.CommandText = "UPDATE :COLUMN SET " + visibleOrReported + " = :Y WHERE :IDFromWich = :1";
                 Command.Parameters.Add("Y", OracleDbType.Varchar2).Value = YorN;
-                Command.Parameters.Add("1", OracleDbType.Int32).Value = ID;
+                Command.Parameters.Add("IDFromWich", OracleDbType.Varchar2).Value = IDFromWich;
+                Command.Parameters.Add("1", OracleDbType.Int32).Value = Convert.ToString(ID);
                 Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = COLUMN;
                 m_command.ExecuteNonQuery();
             }
