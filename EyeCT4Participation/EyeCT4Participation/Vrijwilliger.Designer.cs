@@ -151,6 +151,7 @@
             this.BtnReactionPost.Text = "Post Reaction";
             this.BtnReactionPost.UseVisualStyleBackColor = true;
             this.BtnReactionPost.Visible = false;
+            this.BtnReactionPost.Click += new System.EventHandler(this.BtnReactionPost_Click);
             // 
             // Vrijwilliger
             // 
