@@ -27,9 +27,9 @@ namespace Login_test
             int count2;
 
 
-            count1 = Database.COUNT();
+            count1 = Database.COUNTHULP();
             Database.placeARequest(accountID, omschrijving, locatie, reistijd, vervoersType, startDatum, eindDatum, urgent, aantalVrijwilligers);
-            count2 = Database.COUNT();
+            count2 = Database.COUNTHULP();
             Assert.Equals(count1 + 1, count2);
         }
     }

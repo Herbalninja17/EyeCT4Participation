@@ -931,5 +931,43 @@ namespace EyeCT4Participation.DataBase
 
             return userInformation;
         }
+
+        public static int COUNTHULP()
+        {
+            int count = 0;
+            try
+            {
+                OpenConnection();                   // om connection open te maken
+                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+                m_command.Connection = m_conn;      // een connection maken met het command
+                m_command.CommandText = "SELECT COUNT(*) FROM HULPVRAAG";
+                count = int.Parse(m_command.ExecuteScalar().ToString());
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return count;
+        }
+
+        public static int COUNTREVIEW()
+        {
+            int count = 0;
+            try
+            {
+                OpenConnection();                   // om connection open te maken
+                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
+                m_command.Connection = m_conn;      // een connection maken met het command
+                m_command.CommandText = "SELECT COUNT(*) FROM REVIEW";
+                count = int.Parse(m_command.ExecuteScalar().ToString());
+            }
+            catch (OracleException ex)
+            {
+                Database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return count;
+        }
     }
 }

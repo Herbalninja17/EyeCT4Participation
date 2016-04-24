@@ -20,6 +20,7 @@ namespace Login_test
             int volunid = 2;
             int count1;
             int count2;
+
             count1 = Database.COUNTREVIEW();
             Database.ReviewVolunteer(beoordeling, opmerkingen, needyid, volunid);
             count2 = Database.COUNTREVIEW();

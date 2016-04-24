@@ -23,10 +23,10 @@ namespace Login_test
         {
             //Code
             //De gebruiker rapporteert een hulpvraag.
-            Assert.AreEqual(false, Database.alterYorN(COLUMN1, ID, Y, visibleOrReported));
+            Assert.AreEqual(false, Database.alterYorN(COLUMN1, ID, Y, "HULPVRAAGID", visibleOrReported));
 
             //Hulpvraag wordt weer ongerapporteerd zodat de test vaker kan worden uitgevoerd.
-            Assert.AreEqual(false, Database.alterYorN(COLUMN1, ID, N, visibleOrReported));
+            Assert.AreEqual(false, Database.alterYorN(COLUMN1, ID, N, "HULPVRAAGID", visibleOrReported));
         }
 
         [TestMethod]
@@ -34,10 +34,10 @@ namespace Login_test
         {
             //Code
             //De gebruiker rapporteert een opmerking.
-            Assert.AreEqual(false, Database.alterYorN(COLUMN2, ID, Y, visibleOrReported));
+            Assert.AreEqual(false, Database.alterYorN(COLUMN2, ID, Y, "REACTIONID", visibleOrReported));
 
             //Opmerking wordt weer ongerapporteert zodat de test vaker kan worden uitgevoerd.
-            Assert.AreEqual(false, Database.alterYorN(COLUMN2, ID, N, visibleOrReported));
+            Assert.AreEqual(false, Database.alterYorN(COLUMN2, ID, N, "REACTIONID", visibleOrReported));
         }
 
         [TestMethod]
@@ -45,10 +45,10 @@ namespace Login_test
         {
             //Code
             //De gebruiker rapporteert een review.
-            Assert.AreEqual(false, Database.alterYorN(COLUMN3, ID, Y, visibleOrReported));
+            Assert.AreEqual(false, Database.alterYorN(COLUMN3, ID, Y, "REVIEWID", visibleOrReported));
 
             //Review wordt weer ongerapporteert zodat de test vaker kan worden uitgevoerd.
-            Assert.AreEqual(false, Database.alterYorN(COLUMN3, ID, N, visibleOrReported));
+            Assert.AreEqual(false, Database.alterYorN(COLUMN3, ID, N, "REVIEWID", visibleOrReported));
         }
     }
 }
