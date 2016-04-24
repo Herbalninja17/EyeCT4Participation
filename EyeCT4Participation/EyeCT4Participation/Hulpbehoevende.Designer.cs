@@ -54,9 +54,9 @@
             // 
             // reviewBTN
             // 
-            this.reviewBTN.Location = new System.Drawing.Point(22, 36);
+            this.reviewBTN.Location = new System.Drawing.Point(22, 12);
             this.reviewBTN.Name = "reviewBTN";
-            this.reviewBTN.Size = new System.Drawing.Size(170, 50);
+            this.reviewBTN.Size = new System.Drawing.Size(143, 50);
             this.reviewBTN.TabIndex = 0;
             this.reviewBTN.Text = "My reviews";
             this.reviewBTN.UseVisualStyleBackColor = true;
@@ -64,9 +64,9 @@
             // 
             // logoutBTN
             // 
-            this.logoutBTN.Location = new System.Drawing.Point(22, 423);
+            this.logoutBTN.Location = new System.Drawing.Point(22, 399);
             this.logoutBTN.Name = "logoutBTN";
-            this.logoutBTN.Size = new System.Drawing.Size(98, 44);
+            this.logoutBTN.Size = new System.Drawing.Size(143, 44);
             this.logoutBTN.TabIndex = 2;
             this.logoutBTN.Text = "Logout";
             this.logoutBTN.UseVisualStyleBackColor = true;
@@ -74,7 +74,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.MenuBar;
             this.groupBox1.Controls.Add(this.reviewVolunteerBTN);
             this.groupBox1.Controls.Add(this.LBvol3);
             this.groupBox1.Controls.Add(this.LBvol2);
@@ -90,18 +90,18 @@
             this.groupBox1.Controls.Add(this.editBTN);
             this.groupBox1.Controls.Add(this.removeBTN);
             this.groupBox1.Controls.Add(this.submitBTN);
-            this.groupBox1.Location = new System.Drawing.Point(277, 36);
+            this.groupBox1.Location = new System.Drawing.Point(171, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(759, 431);
+            this.groupBox1.Size = new System.Drawing.Size(618, 431);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My requests/reviews";
             // 
             // reviewVolunteerBTN
             // 
-            this.reviewVolunteerBTN.Location = new System.Drawing.Point(637, 184);
+            this.reviewVolunteerBTN.Location = new System.Drawing.Point(476, 257);
             this.reviewVolunteerBTN.Name = "reviewVolunteerBTN";
-            this.reviewVolunteerBTN.Size = new System.Drawing.Size(105, 70);
+            this.reviewVolunteerBTN.Size = new System.Drawing.Size(135, 52);
             this.reviewVolunteerBTN.TabIndex = 35;
             this.reviewVolunteerBTN.Text = "Review selected volunteer";
             this.reviewVolunteerBTN.UseVisualStyleBackColor = true;
@@ -160,9 +160,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(637, 260);
+            this.button8.Location = new System.Drawing.Point(476, 315);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(105, 70);
+            this.button8.Size = new System.Drawing.Size(135, 52);
             this.button8.TabIndex = 20;
             this.button8.Text = "Report selected volunteer";
             this.button8.UseVisualStyleBackColor = true;
@@ -170,9 +170,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(637, 336);
+            this.button6.Location = new System.Drawing.Point(476, 373);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 70);
+            this.button6.Size = new System.Drawing.Size(135, 52);
             this.button6.TabIndex = 19;
             this.button6.Text = "Initiate chat with selected volunteer";
             this.button6.UseVisualStyleBackColor = true;
@@ -222,9 +222,9 @@
             // 
             // editBTN
             // 
-            this.editBTN.Location = new System.Drawing.Point(607, 77);
+            this.editBTN.Location = new System.Drawing.Point(476, 135);
             this.editBTN.Name = "editBTN";
-            this.editBTN.Size = new System.Drawing.Size(135, 23);
+            this.editBTN.Size = new System.Drawing.Size(135, 52);
             this.editBTN.TabIndex = 7;
             this.editBTN.Text = "Edit request";
             this.editBTN.UseVisualStyleBackColor = true;
@@ -232,9 +232,9 @@
             // 
             // removeBTN
             // 
-            this.removeBTN.Location = new System.Drawing.Point(607, 48);
+            this.removeBTN.Location = new System.Drawing.Point(476, 77);
             this.removeBTN.Name = "removeBTN";
-            this.removeBTN.Size = new System.Drawing.Size(135, 23);
+            this.removeBTN.Size = new System.Drawing.Size(135, 52);
             this.removeBTN.TabIndex = 6;
             this.removeBTN.Text = "Remove request";
             this.removeBTN.UseVisualStyleBackColor = true;
@@ -242,9 +242,9 @@
             // 
             // submitBTN
             // 
-            this.submitBTN.Location = new System.Drawing.Point(607, 19);
+            this.submitBTN.Location = new System.Drawing.Point(476, 19);
             this.submitBTN.Name = "submitBTN";
-            this.submitBTN.Size = new System.Drawing.Size(135, 23);
+            this.submitBTN.Size = new System.Drawing.Size(135, 52);
             this.submitBTN.TabIndex = 5;
             this.submitBTN.Text = "Submit request";
             this.submitBTN.UseVisualStyleBackColor = true;
@@ -252,9 +252,9 @@
             // 
             // profileBTN
             // 
-            this.profileBTN.Location = new System.Drawing.Point(22, 113);
+            this.profileBTN.Location = new System.Drawing.Point(22, 68);
             this.profileBTN.Name = "profileBTN";
-            this.profileBTN.Size = new System.Drawing.Size(170, 50);
+            this.profileBTN.Size = new System.Drawing.Size(143, 50);
             this.profileBTN.TabIndex = 5;
             this.profileBTN.Text = "My profile";
             this.profileBTN.UseVisualStyleBackColor = true;
@@ -262,9 +262,9 @@
             // 
             // appointmentBTN
             // 
-            this.appointmentBTN.Location = new System.Drawing.Point(22, 194);
+            this.appointmentBTN.Location = new System.Drawing.Point(22, 124);
             this.appointmentBTN.Name = "appointmentBTN";
-            this.appointmentBTN.Size = new System.Drawing.Size(170, 50);
+            this.appointmentBTN.Size = new System.Drawing.Size(143, 50);
             this.appointmentBTN.TabIndex = 6;
             this.appointmentBTN.Text = "My appointments";
             this.appointmentBTN.UseVisualStyleBackColor = true;
@@ -272,9 +272,9 @@
             // 
             // requestsBTN
             // 
-            this.requestsBTN.Location = new System.Drawing.Point(22, 275);
+            this.requestsBTN.Location = new System.Drawing.Point(22, 180);
             this.requestsBTN.Name = "requestsBTN";
-            this.requestsBTN.Size = new System.Drawing.Size(170, 50);
+            this.requestsBTN.Size = new System.Drawing.Size(143, 50);
             this.requestsBTN.TabIndex = 7;
             this.requestsBTN.Text = "My requests";
             this.requestsBTN.UseVisualStyleBackColor = true;
@@ -284,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 479);
+            this.ClientSize = new System.Drawing.Size(808, 458);
             this.Controls.Add(this.requestsBTN);
             this.Controls.Add(this.appointmentBTN);
             this.Controls.Add(this.profileBTN);

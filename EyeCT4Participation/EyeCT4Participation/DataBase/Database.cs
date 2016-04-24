@@ -702,7 +702,7 @@ namespace EyeCT4Participation.DataBase
                 m_command.CommandText = "SELECT c.Bericht, c.Zender, g.Gebruikersnaam from Chat c LEFT JOIN Gebruiker g ON c.Zender = g.GebruikerID WHERE c.GebruikerID = :needy AND c.GebruikerID2 = :volunteer ORDER BY ChatID ";
                 m_command.Parameters.Add("needy", OracleDbType.Varchar2).Value = needy;
                 m_command.Parameters.Add("volunteer", OracleDbType.Varchar2).Value = volunteer;
-                m_command.ExecuteNonQuery();
+                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())

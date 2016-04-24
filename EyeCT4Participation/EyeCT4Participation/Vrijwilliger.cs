@@ -37,10 +37,12 @@ namespace EyeCT4Participation
 
         private void reviewBTN_Click(object sender, EventArgs e)
         {
+            
             Formstate = 2;
-            listBox1.ResetText();
+            //listBox1.ResetText();
             BtnReactionPost.Visible = true;
             TxtBxReactionPost.Visible = true;
+            listBox1.Items.Clear();
             foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
             { 
                     listBox1.Items.Add(Convert.ToString(review));
@@ -50,9 +52,9 @@ namespace EyeCT4Participation
 
         private void logoutBTN_Click(object sender, EventArgs e)
         {
-            /////////////////// test code voor chat
-            //this.Hide();
-            //new Chat().Show();
+            this.Close();
+            Login Login = (Login)Application.OpenForms["Login"];
+            Login.Show();
         }
 
         private void helprequestBTN_Click(object sender, EventArgs e)
