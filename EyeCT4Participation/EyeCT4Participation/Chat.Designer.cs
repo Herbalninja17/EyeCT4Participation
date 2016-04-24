@@ -34,11 +34,8 @@
             this.sendBTN = new System.Windows.Forms.Button();
             this.chattosendTB = new System.Windows.Forms.TextBox();
             this.planappointmentBTN = new System.Windows.Forms.Button();
-            this.logoutBTN = new System.Windows.Forms.Button();
-            this.closechatBTN = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.reportchatBTN = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -92,25 +89,6 @@
             this.planappointmentBTN.UseVisualStyleBackColor = true;
             this.planappointmentBTN.Click += new System.EventHandler(this.planappointmentBTN_Click);
             // 
-            // logoutBTN
-            // 
-            this.logoutBTN.Location = new System.Drawing.Point(12, 379);
-            this.logoutBTN.Name = "logoutBTN";
-            this.logoutBTN.Size = new System.Drawing.Size(200, 45);
-            this.logoutBTN.TabIndex = 14;
-            this.logoutBTN.Text = "Logout";
-            this.logoutBTN.UseVisualStyleBackColor = true;
-            // 
-            // closechatBTN
-            // 
-            this.closechatBTN.Location = new System.Drawing.Point(12, 11);
-            this.closechatBTN.Name = "closechatBTN";
-            this.closechatBTN.Size = new System.Drawing.Size(100, 26);
-            this.closechatBTN.TabIndex = 15;
-            this.closechatBTN.Text = "Close chat";
-            this.closechatBTN.UseVisualStyleBackColor = true;
-            this.closechatBTN.Click += new System.EventHandler(this.closechatBTN_Click);
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(0, 30);
@@ -122,21 +100,12 @@
             // 
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.planappointmentBTN);
-            this.groupBox2.Location = new System.Drawing.Point(12, 43);
+            this.groupBox2.Location = new System.Drawing.Point(12, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 139);
+            this.groupBox2.Size = new System.Drawing.Size(200, 141);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Afspraak";
-            // 
-            // reportchatBTN
-            // 
-            this.reportchatBTN.Location = new System.Drawing.Point(112, 11);
-            this.reportchatBTN.Name = "reportchatBTN";
-            this.reportchatBTN.Size = new System.Drawing.Size(100, 26);
-            this.reportchatBTN.TabIndex = 18;
-            this.reportchatBTN.Text = "Report chat";
-            this.reportchatBTN.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
@@ -149,10 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 430);
-            this.Controls.Add(this.reportchatBTN);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.logoutBTN);
-            this.Controls.Add(this.closechatBTN);
             this.Controls.Add(this.groupBox1);
             this.Name = "Chat";
             this.Text = "Chat";
@@ -170,11 +136,8 @@
         private System.Windows.Forms.Button sendBTN;
         private System.Windows.Forms.TextBox chattosendTB;
         private System.Windows.Forms.Button planappointmentBTN;
-        private System.Windows.Forms.Button logoutBTN;
-        private System.Windows.Forms.Button closechatBTN;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button reportchatBTN;
         private System.Windows.Forms.ListBox chatLB;
         private System.Windows.Forms.Timer timer1;
     }

@@ -41,8 +41,8 @@ namespace EyeCT4Participation
             reviews.m_reviews.Clear();
             Formstate = 1;
             //listBox1.ResetText();
-            BtnReactionPost.Visible = true;
-            TxtBxReactionPost.Visible = true;
+            //BtnReactionPost.Visible = true;
+            //TxtBxReactionPost.Visible = true;
             listBox1.Items.Clear();
             foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
             { 
@@ -61,8 +61,8 @@ namespace EyeCT4Participation
         private void helprequestBTN_Click(object sender, EventArgs e)
         {
             Formstate = 2;
-            BtnReactionPost.Visible = false;
-            TxtBxReactionPost.Visible = false;
+            //BtnReactionPost.Visible = false;
+            //TxtBxReactionPost.Visible = false;
             requests.Clear();
             listBox1.Items.Clear();
             requestoverview = new RequestOverview(requests);
@@ -109,7 +109,7 @@ namespace EyeCT4Participation
         private void BtnReactionPost_Click(object sender, EventArgs e)
         {
             int index = listBox1.SelectedIndex;
-            Database.PlaceReaction(index, userID, TxtBxReactionPost.Text);
+            //Database.PlaceReaction(index, userID, TxtBxReactionPost.Text);
             //Database.PlaceReaction(review.);
         }
     }

@@ -36,9 +36,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EyeCT4Participation">
+      <HintPath>..\EyeCT4Participation\bin\Debug\EyeCT4Participation.exe</HintPath>
+    </Reference>
     <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\EyeCT4Participation\bin\Debug\Oracle.DataAccess.dll</HintPath>
+      <HintPath>..\..\..\Proftaak\EyeCT4Participation\EyeCT4Participation\dll\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>..\..\..\Proftaak\EyeCT4Participation\EyeCT4Participation\dll\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -69,12 +75,6 @@
     <Compile Include="React.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="SendM.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EyeCT4Participation\EyeCT4Participation.csproj">
-      <Project>{36fe7c6d-f3f4-4624-9cf7-544b388d7fd8}</Project>
-      <Name>EyeCT4Participation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

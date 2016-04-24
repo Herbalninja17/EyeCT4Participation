@@ -566,6 +566,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         // REVIEWS UIT DATABASE HALEN <THOM>
+        public static string _needyname = "";
         public static string GetReviews(long accountid, UserType SoortUser)
         {
             string reviews = "";
@@ -604,6 +605,7 @@ namespace EyeCT4Participation.DataBase
                     while (_Reader.Read())
                     {
                         needyName = Convert.ToString((_Reader["Needy"]));
+                        _needyname = needyName;
                         needyRate = Convert.ToString((_Reader["Beoordeling"]));
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
@@ -796,6 +798,7 @@ namespace EyeCT4Participation.DataBase
             }
         }
 
+        
         public static long GetDiffUserID(string UserName)
         {
             long UserID = 0;

@@ -32,13 +32,10 @@
             this.replyBTN1 = new System.Windows.Forms.Button();
             this.logoutBTN = new System.Windows.Forms.Button();
             this.reviewBTN = new System.Windows.Forms.Button();
-            this.appointmentBTN = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx = new System.Windows.Forms.GroupBox();
             this.openchatBTN = new System.Windows.Forms.Button();
             this.instresseBTN = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.TxtBxReactionPost = new System.Windows.Forms.RichTextBox();
-            this.BtnReactionPost = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,16 +79,6 @@
             this.reviewBTN.UseVisualStyleBackColor = true;
             this.reviewBTN.Click += new System.EventHandler(this.reviewBTN_Click);
             // 
-            // appointmentBTN
-            // 
-            this.appointmentBTN.Location = new System.Drawing.Point(12, 157);
-            this.appointmentBTN.Name = "appointmentBTN";
-            this.appointmentBTN.Size = new System.Drawing.Size(145, 62);
-            this.appointmentBTN.TabIndex = 13;
-            this.appointmentBTN.Text = "Open calender";
-            this.appointmentBTN.UseVisualStyleBackColor = true;
-            ///this.appointmentBTN.Click += new System.EventHandler(this.appointmentBTN_Click);
-            // 
             // VrijwilligerGrpBx
             // 
             this.VrijwilligerGrpBx.Controls.Add(this.openchatBTN);
@@ -134,35 +121,12 @@
             this.listBox1.TabIndex = 11;
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
-            // TxtBxReactionPost
-            // 
-            this.TxtBxReactionPost.Location = new System.Drawing.Point(12, 225);
-            this.TxtBxReactionPost.Name = "TxtBxReactionPost";
-            this.TxtBxReactionPost.Size = new System.Drawing.Size(145, 148);
-            this.TxtBxReactionPost.TabIndex = 15;
-            this.TxtBxReactionPost.Text = "";
-            this.TxtBxReactionPost.Visible = false;
-            // 
-            // BtnReactionPost
-            // 
-            this.BtnReactionPost.Location = new System.Drawing.Point(12, 379);
-            this.BtnReactionPost.Name = "BtnReactionPost";
-            this.BtnReactionPost.Size = new System.Drawing.Size(145, 31);
-            this.BtnReactionPost.TabIndex = 16;
-            this.BtnReactionPost.Text = "Post Reaction";
-            this.BtnReactionPost.UseVisualStyleBackColor = true;
-            this.BtnReactionPost.Visible = false;
-            this.BtnReactionPost.Click += new System.EventHandler(this.BtnReactionPost_Click);
-            // 
             // Vrijwilliger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 476);
-            this.Controls.Add(this.BtnReactionPost);
-            this.Controls.Add(this.TxtBxReactionPost);
             this.Controls.Add(this.VrijwilligerGrpBx);
-            this.Controls.Add(this.appointmentBTN);
             this.Controls.Add(this.reviewBTN);
             this.Controls.Add(this.logoutBTN);
             this.Controls.Add(this.helprequestBTN);
@@ -179,10 +143,7 @@
         private System.Windows.Forms.Button replyBTN1;
         private System.Windows.Forms.Button logoutBTN;
         private System.Windows.Forms.Button reviewBTN;
-        private System.Windows.Forms.Button appointmentBTN;
         private System.Windows.Forms.GroupBox VrijwilligerGrpBx;
-        private System.Windows.Forms.RichTextBox TxtBxReactionPost;
-        private System.Windows.Forms.Button BtnReactionPost;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button instresseBTN;
         private System.Windows.Forms.Button openchatBTN;

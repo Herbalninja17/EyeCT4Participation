@@ -271,6 +271,7 @@
             // 
             // emailTB
             // 
+            this.emailTB.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.emailTB.Location = new System.Drawing.Point(118, 175);
             this.emailTB.Name = "emailTB";
             this.emailTB.Size = new System.Drawing.Size(128, 20);
