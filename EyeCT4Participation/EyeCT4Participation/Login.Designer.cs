@@ -100,6 +100,7 @@
             this.rfidcodetb.Name = "rfidcodetb";
             this.rfidcodetb.Size = new System.Drawing.Size(407, 20);
             this.rfidcodetb.TabIndex = 5;
+            this.rfidcodetb.Visible = false;
             // 
             // label2
             // 
