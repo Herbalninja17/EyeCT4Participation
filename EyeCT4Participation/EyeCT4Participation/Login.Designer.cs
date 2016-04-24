@@ -295,6 +295,7 @@
             this.phoneTB.Name = "phoneTB";
             this.phoneTB.Size = new System.Drawing.Size(128, 20);
             this.phoneTB.TabIndex = 24;
+            this.phoneTB.Text = "0";
             this.phoneTB.Visible = false;
             // 
             // label10
