@@ -22,10 +22,10 @@ namespace Login_test
             int count2;
 
             count1 = Database.COUNTREVIEW();
-            Database.ReviewVolunteer(beoordeling, opmerkingen, needyid, volunid);
+            Database.ReviewVolunteerUnitTest(beoordeling, opmerkingen, needyid, volunid);
             count2 = Database.COUNTREVIEW();
 
-            Assert.AreSame(count1 + 1, count2);
+            Assert.AreEqual(count1 + 1, count2);
         }
     }
 }

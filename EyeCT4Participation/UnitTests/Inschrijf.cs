@@ -17,9 +17,9 @@ namespace Login_test
             string username = "pietje1234";
             string password = "ZwartePiet";
             string acctype = "Needy";
-            string email = "Pieter420@hotmail.com";
+            string email = "pieter420@hotmail.com";
             string fullname = "Pieter";
-            string address = "Kikkerlaan 5";
+            string address = "kikker";
             string city = "Tilburg";
             int phone = 0669420360;
             string gender = "M";

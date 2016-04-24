@@ -1011,8 +1011,8 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT COUNT(*) FROM MESSAGES WHERE GEBRUIKERID1 = :GEBRUIKERID1 AND GEBRUIKERID2 = :GEBRUIKERID2";
-                m_command.Parameters.Add("GEBRUIKERID1", OracleDbType.Int32).Value = needy;
+                m_command.CommandText = "SELECT COUNT(*) FROM CHAT WHERE GEBRUIKERID = :GEBRUIKERID AND GEBRUIKERID2 = :GEBRUIKERID2";
+                m_command.Parameters.Add("GEBRUIKERID", OracleDbType.Int32).Value = needy;
                 m_command.Parameters.Add("GEBRUIKERID2", OracleDbType.Int32).Value = volunteer;
                 count = int.Parse(m_command.ExecuteScalar().ToString());
             }
@@ -1042,6 +1042,43 @@ namespace EyeCT4Participation.DataBase
                 Console.WriteLine(ex.Message);
             }
             return count;
+        }
+
+        public static void ReviewVolunteerUnitTest(string beoordeling, string opmerkingen, int needyID, int volunteerID)
+        {
+            int my_UserID = 0;
+            int this_reviewID = 0;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT COUNT(ReviewID) FROM Review";
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
+                {
+                    while (_Reader.Read())
+                    {
+                        this_reviewID = Convert.ToInt32(_Reader["COUNT(ReviewID)"]) + 1;
+                    }
+                }
+
+                m_command.CommandText =
+                    "INSERT INTO Review(ReviewID, Beoordeling, Opmerkingen, NeedyID, VolunteerID) VALUES(:ReviewID, :Beoordeling, :Opmerkingen, :NeedyID, :VolunteerID)";
+
+                Command.Parameters.Add("ReviewID", OracleDbType.Int32).Value = this_reviewID;
+                Command.Parameters.Add("Beoordeling", OracleDbType.Varchar2).Value = beoordeling;
+                Command.Parameters.Add("Opmerkingen", OracleDbType.Varchar2).Value = opmerkingen;
+                Command.Parameters.Add("NeedyID", OracleDbType.Int32).Value = needyID;
+                Command.Parameters.Add("VolunteerID", OracleDbType.Int32).Value = volunteerID;
+
+                Command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
