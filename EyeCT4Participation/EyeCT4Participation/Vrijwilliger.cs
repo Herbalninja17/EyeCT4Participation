@@ -27,27 +27,26 @@ namespace EyeCT4Participation
         public ReviewOverview reviews;
         private List<Request> requests = new List<Request>();
         private RequestOverview requestoverview;
-        public List<Review> r = new List<Review>();
+        private Review review;
 
         public Vrijwilliger()
         {
             InitializeComponent();
+
            reviews= new ReviewOverview(userID);
-            
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)
         {
-            
-            Formstate = 2;
+            reviews.m_reviews.Clear();
+            Formstate = 1;
             //listBox1.ResetText();
             BtnReactionPost.Visible = true;
             TxtBxReactionPost.Visible = true;
             listBox1.Items.Clear();
             foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
             { 
-                listBox1.Items.Add(Convert.ToString(review));
-                r.Add(review);
+                    listBox1.Items.Add(review);
             }
             
         }
@@ -61,6 +60,9 @@ namespace EyeCT4Participation
 
         private void helprequestBTN_Click(object sender, EventArgs e)
         {
+            Formstate = 2;
+            BtnReactionPost.Visible = false;
+            TxtBxReactionPost.Visible = false;
             requests.Clear();
             listBox1.Items.Clear();
             requestoverview = new RequestOverview(requests);
@@ -74,15 +76,21 @@ namespace EyeCT4Participation
         {
             if (listBox1.SelectedItem != null)
             {
-                Request a = (Request)listBox1.SelectedItem;
-                MessageBox.Show(a.ToString(), "Request");
+                if (Formstate == 1)
+                {
+                    review = (Review)listBox1.SelectedItem;
+                    MessageBox.Show(review.ToString());
+                }
+                else if (Formstate == 2)
+                {
+                    Request a = (Request)listBox1.SelectedItem;
+                    MessageBox.Show(a.ToString(), "Request");
+                }
             }
         }
 
         private void replyBTN1_Click(object sender, EventArgs e)
         {
-
-            
             
         }
 
@@ -98,9 +106,11 @@ namespace EyeCT4Participation
             new Chat( a.needyID, Convert.ToInt32(userID)).Show();
         }
 
-        private void appointmentBTN_Click(object sender, EventArgs e)
+        private void BtnReactionPost_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Database.getap(Database.acID).ToString());
+            int index = listBox1.SelectedIndex;
+            Database.PlaceReaction(index, userID, TxtBxReactionPost.Text);
+            //Database.PlaceReaction(review.);
         }
     }
 }

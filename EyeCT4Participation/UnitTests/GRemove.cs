@@ -12,6 +12,7 @@ namespace Login_test
         {
             //Code
             //De gebruiker drukt bij zijn/haar eigen post op verwijderen.
+
         }
     }
 }

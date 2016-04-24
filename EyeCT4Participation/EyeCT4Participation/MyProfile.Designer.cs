@@ -37,14 +37,14 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(260, 249);
+            this.textBox1.Size = new System.Drawing.Size(210, 187);
             this.textBox1.TabIndex = 0;
             // 
             // MyProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 273);
+            this.ClientSize = new System.Drawing.Size(234, 211);
             this.Controls.Add(this.textBox1);
             this.Name = "MyProfile";
             this.Text = "MyProfile";
