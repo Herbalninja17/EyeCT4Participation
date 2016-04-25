@@ -15,6 +15,7 @@ namespace EyeCT4Participation
 {
     public partial class Login : Form
     {
+        //RFID werk well!
         RFID rfid;
         public Login()
         {
@@ -237,7 +238,7 @@ namespace EyeCT4Participation
             string address = addressTB.Text.ToString();
             string city = cityTB.Text.ToString();
             string p = phoneTB.Text.ToString();
-            int phone = 563455;
+            int phone = Convert.ToInt32(p);
             string gender = "X";            
             if (maleCHK.Checked == true) { gender = "M"; }
             if (femaleCHK.Checked == true) { gender = "V"; }

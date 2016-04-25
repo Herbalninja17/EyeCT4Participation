@@ -20,6 +20,8 @@ namespace EyeCT4Participation.Business
 
         public bool m_visible { get; set; }
 
+        public int needyIDint { get; set; }
+
         public List<Reaction> reactions = new List<Reaction>();
 
         public Review(int p_score, string p_review, long p_volunteerID, long p_needyID)
@@ -28,13 +30,15 @@ namespace EyeCT4Participation.Business
             this.m_review = p_review;
             this.m_volunteerID = p_volunteerID;
             this.m_NeedyID =p_needyID;
+            this.needyIDint = Convert.ToInt32(p_needyID);
 
         }
 
         public override string ToString()
         {
             //return  "score"+m_score+":" + "Review" +":"+ m_review+Environment.NewLine+reactions;
-            return "Score :" + m_score + "\t" + "Needy name: " + m_NeedyID + "\t" + ", Review: " + m_review;
+            //return "Score :" + m_score + "\t" + "Needy name: " + m_NeedyID + "\t" + ", Review: " + m_review;
+            return "Score: " + m_score + "\t" + "Needy name: " + DataBase.Database._needyname + "\t" + ", Review: " + m_review;
         }
 
       

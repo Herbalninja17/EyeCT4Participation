@@ -7,3 +7,14 @@ C:\Users\Olaf\Documents\J1 P3\PT\GitHubs\EyeCT4Participation\UnitTests\bin\Debug
 C:\Users\Olaf\Documents\J1 P3\PT\GitHubs\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
 C:\Users\Olaf\Documents\J1 P3\PT\GitHubs\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.dll
 C:\Users\Olaf\Documents\J1 P3\PT\GitHubs\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.pdb
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\UnitTests.dll
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\UnitTests.pdb
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\EyeCT4Participation.exe
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\Oracle.DataAccess.dll
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\Phidget21.NET.dll
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\EyeCT4Participation.pdb
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\Phidget21.NET.xml
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.pdb

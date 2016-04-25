@@ -100,6 +100,7 @@
             this.rfidcodetb.Name = "rfidcodetb";
             this.rfidcodetb.Size = new System.Drawing.Size(407, 20);
             this.rfidcodetb.TabIndex = 5;
+            this.rfidcodetb.Visible = false;
             // 
             // label2
             // 
@@ -271,6 +272,7 @@
             // 
             // emailTB
             // 
+            this.emailTB.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.emailTB.Location = new System.Drawing.Point(118, 175);
             this.emailTB.Name = "emailTB";
             this.emailTB.Size = new System.Drawing.Size(128, 20);
@@ -293,6 +295,7 @@
             this.phoneTB.Name = "phoneTB";
             this.phoneTB.Size = new System.Drawing.Size(128, 20);
             this.phoneTB.TabIndex = 24;
+            this.phoneTB.Text = "0";
             this.phoneTB.Visible = false;
             // 
             // label10

@@ -43,8 +43,6 @@
             this.contentTB3 = new System.Windows.Forms.TextBox();
             this.contentTB2 = new System.Windows.Forms.TextBox();
             this.contentTB1 = new System.Windows.Forms.TextBox();
-            this.editBTN = new System.Windows.Forms.Button();
-            this.removeBTN = new System.Windows.Forms.Button();
             this.submitBTN = new System.Windows.Forms.Button();
             this.profileBTN = new System.Windows.Forms.Button();
             this.appointmentBTN = new System.Windows.Forms.Button();
@@ -54,7 +52,7 @@
             // 
             // reviewBTN
             // 
-            this.reviewBTN.Location = new System.Drawing.Point(22, 12);
+            this.reviewBTN.Location = new System.Drawing.Point(12, 12);
             this.reviewBTN.Name = "reviewBTN";
             this.reviewBTN.Size = new System.Drawing.Size(143, 50);
             this.reviewBTN.TabIndex = 0;
@@ -64,7 +62,7 @@
             // 
             // logoutBTN
             // 
-            this.logoutBTN.Location = new System.Drawing.Point(22, 399);
+            this.logoutBTN.Location = new System.Drawing.Point(12, 399);
             this.logoutBTN.Name = "logoutBTN";
             this.logoutBTN.Size = new System.Drawing.Size(143, 44);
             this.logoutBTN.TabIndex = 2;
@@ -87,8 +85,6 @@
             this.groupBox1.Controls.Add(this.contentTB3);
             this.groupBox1.Controls.Add(this.contentTB2);
             this.groupBox1.Controls.Add(this.contentTB1);
-            this.groupBox1.Controls.Add(this.editBTN);
-            this.groupBox1.Controls.Add(this.removeBTN);
             this.groupBox1.Controls.Add(this.submitBTN);
             this.groupBox1.Location = new System.Drawing.Point(171, 12);
             this.groupBox1.Name = "groupBox1";
@@ -99,7 +95,7 @@
             // 
             // reviewVolunteerBTN
             // 
-            this.reviewVolunteerBTN.Location = new System.Drawing.Point(476, 257);
+            this.reviewVolunteerBTN.Location = new System.Drawing.Point(476, 77);
             this.reviewVolunteerBTN.Name = "reviewVolunteerBTN";
             this.reviewVolunteerBTN.Size = new System.Drawing.Size(135, 52);
             this.reviewVolunteerBTN.TabIndex = 35;
@@ -160,7 +156,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(476, 315);
+            this.button8.Location = new System.Drawing.Point(476, 193);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(135, 52);
             this.button8.TabIndex = 20;
@@ -170,7 +166,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(476, 373);
+            this.button6.Location = new System.Drawing.Point(476, 135);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(135, 52);
             this.button6.TabIndex = 19;
@@ -220,26 +216,6 @@
             this.contentTB1.Size = new System.Drawing.Size(328, 130);
             this.contentTB1.TabIndex = 8;
             // 
-            // editBTN
-            // 
-            this.editBTN.Location = new System.Drawing.Point(476, 135);
-            this.editBTN.Name = "editBTN";
-            this.editBTN.Size = new System.Drawing.Size(135, 52);
-            this.editBTN.TabIndex = 7;
-            this.editBTN.Text = "Edit request";
-            this.editBTN.UseVisualStyleBackColor = true;
-            this.editBTN.Click += new System.EventHandler(this.editBTN_Click);
-            // 
-            // removeBTN
-            // 
-            this.removeBTN.Location = new System.Drawing.Point(476, 77);
-            this.removeBTN.Name = "removeBTN";
-            this.removeBTN.Size = new System.Drawing.Size(135, 52);
-            this.removeBTN.TabIndex = 6;
-            this.removeBTN.Text = "Remove request";
-            this.removeBTN.UseVisualStyleBackColor = true;
-            this.removeBTN.Click += new System.EventHandler(this.removeBTN_Click);
-            // 
             // submitBTN
             // 
             this.submitBTN.Location = new System.Drawing.Point(476, 19);
@@ -252,7 +228,7 @@
             // 
             // profileBTN
             // 
-            this.profileBTN.Location = new System.Drawing.Point(22, 68);
+            this.profileBTN.Location = new System.Drawing.Point(12, 68);
             this.profileBTN.Name = "profileBTN";
             this.profileBTN.Size = new System.Drawing.Size(143, 50);
             this.profileBTN.TabIndex = 5;
@@ -262,7 +238,7 @@
             // 
             // appointmentBTN
             // 
-            this.appointmentBTN.Location = new System.Drawing.Point(22, 124);
+            this.appointmentBTN.Location = new System.Drawing.Point(12, 124);
             this.appointmentBTN.Name = "appointmentBTN";
             this.appointmentBTN.Size = new System.Drawing.Size(143, 50);
             this.appointmentBTN.TabIndex = 6;
@@ -272,7 +248,7 @@
             // 
             // requestsBTN
             // 
-            this.requestsBTN.Location = new System.Drawing.Point(22, 180);
+            this.requestsBTN.Location = new System.Drawing.Point(12, 180);
             this.requestsBTN.Name = "requestsBTN";
             this.requestsBTN.Size = new System.Drawing.Size(143, 50);
             this.requestsBTN.TabIndex = 7;
@@ -309,8 +285,6 @@
         private System.Windows.Forms.TextBox contentTB3;
         private System.Windows.Forms.TextBox contentTB2;
         private System.Windows.Forms.TextBox contentTB1;
-        private System.Windows.Forms.Button editBTN;
-        private System.Windows.Forms.Button removeBTN;
         private System.Windows.Forms.Button submitBTN;
         private System.Windows.Forms.Button profileBTN;
         private System.Windows.Forms.Button button8;

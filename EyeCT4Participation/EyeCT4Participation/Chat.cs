@@ -65,6 +65,11 @@ namespace EyeCT4Participation
             {                
                 chatLB.Items.Add(chat);
             }
-        }        
+        }
+
+        private void planappointmentBTN_Click(object sender, EventArgs e)
+        {
+           DataBase.Database.makeapointment(1, userID, userID2);
+        }
     }
 }
