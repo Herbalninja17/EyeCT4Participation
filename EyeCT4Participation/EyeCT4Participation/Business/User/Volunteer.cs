@@ -28,5 +28,12 @@ namespace EyeCT4Participation.Business.User
         {
             return this.name;
         }
+
+        public string getUserInfo()
+        {
+            string gegevens = "Naam: " + name + Environment.NewLine + "Adres: " + address + Environment.NewLine + "Woonplaats: " + city + Environment.NewLine + "Telefoonnummer: " + Convert.ToString(phonenumber);
+            return gegevens;
+
+        }
     }
 }

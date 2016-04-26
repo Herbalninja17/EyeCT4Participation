@@ -13,7 +13,6 @@ namespace EyeCT4Participation
 {
     public partial class Information : Form
     {
-
         public Information()
         {
             InitializeComponent();
@@ -26,7 +25,7 @@ namespace EyeCT4Participation
 
         public void fillVrijwilliger(Volunteer a)
         {
-            textBox1.Text = a.ToString();
+            textBox1.Text = a.getUserInfo();
         }
 
     }
