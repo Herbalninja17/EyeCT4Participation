@@ -118,7 +118,7 @@ namespace EyeCT4Participation.DataBase
         }
 
         //Rechard
-        public static void RegesterUser(string username, string password, string acctype, string email, string fullname, string address, string city, int phone, string gender)
+        public static void RegesterUser(string username, string password, string acctype, string email, string fullname, string address, string city, int phone, string gender, string rfid, string yncar, string ynlicence)
         {
             int AutoID = 0;
             try
@@ -135,7 +135,7 @@ namespace EyeCT4Participation.DataBase
                         AutoID = Convert.ToInt32(_Reader["COUNT(GebruikerID)"]) + 1;
                     }
                 }
-                m_command.CommandText = "INSERT INTO Gebruiker (GebruikerID, Gebruikersnaam, Wachtwoord, Naam, Geslacht, Adres, Woonplaats, Telefoonnummer, Email, Gebruikerstype) VALUES (:GebruikerID, :Gebruikersnaam, :Wachtwoord, :Naam, :Geslacht, :Adres, :Woonplaats, :Telefoonnummer, :Email, :Gebruikerstype)";
+                m_command.CommandText = "INSERT INTO Gebruiker (GebruikerID, Gebruikersnaam, Wachtwoord, Naam, Geslacht, Adres, Woonplaats, Telefoonnummer, HeeftRijbewijs, HeeftAuto, Email, Gebruikerstype, Rfidcode) VALUES (:GebruikerID, :Gebruikersnaam, :Wachtwoord, :Naam, :Geslacht, :Adres, :Woonplaats, :Telefoonnummer, :rij, :auto, :Email, :Gebruikerstype, :rfid)";
                 m_command.Parameters.Add("GebruikerID", OracleDbType.Int32).Value = AutoID;
                 m_command.Parameters.Add("Gebruikersnaam", OracleDbType.Varchar2).Value = username;
                 m_command.Parameters.Add("Wachtwoord", OracleDbType.Varchar2).Value = password;
@@ -144,8 +144,12 @@ namespace EyeCT4Participation.DataBase
                 m_command.Parameters.Add("Adres", OracleDbType.Varchar2).Value = address;
                 m_command.Parameters.Add("Woonplaats", OracleDbType.Varchar2).Value = city;
                 m_command.Parameters.Add("Telefoonnummer", OracleDbType.Int32).Value = phone;
+                m_command.Parameters.Add("rij", OracleDbType.Varchar2).Value = ynlicence;
+                m_command.Parameters.Add("auto", OracleDbType.Varchar2).Value = yncar;
                 m_command.Parameters.Add("Email", OracleDbType.Varchar2).Value = email;
                 m_command.Parameters.Add("Gebruikerstype", OracleDbType.Varchar2).Value = acctype;
+                m_command.Parameters.Add("rfid", OracleDbType.Varchar2).Value = rfid; 
+                
                 m_command.ExecuteNonQuery();
             }
             catch (OracleException ex)
@@ -157,6 +161,8 @@ namespace EyeCT4Participation.DataBase
 
         public static string ac;
         public static int acID;
+        public static string acRFID;
+
         //Rechard
         public static bool Login(string username, string password)
         {
@@ -167,7 +173,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username";
+                m_command.CommandText = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, Gebruikerstype, Rfidcode FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username";
                 m_command.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
                 m_command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
                 m_command.ExecuteNonQuery();
@@ -181,6 +187,8 @@ namespace EyeCT4Participation.DataBase
                         acID = accID;
                         result = Convert.ToString(_Reader["Gebruikersnaam"]);
                         if (result == username) { ok = true; }
+                        string rfid = Convert.ToString(_Reader["Rfidcode"]);
+                        acRFID = rfid;
                     }
                 }
             }
