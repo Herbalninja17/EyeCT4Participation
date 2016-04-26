@@ -632,7 +632,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT * FROM REVIEW WHERE VOLUNTEERID = :ID ORDER BY REVIEWID";
+                m_command.CommandText = "SELECT R.REVIEWID, R.BEOORDELING, R.OPMERKINGEN, R.NEEDYID, R.VOLUNTEERID, G.GEBRUIKERSNAAM FROM REVIEW R, GEBRUIKER G WHERE VOLUNTEERID = :ID AND R.NEEDYID = G.GEBRUIKERID ORDER BY REVIEWID";
                 m_command.Parameters.Add("ID", OracleDbType.Int32).Value = ID;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
@@ -641,7 +641,7 @@ namespace EyeCT4Participation.DataBase
                     {
                         while (_Reader.Read())
                         {
-                            Review review = new Review(Convert.ToInt32(_Reader["REVIEWID"]), Convert.ToInt32(_Reader["BEOORDELING"]), _Reader["OPMERKINGEN"].ToString(), Convert.ToInt32(_Reader["VOLUNTEERID"]), Convert.ToInt32(_Reader["NEEDYID"]));
+                            Review review = new Review(Convert.ToInt32(_Reader["REVIEWID"]), Convert.ToInt32(_Reader["BEOORDELING"]), _Reader["OPMERKINGEN"].ToString(), Convert.ToInt32(_Reader["VOLUNTEERID"]), Convert.ToInt32(_Reader["NEEDYID"]), _Reader["GEBRUIKERSNAAM"].ToString());
                             reviews.Add(review);
                         }
                     }
