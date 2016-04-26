@@ -28,6 +28,9 @@ namespace EyeCT4Participation
         private List<Request> requests = new List<Request>();
         private RequestOverview requestoverview;
         private Review review;
+        string currentcontent;
+        string nameofmessage;
+        string content;
 
         public Vrijwilliger()
         {
@@ -38,6 +41,9 @@ namespace EyeCT4Participation
 
         private void reviewBTN_Click(object sender, EventArgs e)
         {
+            currentcontent = "REVIEW";
+            nameofmessage = "OPMERKINGEN";
+            
             reviews.m_reviews.Clear();
             Formstate = 1;
             //listBox1.ResetText();
@@ -61,6 +67,8 @@ namespace EyeCT4Participation
         private void helprequestBTN_Click(object sender, EventArgs e)
         {
             Formstate = 2;
+            currentcontent = "HULPVRAAG";
+            nameofmessage = "OMSCHRIJVING";
             //BtnReactionPost.Visible = false;
             //TxtBxReactionPost.Visible = false;
             requests.Clear();
@@ -131,6 +139,37 @@ namespace EyeCT4Participation
             int index = listBox1.SelectedIndex;
             //Database.PlaceReaction(index, userID, TxtBxReactionPost.Text);
             //Database.PlaceReaction(review.);
+        }
+
+        private void BTNReport_Click(object sender, EventArgs e)
+        {
+            if (Formstate == 2)
+            {
+                Request request = (Request)listBox1.SelectedItem;
+                content = request.description;
+            }
+            else if (Formstate == 1)
+            {
+                Review review = (Review)listBox1.SelectedItem;
+                content = review.m_review;
+            }
+            
+            
+            
+            // ALTER 'CONTENT' BOOL REPORTED = FALSE 
+            if (listBox1.Items == null)
+            {
+                MessageBox.Show("Nothing Selected!");
+            }
+            else
+            {
+                // SELECT CHATID FROM CHAT WHERE MESSAGE = SELECTEDITEMMESSAGE
+
+                DataBase.Database.getSelected(currentcontent, content, currentcontent + "ID", nameofmessage);
+                DataBase.Database.alterYorN(currentcontent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentcontent + "ID", "ISREPORTED", "Y");
+                //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
+            }
+           
         }
     }
 }
