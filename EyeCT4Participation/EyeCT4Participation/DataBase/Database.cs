@@ -764,6 +764,8 @@ namespace EyeCT4Participation.DataBase
 
         public static List<string> chathistory = new List<string>();
         // CHATHALEN <RECHARD>
+
+        
         public static string chatbox(int needy, int volunteer)
         {
             chathistory.Clear();
