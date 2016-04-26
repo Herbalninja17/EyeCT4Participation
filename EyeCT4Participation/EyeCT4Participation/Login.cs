@@ -191,6 +191,7 @@ namespace EyeCT4Participation
             }
             if (x == true)
             {
+                confirm();
                 Test();
                 MessageBox.Show("Register complete");
                 this.Hide();
@@ -199,7 +200,7 @@ namespace EyeCT4Participation
             x = true;
             if (loginBTN.Enabled == false)
             {
-                confirm();
+                
 
             }
         }
@@ -229,6 +230,7 @@ namespace EyeCT4Participation
 
         public void confirm()
         {
+
             string userrfid = null;
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();
@@ -239,7 +241,7 @@ namespace EyeCT4Participation
             string city = cityTB.Text.ToString();
             string p = phoneTB.Text.ToString();
             int phone = Convert.ToInt32(p);
-            string gender = "X";            
+            string gender = "";
             if (maleCHK.Checked == true) { gender = "M"; }
             if (femaleCHK.Checked == true) { gender = "V"; }
             if (fingerprintCKB.Checked == true) { rfid_yn = "Y"; }
@@ -248,8 +250,14 @@ namespace EyeCT4Participation
             {
                 userrfid = rfidcodetb.Text;
             }
+            string car = "";
+            if (carCKB.Checked == true) { car = "Y"; }
+            if (carCKB.Checked == false) { car = "N"; }
+            string licence = "";
+            if (licenceCKB.Checked == true) { licence = "Y"; }
+            if (licenceCKB.Checked == false) { licence = "N"; }
 
-            DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender);
+            DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender, userrfid, car, licence);
             
         }
 
