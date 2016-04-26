@@ -194,6 +194,7 @@ namespace EyeCT4Participation.DataBase
 
 
 
+
         // REVIEWID - OPMERKINGEN, CHATID - BERICHT, HULPVRAAGID - OMSCHRIJVING
         // Get ID from selected chat/review/request to change visibility/reported
         public static string ItemIDSelected;
@@ -205,18 +206,18 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT :ITEMID FROM :COLUMN WHERE :BERICHT = :GEKOZENBERICHT";
-                Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = column;
+                m_command.CommandText = "SELECT " + IDFromWich + " FROM " + column + " WHERE " + nameOfMessage + " = :GEKOZENBERICHT";
+                //Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = column;
                 Command.Parameters.Add("GEKOZENBERICHT", OracleDbType.Varchar2).Value = message;
-                Command.Parameters.Add("ITEMID", OracleDbType.Varchar2).Value = IDFromWich;
-                Command.Parameters.Add("BERICHT", OracleDbType.Varchar2).Value = nameOfMessage;
+                //Command.Parameters.Add("ITEMID", OracleDbType.Varchar2).Value = IDFromWich;
+                //Command.Parameters.Add("BERICHT", OracleDbType.Varchar2).Value = nameOfMessage;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
                     {
 
-                        ItemIDSelected = (Convert.ToString(_Reader[Beheerder.currentContent + "ID"]));
+                        ItemIDSelected = (Convert.ToString(_Reader["" + IDFromWich + ""]));
 
                     }
                 }
@@ -232,23 +233,20 @@ namespace EyeCT4Participation.DataBase
 
 
         // Update table IsVisible/IsReported <Raphael>
-        public static bool alterYorN(string COLUMN, int ID, string YorN, string IDFromWich, string visibleOrReported)
+        public static bool alterYorN(string COLUMN, int ID, string IDFromWich, string visibleOrReported, string YorN)
         {
             bool ok = false;
-            ID = 1;
+
             try
             {
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.BindByName = true;
-                m_command.CommandText = "UPDATE :COLUMN SET :VisRep = ':Y' WHERE :IDFromWich = :idhulp";
-                Command.Parameters.Add("COLUMN", OracleDbType.NVarchar2).Value = COLUMN;
-                Command.Parameters.Add("VisRep", OracleDbType.NVarchar2).Value = visibleOrReported;
-                Command.Parameters.Add("'Y'", OracleDbType.NVarchar2).Value = YorN;
-                Command.Parameters.Add("IDFromWich", OracleDbType.NVarchar2).Value = IDFromWich;
-                Command.Parameters.Add("idhulp", OracleDbType.Int32).Value = ID;
-
+                m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = '" + YorN + "' WHERE " + IDFromWich + "=" + ID;
+                //Command.Parameters.Add("Y", OracleDbType.Varchar2).Value = YorN;
+                //Command.Parameters.Add("IDFromWich", OracleDbType.Varchar2).Value = IDFromWich;
+                //Command.Parameters.Add("1", OracleDbType.Int32).Value = Convert.ToString(ID);
+                //Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = COLUMN;
                 m_command.ExecuteNonQuery();
             }
             catch (OracleException ex)
@@ -258,6 +256,9 @@ namespace EyeCT4Participation.DataBase
             }
             return ok;
         }
+
+
+
 
         // GetReviews admin <Raphael>
         public static List<string> reviewsListAdmin = new List<string>();
@@ -570,79 +571,50 @@ namespace EyeCT4Participation.DataBase
 
         // REVIEWS UIT DATABASE HALEN <THOM>
         public static string _needyname = "";
-        public static List<string> GetNeedyReviews(int accountid)
+        public static string GetReviews(long accountid, UserType SoortUser)
         {
-            List<string> needyreviews = new List<string>();
             string reviews = "";
             string needyName = "";
             string needyRate = "";
             string needyRemark = "";
             string volunteerName = "";
-            string id = "";
 
             try
             {
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT R.ReviewID, G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
-                Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
-                m_command.ExecuteNonQuery();
-                //case UserType.volunteer:
-                //    m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G2.GebruikerID = :GebruikerID";
-                //    Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
-                //    m_command.ExecuteNonQuery();
-                //    break;
-                // Weet niet of het nodig is.
-                // case UserType.admin:
+                switch (SoortUser)
+                {
+                    case UserType.needy:
+                        m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G.GebruikerID = :GebruikerID";
+                        Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
+                        m_command.ExecuteNonQuery();
+                        break;
+                    case UserType.volunteer:
+                        m_command.CommandText = "SELECT G.Naam AS Needy, Beoordeling, Opmerkingen, G2.Naam AS Volunteer FROM Gebruiker G JOIN Review R ON G.GebruikerID = R.NeedyID JOIN Gebruiker G2 ON G2.GebruikerID = R.VolunteerID WHERE G2.GebruikerID = :GebruikerID";
+                        Command.Parameters.Add(":GebruikerID", OracleDbType.Long).Value = accountid;
+                        m_command.ExecuteNonQuery();
+                        break;
+                        // Weet niet of het nodig is.
+                        // case UserType.admin:
 
-                //    break;
+                        //    break;
+
+
+                }
 
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
                     {
-                        id = _Reader["ReviewID"].ToString();
                         needyName = Convert.ToString((_Reader["Needy"]));
                         _needyname = needyName;
                         needyRate = Convert.ToString((_Reader["Beoordeling"]));
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
                         //@Voor makkelijke split
-                        reviews = Convert.ToString("ID: " + id + Environment.NewLine + " Hulpbehoevende " + needyName + "." + "beoordeelt vrijwilliger " + volunteerName + " met een :" + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
-                        needyreviews.Add(reviews);
-                    }
-                }
-            }
-            catch (OracleException ex)
-            {
-                Database.CloseConnection();
-                Console.WriteLine(ex.Message);
-            }
-            return needyreviews;
-        }
-
-        public static List<Review> GetReviews(int ID)
-        {
-            List<Review> reviews = new List<Review>();
-
-            try
-            {
-                OpenConnection();                   // om connection open te maken
-                m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
-                m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT * FROM REVIEW WHERE VOLUNTEERID = :ID ORDER BY REVIEWID";
-                m_command.Parameters.Add("ID", OracleDbType.Int32).Value = ID;
-                m_command.ExecuteNonQuery();
-                using (OracleDataReader _Reader = Database.Command.ExecuteReader())
-                {
-                    if (_Reader.HasRows)
-                    {
-                        while (_Reader.Read())
-                        {
-                            Review review = new Review(Convert.ToInt32(_Reader["REVIEWID"]), Convert.ToInt32(_Reader["BEOORDELING"]), _Reader["OPMERKINGEN"].ToString(), Convert.ToInt32(_Reader["VOLUNTEERID"]), Convert.ToInt32(_Reader["NEEDYID"]));
-                            reviews.Add(review);
-                        }
+                        reviews = reviews + Convert.ToString("Hulpbehoevende " + needyName + "." + "beoordeelt vrijwilliger " + volunteerName + " met een :" + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark + "@");
                     }
                 }
             }
@@ -830,7 +802,7 @@ namespace EyeCT4Participation.DataBase
             }
         }
 
-
+        public static long UserID2;
         public static long GetDiffUserID(string UserName)
         {
             long UserID = 0;
@@ -1114,7 +1086,7 @@ namespace EyeCT4Participation.DataBase
 
                 Console.WriteLine(ex.Message);
             }
-
+        
         }
 
         public static void makeapointment(int request, int needy, int volunteer)

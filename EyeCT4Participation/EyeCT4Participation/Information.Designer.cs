@@ -1,6 +1,6 @@
 ﻿namespace EyeCT4Participation
 {
-    partial class MyProfile
+    partial class Information
     {
         /// <summary>
         /// Required designer variable.
