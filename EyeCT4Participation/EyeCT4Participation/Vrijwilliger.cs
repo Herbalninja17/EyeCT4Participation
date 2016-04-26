@@ -22,10 +22,11 @@ namespace EyeCT4Participation
 
     public partial class Vrijwilliger : Form
     {  
-        public static long userID = DataBase.Database.acID;
+        public static int userID = DataBase.Database.acID;
         public int Formstate = (int)FormState.nothingSelected;
-        public ReviewOverview reviews;
+        public ReviewOverview reviewoverview;
         private List<Request> requests = new List<Request>();
+        private List<Review> reviews = new List<Review>();
         private RequestOverview requestoverview;
         private Review review;
         string currentcontent;
@@ -35,26 +36,26 @@ namespace EyeCT4Participation
         public Vrijwilliger()
         {
             InitializeComponent();
-
-           reviews= new ReviewOverview(userID);
+            Review();
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)
         {
             currentcontent = "REVIEW";
             nameofmessage = "OPMERKINGEN";
-            
-            reviews.m_reviews.Clear();
+
+            reviews.Clear();
             Formstate = 1;
             //listBox1.ResetText();
             //BtnReactionPost.Visible = true;
             //TxtBxReactionPost.Visible = true;
             listBox1.Items.Clear();
-            foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
-            { 
-                    listBox1.Items.Add(review);
+            Review();
+            foreach (Review review in reviews)
+            {
+                listBox1.Items.Add(review);
             }
-            
+
         }
 
         private void logoutBTN_Click(object sender, EventArgs e)
@@ -170,6 +171,15 @@ namespace EyeCT4Participation
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
            
+        }
+
+        public void Review()
+        {
+            reviewoverview = new ReviewOverview(reviews, userID);
+            foreach (Review rev in reviewoverview.Getreviews())
+            {
+                reviews.Add(rev);
+            }
         }
     }
 }
