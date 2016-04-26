@@ -18,3 +18,4 @@ C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\bin\Debug\Ph
 C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
 C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.dll
 C:\Users\Gebruiker\Documents\GithubPT\EyeCT4Participation\UnitTests\obj\Debug\UnitTests.pdb
+C:\Users\Olaf\Documents\J1 P3\PT\GitHubs\EyeCT4Participation\UnitTests\bin\Debug\Oracle.ManagedDataAccess.dll
