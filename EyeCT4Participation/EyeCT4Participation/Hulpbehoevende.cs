@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using EyeCT4Participation.Business.User;
 using EyeCT4Participation.Business;
 using EyeCT4Participation.DataBase;
+using EyeCT4Participation.UI;
 
 namespace EyeCT4Participation
 {
@@ -29,6 +30,8 @@ namespace EyeCT4Participation
         public static int User2ID;
         private RequestOverview requestoverview;
         public static Volunteer selectedVolunteer;
+        private ReviewOverview reviewoverview;
+        private List<string> needyreviews = new List<string>();
 
         public Hulpbehoevende()
         {
@@ -67,24 +70,7 @@ namespace EyeCT4Participation
 
         private void reviewBTN_Click(object sender, EventArgs e)
         {
-            // Open de lijst met reviews die bij deze user hoort
-            if (string.IsNullOrEmpty(contentTB1.Text))
-            {
-                contentTB1.Text = DataBase.Database.GetReviews(userID,UserType.needy);
-            }
-
-            else if (!string.IsNullOrEmpty(contentTB1.Text) && string.IsNullOrEmpty(contentTB2.Text))
-            {
-                contentTB2.Text = contentTB1.Text;
-                contentTB1.Text = DataBase.Database.GetReviews(userID,UserType.needy);
-            }
-            
-            else
-            {
-                contentTB3.Text = contentTB2.Text;
-                contentTB2.Text = contentTB1.Text;
-                contentTB1.Text = DataBase.Database.GetReviews(userID,UserType.needy);
-            }
+            needyreviewsmethod();
         }
 
         private void appointmentBTN_Click(object sender, EventArgs e)
@@ -225,9 +211,13 @@ namespace EyeCT4Participation
 
         public void Request()
         {
+            contentTB1.Text = "";
+            contentTB2.Text = "";
+            contentTB3.Text = "";
             volunteer1.Clear();
             volunteer2.Clear();
             volunteer3.Clear();
+            requests.Clear();
             LBvol1.Items.Clear();
             LBvol2.Items.Clear();
             LBvol3.Items.Clear();
@@ -308,6 +298,40 @@ namespace EyeCT4Participation
             {
                 MessageBox.Show("Selecteer een vrijwilliger.");
             }
-        }      
+        }
+
+        private void needyreviewsmethod()
+        {
+            LBvol1.Items.Clear();
+            LBvol2.Items.Clear();
+            LBvol3.Items.Clear();
+            contentTB1.Text = "";
+            contentTB2.Text = "";
+            contentTB3.Text = "";
+            needyreviews.Clear();
+            reviewoverview = new ReviewOverview(needyreviews, userID);
+            foreach (string showreview in reviewoverview.GetNeedyReviews())
+            {
+                needyreviews.Add(showreview);
+            }
+
+            needyreviews.Sort();
+            int i = needyreviews.Count();
+
+            if (i >= 1)
+            {
+                contentTB1.Text = Convert.ToString(needyreviews[i - 1]);
+            }
+
+            if (i >= 2)
+            {
+                contentTB2.Text = Convert.ToString(needyreviews[i - 2]);
+            }
+
+            if (i >= 3)
+            {
+                contentTB3.Text = Convert.ToString(needyreviews[i - 3]);
+            }
+        }
     }
 }

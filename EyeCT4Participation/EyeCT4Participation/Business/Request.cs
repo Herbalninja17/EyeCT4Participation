@@ -39,12 +39,12 @@ namespace EyeCT4Participation.Business
         public override string ToString()
         {
             return 
-                "Location:" + this.location + "\t" + "\t" +
-                ", Transport:" + this.transportType + "\t" + "\t" +
-                ", Travel time:" + this.travelTime + "\t" +
-                ", Start date:" + this.startDate + "\t" +
-                ", End date:" + this.endDate + "\t" +
-                "Volunteers needed:" + this.totalVolunteer + "\t" +
+                "Location:" + this.location + Environment.NewLine +
+                "Transport:" + this.transportType + Environment.NewLine +
+                "Travel time:" + this.travelTime + Environment.NewLine +
+                "Start date:" + this.startDate + "\t" +
+                ", End date:" + this.endDate + Environment.NewLine +
+                "Volunteers needed:" + this.totalVolunteer + Environment.NewLine +
                 this.description;
 
         }

@@ -22,29 +22,30 @@ namespace EyeCT4Participation
 
     public partial class Vrijwilliger : Form
     {  
-        private long userID = DataBase.Database.acID;
+        private int userID = DataBase.Database.acID;
         public int Formstate = (int)FormState.nothingSelected;
-        public ReviewOverview reviews;
+        public ReviewOverview reviewoverview;
         private List<Request> requests = new List<Request>();
+        private List<Review> reviews = new List<Review>();
         private RequestOverview requestoverview;
         private Review review;
 
         public Vrijwilliger()
         {
             InitializeComponent();
-
-           reviews= new ReviewOverview(userID);
+            Review();
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)
         {
-            reviews.m_reviews.Clear();
+            reviews.Clear();
             Formstate = 1;
             //listBox1.ResetText();
             //BtnReactionPost.Visible = true;
             //TxtBxReactionPost.Visible = true;
             listBox1.Items.Clear();
-            foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
+            Review();
+            foreach (Review review in reviews)
             { 
                     listBox1.Items.Add(review);
             }
@@ -131,6 +132,15 @@ namespace EyeCT4Participation
             int index = listBox1.SelectedIndex;
             //Database.PlaceReaction(index, userID, TxtBxReactionPost.Text);
             //Database.PlaceReaction(review.);
+        }
+
+        public void Review()
+        {
+            reviewoverview = new ReviewOverview(reviews, userID);
+            foreach (Review rev in reviewoverview.Getreviews())
+            {
+                reviews.Add(rev);
+            }
         }
     }
 }

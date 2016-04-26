@@ -83,7 +83,7 @@ namespace EyeCT4Participation
             else
             {
                 DataBase.Database.getSelected(currentContent, Convert.ToString(LBSelectedContent.SelectedItem), currentContent + "ID", nameOfMessage);
-                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID" , "Y", "ISVISIBLE");
+                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), "Y", currentContent + "ID", "ISVISIBLE");
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
             refresh();
@@ -101,7 +101,7 @@ namespace EyeCT4Participation
             {
                 // SELECT CHATID FROM CHAT WHERE MESSAGE = SELECTEDITEMMESSAGE
                 DataBase.Database.getSelected(currentContent, Convert.ToString(LBSelectedContent.SelectedItem), currentContent + "ID", nameOfMessage);
-                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID", "Y", "ISVISIBLE");
+                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), "Y", currentContent + "ID", "ISVISIBLE");
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
             refresh();
