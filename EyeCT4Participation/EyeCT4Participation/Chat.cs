@@ -59,10 +59,10 @@ namespace EyeCT4Participation
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DataBase.Database.chatbox(userID , userID2);
+            DataBase.Database.chatbox(userID, userID2);
             chatLB.Items.Clear();
             foreach (string chat in Database.chathistory)
-            {                
+            {
                 chatLB.Items.Add(chat);
             }
         }
@@ -70,6 +70,25 @@ namespace EyeCT4Participation
         private void planappointmentBTN_Click(object sender, EventArgs e)
         {
            DataBase.Database.makeapointment(1, userID, userID2);
+        }
+
+        private void BTNreportChat_Click(object sender, EventArgs e)
+        {
+            string selected = Convert.ToString(chatLB.SelectedItem);
+            // ALTER 'CONTENT' BOOL REPORTED = FALSE 
+            if (chatLB.Items == null)
+            {
+                MessageBox.Show("Nothing Selected!");
+            }
+            else
+            {
+                // SELECT CHATID FROM CHAT WHERE MESSAGE = SELECTEDITEMMESSAGE
+                
+                DataBase.Database.getSelected("CHAT", selected, "CHATID", "BERICHT");
+                DataBase.Database.alterYorN("CHAT", Convert.ToInt32(DataBase.Database.ItemIDSelected), "CHATID", "ISREPORTED", "Y");
+                //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
+            }
+           
         }
     }
 }

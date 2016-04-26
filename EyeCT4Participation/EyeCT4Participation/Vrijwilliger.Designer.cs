@@ -36,6 +36,7 @@
             this.openchatBTN = new System.Windows.Forms.Button();
             this.instresseBTN = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.BTNReport = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +82,7 @@
             // 
             // VrijwilligerGrpBx
             // 
+            this.VrijwilligerGrpBx.Controls.Add(this.BTNReport);
             this.VrijwilligerGrpBx.Controls.Add(this.openchatBTN);
             this.VrijwilligerGrpBx.Controls.Add(this.instresseBTN);
             this.VrijwilligerGrpBx.Controls.Add(this.listBox1);
@@ -121,6 +123,16 @@
             this.listBox1.TabIndex = 11;
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
+            // BTNReport
+            // 
+            this.BTNReport.Location = new System.Drawing.Point(6, 98);
+            this.BTNReport.Name = "BTNReport";
+            this.BTNReport.Size = new System.Drawing.Size(95, 23);
+            this.BTNReport.TabIndex = 14;
+            this.BTNReport.Text = "Report";
+            this.BTNReport.UseVisualStyleBackColor = true;
+            this.BTNReport.Click += new System.EventHandler(this.BTNReport_Click);
+            // 
             // Vrijwilliger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,5 +159,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button instresseBTN;
         private System.Windows.Forms.Button openchatBTN;
+        private System.Windows.Forms.Button BTNReport;
     }
 }
