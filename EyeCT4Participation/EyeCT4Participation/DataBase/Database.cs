@@ -610,7 +610,7 @@ namespace EyeCT4Participation.DataBase
                         needyRemark = Convert.ToString((_Reader["Opmerkingen"]));
                         volunteerName = Convert.ToString((_Reader["Volunteer"]));
                         //@Voor makkelijke split
-                        reviews = Convert.ToString("ID: " + id + Environment.NewLine + " Hulpbehoevende " + needyName + "." + "beoordeelt vrijwilliger " + volunteerName + " met een :" + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
+                        reviews = Convert.ToString("ID: " + id + Environment.NewLine + "Hulpbehoevende " + needyName + "." + "beoordeelt vrijwilliger " + volunteerName + " met een :" + needyRate + " en heeft de volgende opmerkingen gemaakt:" + " " + needyRemark);
                         needyreviews.Add(reviews);
                     }
                 }
