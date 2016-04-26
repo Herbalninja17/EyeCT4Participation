@@ -96,14 +96,34 @@ namespace EyeCT4Participation
 
         private void instresseBTN_Click(object sender, EventArgs e)
         {
-            Request a = (Request)listBox1.SelectedItem;
-            Database.reactneedy(a.requestID, Convert.ToInt32(userID));
-        }
+            if (Formstate == 2)
+            {
+                if (listBox1.SelectedItem != null)
+                {
+                    Request a = (Request)listBox1.SelectedItem;
+                    Database.reactneedy(a.requestID, Convert.ToInt32(userID));
+                }
+                else
+                {
+                    MessageBox.Show("Select a request first", "Chat");
+                }
+            }
+    }
 
         private void openchatBTN_Click(object sender, EventArgs e)
         {
-            Request a = (Request)listBox1.SelectedItem;
-            new Chat( a.needyID, Convert.ToInt32(userID)).Show();
+            if (Formstate == 2)
+            {
+                if (listBox1.SelectedItem != null)
+                {
+                    Request a = (Request)listBox1.SelectedItem;
+                    new Chat(a.needyID, Convert.ToInt32(userID)).Show();
+                }
+                else
+                {
+                    MessageBox.Show("Select a request first", "Chat");
+                }
+            }
         }
 
         private void BtnReactionPost_Click(object sender, EventArgs e)
