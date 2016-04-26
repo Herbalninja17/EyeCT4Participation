@@ -167,6 +167,7 @@
             this.Controls.Add(this.reportedrequestsBTN);
             this.Name = "Beheerder";
             this.Text = "Beheerder";
+            this.Load += new System.EventHandler(this.Beheerder_Load);
             this.contentGB.ResumeLayout(false);
             this.ResumeLayout(false);
 

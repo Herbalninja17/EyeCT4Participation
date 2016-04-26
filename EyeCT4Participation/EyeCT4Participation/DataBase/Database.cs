@@ -194,6 +194,7 @@ namespace EyeCT4Participation.DataBase
 
 
 
+
         // REVIEWID - OPMERKINGEN, CHATID - BERICHT, HULPVRAAGID - OMSCHRIJVING
         // Get ID from selected chat/review/request to change visibility/reported
         public static string ItemIDSelected;
@@ -205,18 +206,18 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT :ITEMID FROM :COLUMN WHERE :BERICHT = :GEKOZENBERICHT";
-                Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = column;
+                m_command.CommandText = "SELECT " + IDFromWich + " FROM " + column + " WHERE " + nameOfMessage + " = :GEKOZENBERICHT";
+                //Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = column;
                 Command.Parameters.Add("GEKOZENBERICHT", OracleDbType.Varchar2).Value = message;
-                Command.Parameters.Add("ITEMID", OracleDbType.Varchar2).Value = IDFromWich;
-                Command.Parameters.Add("BERICHT", OracleDbType.Varchar2).Value = nameOfMessage;
+                //Command.Parameters.Add("ITEMID", OracleDbType.Varchar2).Value = IDFromWich;
+                //Command.Parameters.Add("BERICHT", OracleDbType.Varchar2).Value = nameOfMessage;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {
                     while (_Reader.Read())
                     {
 
-                        ItemIDSelected = (Convert.ToString(_Reader[Beheerder.currentContent + "ID"]));
+                        ItemIDSelected = (Convert.ToString(_Reader["" + IDFromWich + ""]));
 
                     }
                 }
@@ -232,7 +233,7 @@ namespace EyeCT4Participation.DataBase
 
 
         // Update table IsVisible/IsReported <Raphael>
-        public static bool alterYorN(string COLUMN, int ID, string YorN, string IDFromWich, string visibleOrReported)
+        public static bool alterYorN(string COLUMN, int ID, string IDFromWich, string visibleOrReported, string YorN)
         {
             bool ok = false;
 
@@ -241,11 +242,11 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "UPDATE :COLUMN SET " + visibleOrReported + " = :Y WHERE :IDFromWich = :1";
-                Command.Parameters.Add("Y", OracleDbType.Varchar2).Value = YorN;
-                Command.Parameters.Add("IDFromWich", OracleDbType.Varchar2).Value = IDFromWich;
-                Command.Parameters.Add("1", OracleDbType.Int32).Value = Convert.ToString(ID);
-                Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = COLUMN;
+                m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = '" + YorN + "' WHERE " + IDFromWich + "=" + ID;
+                //Command.Parameters.Add("Y", OracleDbType.Varchar2).Value = YorN;
+                //Command.Parameters.Add("IDFromWich", OracleDbType.Varchar2).Value = IDFromWich;
+                //Command.Parameters.Add("1", OracleDbType.Int32).Value = Convert.ToString(ID);
+                //Command.Parameters.Add("COLUMN", OracleDbType.Varchar2).Value = COLUMN;
                 m_command.ExecuteNonQuery();
             }
             catch (OracleException ex)
@@ -255,6 +256,9 @@ namespace EyeCT4Participation.DataBase
             }
             return ok;
         }
+
+
+
 
         // GetReviews admin <Raphael>
         public static List<string> reviewsListAdmin = new List<string>();

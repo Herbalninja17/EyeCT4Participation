@@ -40,7 +40,7 @@
       <HintPath>..\..\..\Proftaak\EyeCT4Participation\EyeCT4Participation\dll\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Phidget21.NET">
-      <HintPath>..\..\..\..\..\Dropbox\Proftaak S2\Dll folder\Phidget21.NET.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\PT-S2\Phidget21.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
