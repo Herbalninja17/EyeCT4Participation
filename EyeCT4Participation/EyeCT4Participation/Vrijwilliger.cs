@@ -22,7 +22,7 @@ namespace EyeCT4Participation
 
     public partial class Vrijwilliger : Form
     {  
-        private long userID = DataBase.Database.acID;
+        public static long userID = DataBase.Database.acID;
         public int Formstate = (int)FormState.nothingSelected;
         public ReviewOverview reviews;
         private List<Request> requests = new List<Request>();

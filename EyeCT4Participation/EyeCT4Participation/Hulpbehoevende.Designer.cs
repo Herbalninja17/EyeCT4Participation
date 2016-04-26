@@ -47,6 +47,7 @@
             this.profileBTN = new System.Windows.Forms.Button();
             this.appointmentBTN = new System.Windows.Forms.Button();
             this.requestsBTN = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +74,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.reviewVolunteerBTN);
             this.groupBox1.Controls.Add(this.LBvol3);
             this.groupBox1.Controls.Add(this.LBvol2);
@@ -256,6 +258,16 @@
             this.requestsBTN.UseVisualStyleBackColor = true;
             this.requestsBTN.Click += new System.EventHandler(this.requestsBTN_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(476, 251);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 52);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Selected volunteer information";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Hulpbehoevende
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +308,7 @@
         private System.Windows.Forms.ListBox LBvol2;
         private System.Windows.Forms.ListBox LBvol1;
         private System.Windows.Forms.Button reviewVolunteerBTN;
+        private System.Windows.Forms.Button button1;
     }
 }
 

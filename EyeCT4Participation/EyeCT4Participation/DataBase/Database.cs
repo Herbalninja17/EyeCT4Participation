@@ -798,7 +798,7 @@ namespace EyeCT4Participation.DataBase
             }
         }
 
-        
+        public static long UserID2;
         public static long GetDiffUserID(string UserName)
         {
             long UserID = 0;

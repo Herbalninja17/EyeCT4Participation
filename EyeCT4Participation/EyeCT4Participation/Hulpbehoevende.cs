@@ -18,7 +18,7 @@ namespace EyeCT4Participation
         //dit is ook een change
         //Business.User.Needy needy = new Business.User.Needy(DataBase.Database.acID);
         public static int userID = DataBase.Database.acID;
-        private MyProfile m_MyProfile;
+        private Information m_Information;
         private PlaceRequest m_PlaceRequest;
         private Chat m_chat;
         private Volunteer m_volunteer;
@@ -26,7 +26,7 @@ namespace EyeCT4Participation
         private List<Volunteer> volunteer1 = new List<Volunteer>();
         private List<Volunteer> volunteer2 = new List<Volunteer>();
         private List<Volunteer> volunteer3 = new List<Volunteer>();
-        public static int User2ID;
+        private long User2ID;
         private RequestOverview requestoverview;
         public static Volunteer selectedVolunteer;
 
@@ -53,15 +53,16 @@ namespace EyeCT4Participation
         private void profileBTN_Click(object sender, EventArgs e)
         {
             // open het profiel van deze user
-            if (m_MyProfile == null || m_MyProfile.IsDisposed)
+            if (m_Information == null || m_Information.IsDisposed)
             {
-                m_MyProfile = new MyProfile { Parent = this.Parent };
-                m_MyProfile.Show();
+                m_Information = new Information { Parent = this.Parent };
+                m_Information.Show();
+                m_Information.fillHulpbehoevende();
             }
 
             else
             {
-                m_MyProfile.BringToFront();
+                m_Information.BringToFront();
             }
         }
 
@@ -308,6 +309,47 @@ namespace EyeCT4Participation
             {
                 MessageBox.Show("Selecteer een vrijwilliger.");
             }
-        }      
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (m_Information == null || m_Information.IsDisposed)
+            {
+                if (LBvol1.SelectedIndex != -1)
+                {
+                    selectedVolunteer = (Volunteer)LBvol1.SelectedItem;
+                    m_Information = new Information();
+                    m_Information.Show();
+                    m_Information.fillVrijwilliger(selectedVolunteer);
+                }
+
+                else if (LBvol2.SelectedIndex != -1)
+                {
+                    selectedVolunteer = (Volunteer)LBvol2.SelectedItem;
+                    m_Information = new Information();
+                    m_Information.Show();
+                    m_Information.fillVrijwilliger(selectedVolunteer);
+                }
+
+                else if (LBvol3.SelectedIndex != -1)
+                {
+                    selectedVolunteer = (Volunteer)LBvol3.SelectedItem;
+                    m_Information = new Information();
+                    m_Information.Show();
+                    m_Information.fillVrijwilliger(selectedVolunteer);
+                }
+
+                else
+                {
+                    MessageBox.Show("Selecteer een vrijwilliger.");
+                }
+            }
+
+            else
+            {
+                m_Information.BringToFront();
+            }
+
+        }    
     }
 }
