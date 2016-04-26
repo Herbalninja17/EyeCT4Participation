@@ -9,7 +9,7 @@ namespace EyeCT4Participation.Business
     public class Reaction
     {
         //fields 
-        public long m_GebruikerID
+        public int m_GebruikerID
         {
             get;
             set;
@@ -22,7 +22,7 @@ namespace EyeCT4Participation.Business
 
         }
         //constructor
-        public Reaction(long p_GebruikerID, Review p_Review, string p_Content)
+        public Reaction(int p_GebruikerID, Review p_Review, string p_Content)
         {
             this.m_GebruikerID = p_GebruikerID;
             this.m_MEINREVIEW = p_Review;
