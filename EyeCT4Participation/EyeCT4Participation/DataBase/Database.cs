@@ -162,6 +162,8 @@ namespace EyeCT4Participation.DataBase
 
         public static string ac;
         public static int acID;
+        public static string acRFID;
+
         //Rechard
         public static bool Login(string username, string password)
         {
@@ -172,7 +174,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();
                 m_command = new OracleCommand();
                 m_command.Connection = m_conn;
-                m_command.CommandText = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, Gebruikerstype FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username";
+                m_command.CommandText = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, Gebruikerstype, Rfidcode FROM gebruiker WHERE Wachtwoord = :password AND Gebruikersnaam = :username";
                 m_command.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
                 m_command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
                 m_command.ExecuteNonQuery();
@@ -186,6 +188,8 @@ namespace EyeCT4Participation.DataBase
                         acID = accID;
                         result = Convert.ToString(_Reader["Gebruikersnaam"]);
                         if (result == username) { ok = true; }
+                        string rfid = Convert.ToString(_Reader["Rfidcode"]);
+                        acRFID = rfid;
                     }
                 }
             }
