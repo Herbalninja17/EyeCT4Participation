@@ -148,8 +148,7 @@ namespace EyeCT4Participation.DataBase
                 m_command.Parameters.Add("auto", OracleDbType.Varchar2).Value = yncar;
                 m_command.Parameters.Add("Email", OracleDbType.Varchar2).Value = email;
                 m_command.Parameters.Add("Gebruikerstype", OracleDbType.Varchar2).Value = acctype;
-                m_command.Parameters.Add("rfid", OracleDbType.Varchar2).Value = rfid; 
-                
+                m_command.Parameters.Add("rfid", OracleDbType.Varchar2).Value = rfid;                 
                 m_command.ExecuteNonQuery();
             }
             catch (OracleException ex)
