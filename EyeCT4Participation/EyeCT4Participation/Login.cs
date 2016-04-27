@@ -31,7 +31,7 @@ namespace EyeCT4Participation
                 //-----test conectivity------ //
                 if (rfid.LED == false) { rfid.LED = true; }
                 else if (rfid.LED == true) { rfid.LED = false; }
-                //string acctype = "x";
+                
             }
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();

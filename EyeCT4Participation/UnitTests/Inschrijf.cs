@@ -26,7 +26,6 @@ namespace Login_test
             string rfid = "";
             string car = "";            
             string licence = "";
-            string rfid_yn = "";
             Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender, rfid, car, licence);
 
             Assert.AreEqual(true, Database.Login(username, password));
