@@ -33,10 +33,10 @@
             this.logoutBTN = new System.Windows.Forms.Button();
             this.reviewBTN = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx = new System.Windows.Forms.GroupBox();
+            this.BTNReport = new System.Windows.Forms.Button();
             this.openchatBTN = new System.Windows.Forms.Button();
             this.instresseBTN = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.BTNReport = new System.Windows.Forms.Button();
             this.VrijwilligerGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +93,16 @@
             this.VrijwilligerGrpBx.TabIndex = 14;
             this.VrijwilligerGrpBx.TabStop = false;
             // 
+            // BTNReport
+            // 
+            this.BTNReport.Location = new System.Drawing.Point(6, 98);
+            this.BTNReport.Name = "BTNReport";
+            this.BTNReport.Size = new System.Drawing.Size(95, 23);
+            this.BTNReport.TabIndex = 14;
+            this.BTNReport.Text = "Report";
+            this.BTNReport.UseVisualStyleBackColor = true;
+            this.BTNReport.Click += new System.EventHandler(this.BTNReport_Click);
+            // 
             // openchatBTN
             // 
             this.openchatBTN.Location = new System.Drawing.Point(6, 39);
@@ -109,7 +119,7 @@
             this.instresseBTN.Name = "instresseBTN";
             this.instresseBTN.Size = new System.Drawing.Size(95, 23);
             this.instresseBTN.TabIndex = 12;
-            this.instresseBTN.Text = "Add to interest";
+            this.instresseBTN.Text = "Add interest";
             this.instresseBTN.UseVisualStyleBackColor = true;
             this.instresseBTN.Click += new System.EventHandler(this.instresseBTN_Click);
             // 
@@ -122,16 +132,6 @@
             this.listBox1.Size = new System.Drawing.Size(870, 446);
             this.listBox1.TabIndex = 11;
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
-            // 
-            // BTNReport
-            // 
-            this.BTNReport.Location = new System.Drawing.Point(6, 98);
-            this.BTNReport.Name = "BTNReport";
-            this.BTNReport.Size = new System.Drawing.Size(95, 23);
-            this.BTNReport.TabIndex = 14;
-            this.BTNReport.Text = "Report";
-            this.BTNReport.UseVisualStyleBackColor = true;
-            this.BTNReport.Click += new System.EventHandler(this.BTNReport_Click);
             // 
             // Vrijwilliger
             // 
