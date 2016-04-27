@@ -22,33 +22,40 @@ namespace EyeCT4Participation
 
     public partial class Vrijwilliger : Form
     {  
-        private long userID = DataBase.Database.acID;
+        public static int userID = DataBase.Database.acID;
         public int Formstate = (int)FormState.nothingSelected;
-        public ReviewOverview reviews;
+        public ReviewOverview reviewoverview;
         private List<Request> requests = new List<Request>();
+        private List<Review> reviews = new List<Review>();
         private RequestOverview requestoverview;
         private Review review;
+        string currentcontent;
+        string nameofmessage;
+        string content;
 
         public Vrijwilliger()
         {
             InitializeComponent();
-
-           reviews= new ReviewOverview(userID);
+            Review();
         }
 
         private void reviewBTN_Click(object sender, EventArgs e)
         {
-            reviews.m_reviews.Clear();
+            currentcontent = "REVIEW";
+            nameofmessage = "OPMERKINGEN";
+
+            reviews.Clear();
             Formstate = 1;
             //listBox1.ResetText();
             //BtnReactionPost.Visible = true;
             //TxtBxReactionPost.Visible = true;
             listBox1.Items.Clear();
-            foreach (Review review in reviews.LoadMyReviews(UserType.volunteer))
-            { 
-                    listBox1.Items.Add(review);
+            Review();
+            foreach (Review review in reviews)
+            {
+                listBox1.Items.Add(review);
             }
-            
+
         }
 
         private void logoutBTN_Click(object sender, EventArgs e)
@@ -61,6 +68,8 @@ namespace EyeCT4Participation
         private void helprequestBTN_Click(object sender, EventArgs e)
         {
             Formstate = 2;
+            currentcontent = "HULPVRAAG";
+            nameofmessage = "OMSCHRIJVING";
             //BtnReactionPost.Visible = false;
             //TxtBxReactionPost.Visible = false;
             requests.Clear();
@@ -131,6 +140,46 @@ namespace EyeCT4Participation
             int index = listBox1.SelectedIndex;
             //Database.PlaceReaction(index, userID, TxtBxReactionPost.Text);
             //Database.PlaceReaction(review.);
+        }
+
+        private void BTNReport_Click(object sender, EventArgs e)
+        {
+            if (Formstate == 2)
+            {
+                Request request = (Request)listBox1.SelectedItem;
+                content = request.description;
+            }
+            else if (Formstate == 1)
+            {
+                Review review = (Review)listBox1.SelectedItem;
+                content = review.m_review;
+            }
+            
+            
+            
+            // ALTER 'CONTENT' BOOL REPORTED = FALSE 
+            if (listBox1.Items == null)
+            {
+                MessageBox.Show("Nothing Selected!");
+            }
+            else
+            {
+                // SELECT CHATID FROM CHAT WHERE MESSAGE = SELECTEDITEMMESSAGE
+
+                DataBase.Database.getSelected(currentcontent, content, currentcontent + "ID", nameofmessage);
+                DataBase.Database.alterYorN(currentcontent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentcontent + "ID", "ISREPORTED", "Y");
+                //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
+            }
+           
+        }
+
+        public void Review()
+        {
+            reviewoverview = new ReviewOverview(reviews, userID);
+            foreach (Review rev in reviewoverview.Getreviews())
+            {
+                reviews.Add(rev);
+            }
         }
     }
 }

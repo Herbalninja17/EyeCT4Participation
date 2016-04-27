@@ -23,10 +23,11 @@ namespace Login_test
         {
             //Code
             //De gebruiker rapporteert een hulpvraag.
+            Database.alterYorN(COLUMN1, ID, Y, "HULPVRAAGID", visibleOrReported);
             Assert.AreEqual(false, Database.alterYorN(COLUMN1, ID, Y, "HULPVRAAGID", visibleOrReported));
 
             //Hulpvraag wordt weer ongerapporteerd zodat de test vaker kan worden uitgevoerd.
-            Assert.AreEqual(false, Database.alterYorN(COLUMN1, ID, N, "HULPVRAAGID", visibleOrReported));
+            //Assert.AreEqual(false, Database.alterYorN(COLUMN1, ID, N, "HULPVRAAGID", visibleOrReported));
         }
 
         [TestMethod]

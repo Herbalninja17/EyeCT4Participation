@@ -73,6 +73,7 @@ namespace EyeCT4Participation
             refresh();
         }
 
+
         // Admin remove selected (UPDATE 'Y' or 'N' IsVisible) <Raphael>
         private void removeBTN_Click(object sender, EventArgs e)
         {
@@ -83,7 +84,7 @@ namespace EyeCT4Participation
             else
             {
                 DataBase.Database.getSelected(currentContent, Convert.ToString(LBSelectedContent.SelectedItem), currentContent + "ID", nameOfMessage);
-                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID" , "Y", "ISVISIBLE");
+                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID", "ISVISIBLE", "N");
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
             refresh();
@@ -101,7 +102,7 @@ namespace EyeCT4Participation
             {
                 // SELECT CHATID FROM CHAT WHERE MESSAGE = SELECTEDITEMMESSAGE
                 DataBase.Database.getSelected(currentContent, Convert.ToString(LBSelectedContent.SelectedItem), currentContent + "ID", nameOfMessage);
-                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID", "Y", "ISVISIBLE");
+                DataBase.Database.alterYorN(currentContent, Convert.ToInt32(DataBase.Database.ItemIDSelected), currentContent + "ID", "ISREPORTED", "N");
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
             refresh();
@@ -166,6 +167,11 @@ namespace EyeCT4Participation
             }
 
             refresh();
+        }
+
+        private void Beheerder_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
