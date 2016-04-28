@@ -26,47 +26,51 @@ namespace EyeCT4Participation
 
         private void loginBTN_Click(object sender, EventArgs e)
         {
-            //-----test conectivity------ //
-            //if (rfid.LED == false) { rfid.LED = true; }
-            //else if (rfid.LED == true) { rfid.LED = false; }
-            //string acctype = "x";
-
+            if (rfid.Attached == true)
+            {
+                //-----test conectivity------ //
+                if (rfid.LED == false) { rfid.LED = true; }
+                else if (rfid.LED == true) { rfid.LED = false; }
+                
+            }
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();
             DataBase.Database.Login(username, password);
-            if(DataBase.Database.Login(username, password) == true)
+            if (rfidcodetb.Text == Database.acRFID)
             {
-                if(DataBase.Database.ac == "Needy")
+                if (DataBase.Database.Login(username, password) == true)
                 {
-                    this.Hide();
-                    new Hulpbehoevende().Show();
-                    //label1.BackColor = Color.Red;
+                    if (DataBase.Database.ac == "Needy")
+                    {
+                        this.Hide();
+                        new Hulpbehoevende().Show();
+                        //label1.BackColor = Color.Red;
+                    }
+                    else if (DataBase.Database.ac == "Volunteer")
+                    {
+                        this.Hide();
+                        new Vrijwilliger().Show();
+                        //label1.BackColor = Color.Red;
+                    }
+                    else if (DataBase.Database.ac == "Admin")
+                    {
+                        this.Hide();
+                        new Beheerder().Show();
+                        //label1.BackColor = Color.Red;
+                    }
                 }
-                else if (DataBase.Database.ac == "Volunteer")
-                {
-                    this.Hide();
-                    new Vrijwilliger().Show();
-                    //label1.BackColor = Color.Red;
-                }
-                else if (DataBase.Database.ac == "Admin")
-                {
-                    this.Hide();
-                    new Beheerder().Show();
-                    //label1.BackColor = Color.Red;
-                }
-
             }
-            else { MessageBox.Show("Incorrect login credentials"); }
+            else { MessageBox.Show("Incorrect login credentials or Fingerprint(If necessary)"); }
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-           /* rfid = new RFID();
+            rfid = new RFID();
             openCmdLine(rfid);
             rfid.Tag += new TagEventHandler(rfid_Tag);
             rfid.Attach += new AttachEventHandler(rfid_Attach);
             rfid.TagLost += new TagEventHandler(rfid_TagLost);
-            rfid.Detach += new DetachEventHandler(rfid_Detach); */
+            rfid.Detach += new DetachEventHandler(rfid_Detach);
 
         }
 
@@ -191,6 +195,7 @@ namespace EyeCT4Participation
             }
             if (x == true)
             {
+                confirm();
                 Test();
                 MessageBox.Show("Register complete");
                 this.Hide();
@@ -199,8 +204,7 @@ namespace EyeCT4Participation
             x = true;
             if (loginBTN.Enabled == false)
             {
-                confirm();
-
+                
             }
         }
 
@@ -239,17 +243,23 @@ namespace EyeCT4Participation
             string city = cityTB.Text.ToString();
             string p = phoneTB.Text.ToString();
             int phone = Convert.ToInt32(p);
-            string gender = "X";            
+            string gender = "";            
             if (maleCHK.Checked == true) { gender = "M"; }
             if (femaleCHK.Checked == true) { gender = "V"; }
             if (fingerprintCKB.Checked == true) { rfid_yn = "Y"; }
             if (fingerprintCKB.Checked == false) { rfid_yn = "N"; }
-            if (rfid_yn == "Y")
+            if (rfid_yn == "Y")            
             {
                 userrfid = rfidcodetb.Text;
             }
+            string car = "";
+            if ( carCKB.Checked == true) { car = "Y"; }
+            if ( carCKB.Checked == false) { car = "N"; }
+            string licence = "";
+            if (licenceCKB.Checked == true) { licence = "Y"; }
+            if (licenceCKB.Checked == false) { licence = "N"; }
 
-            DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender);
+            DataBase.Database.RegesterUser(username, password, acctype, email, fullname, address, city, phone, gender, userrfid, car, licence);
             
         }
 

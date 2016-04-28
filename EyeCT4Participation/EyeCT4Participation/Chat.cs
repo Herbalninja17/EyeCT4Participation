@@ -82,10 +82,20 @@ namespace EyeCT4Participation
             }
             else
             {
+                string xxx = "";
+                string x = "";
                 // SELECT CHATID FROM CHAT WHERE MESSAGE = SELECTEDITEMMESSAGE
+                if (chatLB.SelectedItem != null)
+                {
+                    x = chatLB.SelectedItem.ToString();
+                    int xx = x.IndexOf(":") + 2;
+                    xxx = x.Substring(xx, x.Length - xx);
+                }
+                else { MessageBox.Show("Please select a message to report"); }
                 
-                DataBase.Database.getSelected("CHAT", selected, "CHATID", "BERICHT");
+                DataBase.Database.getSelected("CHAT", xxx, "CHATID", "BERICHT");
                 DataBase.Database.alterYorN("CHAT", Convert.ToInt32(DataBase.Database.ItemIDSelected), "CHATID", "ISREPORTED", "Y");
+                MessageBox.Show("Message is reported");
                 //m_command.CommandText = "UPDATE " + COLUMN + " SET " + visibleOrReported + " = 'Y' WHERE CHATID = '1'";
             }
            
