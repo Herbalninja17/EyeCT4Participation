@@ -641,7 +641,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT R.REVIEWID, R.BEOORDELING, R.OPMERKINGEN, R.NEEDYID, R.VOLUNTEERID, G.GEBRUIKERSNAAM FROM REVIEW R, GEBRUIKER G WHERE VOLUNTEERID = :ID AND R.NEEDYID = G.GEBRUIKERID ORDER BY REVIEWID";
+                m_command.CommandText = "SELECT R.REVIEWID, R.BEOORDELING, R.OPMERKINGEN, R.NEEDYID, R.VOLUNTEERID, G.GEBRUIKERSNAAM FROM REVIEW R, GEBRUIKER G WHERE VOLUNTEERID = :ID AND R.NEEDYID = G.GEBRUIKERID AND R.ISVISIBLE = 'Y' ORDER BY REVIEWID";
                 m_command.Parameters.Add("ID", OracleDbType.Int32).Value = ID;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
@@ -674,7 +674,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT * FROM HULPVRAAG WHERE GEBRUIKERID = :ID ORDER BY HULPVRAAGID";
+                m_command.CommandText = "SELECT * FROM HULPVRAAG WHERE GEBRUIKERID = :ID AND ISVISIBLE = 'N' ORDER BY HULPVRAAGID";
                 m_command.Parameters.Add("ID", OracleDbType.Int32).Value = ID;
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
@@ -711,7 +711,7 @@ namespace EyeCT4Participation.DataBase
                 OpenConnection();                   // om connection open te maken
                 m_command = new OracleCommand();    // hoef eingelijk niet doordat het all in OpenConnection() zit
                 m_command.Connection = m_conn;      // een connection maken met het command
-                m_command.CommandText = "SELECT * FROM HULPVRAAG";
+                m_command.CommandText = "SELECT * FROM HULPVRAAG WHERE ISVISIBLE = 'Y'";
                 m_command.ExecuteNonQuery();
                 using (OracleDataReader _Reader = Database.Command.ExecuteReader())
                 {

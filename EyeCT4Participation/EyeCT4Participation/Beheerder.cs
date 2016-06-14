@@ -112,6 +112,8 @@ namespace EyeCT4Participation
         private void logoutBTN_Click(object sender, EventArgs e)
         {
             this.Close();
+            Login Login = (Login)Application.OpenForms["Login"];
+            Login.Show();
         }
 
         //Refresh <Raphael>

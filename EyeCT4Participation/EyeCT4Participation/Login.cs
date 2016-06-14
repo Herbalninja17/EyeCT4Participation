@@ -31,7 +31,7 @@ namespace EyeCT4Participation
             //    //-----test conectivity------ //
             //    if (rfid.LED == false) { rfid.LED = true; }
             //    else if (rfid.LED == true) { rfid.LED = false; }
-                
+
             //}
             string username = usernameTB.Text.ToString();
             string password = passwordTB.Text.ToString();
@@ -65,12 +65,15 @@ namespace EyeCT4Participation
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //rfid = new RFID();
-            //openCmdLine(rfid);
-            //rfid.Tag += new TagEventHandler(rfid_Tag);
-            //rfid.Attach += new AttachEventHandler(rfid_Attach);
-            //rfid.TagLost += new TagEventHandler(rfid_TagLost);
-            //rfid.Detach += new DetachEventHandler(rfid_Detach);
+            //if (rfid.Attached == true)
+            //{
+            //    rfid = new RFID();
+            //    openCmdLine(rfid);
+            //    rfid.Tag += new TagEventHandler(rfid_Tag);
+            //    rfid.Attach += new AttachEventHandler(rfid_Attach);
+            //    rfid.TagLost += new TagEventHandler(rfid_TagLost);
+            //    rfid.Detach += new DetachEventHandler(rfid_Detach);
+            //}
         }
 
         void rfid_Tag(object sender, TagEventArgs e)
